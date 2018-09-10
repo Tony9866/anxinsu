@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://service.drs.xdja.com/" name="DataRequestNew" targetNamespace="http://service.drs.xdja.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://service.drs.xdja.com/" xmlns:tns="http://impl.service.drs.xdja.com/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://service.drs.xdja.com/">
+      <xsd:element name="queryByJson" type="ns1:queryByJson" />
+      <xsd:complexType name="queryByJson">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="inputJson" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="queryByJsonResponse" type="ns1:queryByJsonResponse" />
+      <xsd:complexType name="queryByJsonResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="return" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="exeIDUByJson" type="ns1:exeIDUByJson" />
+      <xsd:complexType name="exeIDUByJson">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="inputJson" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="exeIDUByJsonResponse" type="ns1:exeIDUByJsonResponse" />
+      <xsd:complexType name="exeIDUByJsonResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="return" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="exeIDUByJson">
+    <wsdl:part name="parameters" element="ns1:exeIDUByJson" />
+  </wsdl:message>
+  <wsdl:message name="queryByJson">
+    <wsdl:part name="parameters" element="ns1:queryByJson" />
+  </wsdl:message>
+  <wsdl:message name="exeIDUByJsonResponse">
+    <wsdl:part name="parameters" element="ns1:exeIDUByJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="queryByJsonResponse">
+    <wsdl:part name="parameters" element="ns1:queryByJsonResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DataRequestNew">
+    <wsdl:operation name="queryByJson">
+      <wsdl:input name="queryByJson" message="ns1:queryByJson" />
+      <wsdl:output name="queryByJsonResponse" message="ns1:queryByJsonResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="exeIDUByJson">
+      <wsdl:input name="exeIDUByJson" message="ns1:exeIDUByJson" />
+      <wsdl:output name="exeIDUByJsonResponse" message="ns1:exeIDUByJsonResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

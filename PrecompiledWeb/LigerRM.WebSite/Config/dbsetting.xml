@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+   
+  <view name="v_RentDetail_view" display="All Houses"> 
+    <column name="PSID" display="所属区域" type="string"></column>
+    <column name="LSID" display="所属社区" type="string"></column>
+  </view>
+
+  <view name="v_RentHistory_view" display="All Houses">
+    <column name="Region" display="所属区域" type="string"></column>
+    <column name="LSID" display="所属社区" type="string"></column>
+  </view>
+
+  <view name="v_PersonAlert_View" display="All Houses">
+    <column name="strArea" display="所属区域" type="string"></column>
+  </view>
+
+  <view name="v_MotorAlert_View" display="All Houses">
+    <column name="strArea" display="所属区域" type="string"></column>
+  </view>
+</settings>

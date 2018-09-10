@@ -1,0 +1,16 @@
+﻿ 
+/* 顶部 */ 
+.l-topmenu{ margin:0; padding:0; height:80px; line-height:80px; background:#1B3160 url('../../images/topbk.png') repeat-x bottom;  position:relative; border-top:1px solid #7C96AF; border-bottom:2px solid #4E7194;}
+.l-topmenu-logo{ color:#FFFFFF;  padding-left:30px; background:url('../../images/JH.png') no-repeat 50px 4px;  padding-left:200px; font-size:26px;}
+.l-topmenu-welcome{  position:absolute; height:70px; right:30px; top:10px;color:#ffffff; padding-left:200px;}
+.l-topmenu-welcome a{ color:#FFFFFF; text-decoration:underline}
+.l-topmenu-username{ color:#FFFFFF; font-weight:bold;} 
+.l-topmenu-logoDetail{ color:#FFFFFF;  padding-left:30px; background:url('../../images/JH.png') no-repeat 50px 4px;  padding-left:200px; font-size:16px;}
+
+/* 菜单列表 */
+.menulist{ margin-left:15px; margin-right:2px; margin-top:2px;text-align:left; color:#000;}
+.menulist li{ height:24px; line-height:24px; padding-left:24px; display:block; position:relative; cursor:pointer; text-align:left;}
+.menulist li img{ position:absolute; left:4px; top:4px; width:16px; height:16px;}
+.menulist li.over{ background:url('../images/index/menuitem.gif') repeat-x 0px 0px;}
+.menulist li.over .menuitem-l{background:url('../images/index/menuitem.gif') repeat-x 0px -24px; width:2px; height:24px; position:absolute; left:0; top:0;}
+.menulist li.over .menuitem-r{background:url('../images/index/menuitem.gif') repeat-x -1px -24px; width:2px; height:24px; position:absolute; right:0; top:0;}

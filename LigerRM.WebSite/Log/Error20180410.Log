@@ -1,0 +1,3 @@
+2018-04-10 12:12:59
+不能将值 NULL 插入列 'PSID'，表 'House.dbo.Rent_PoliceStation'；列不允许有 Null 值。INSERT 失败。
+语句已终止。

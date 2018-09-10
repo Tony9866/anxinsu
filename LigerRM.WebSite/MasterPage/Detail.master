@@ -1,0 +1,152 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Detail.master.cs" Inherits="MasterPage_Detail" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+                    <link href="../lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
+    <script src="../lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
+    <script src="../lib/ligerUI/js/ligerui.min.js" type="text/javascript"></script>   
+    <link href="../lib/css/common.css" rel="stylesheet" type="text/css" />  
+    <script src="../lib/js/common.js" type="text/javascript"></script>   
+    <script src="../lib/js/LG.js" type="text/javascript"></script>
+    <script src="../lib/js/ligerui.expand.js" type="text/javascript"></script> 
+    <script src="../lib/json2.js" type="text/javascript"></script> 
+        <link href="../lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
+    <script src="../lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
+    <script src="../lib/ligerUI/js/ligerui.min.js" type="text/javascript"></script>  
+    <script src="../lib/ligerUI/js/plugins/ligerTab.js" type="text/javascript"></script>
+    <script src="../lib/ligerUI/js/plugins/ligerLayout.js" type="text/javascript"></script>
+    <link href="../lib/css/common.css" rel="stylesheet" type="text/css" />  
+    <link href="../lib/css/index.css" rel="stylesheet" type="text/css" />
+    <script src="../lib/js/common.js" type="text/javascript"></script>
+    <script src="../lib/js/LG.js" type="text/javascript"></script>
+    <script src="../lib/js/login.js" type="text/javascript"></script>
+    <script src="../lib/commonvalidate.js" type="text/javascript"></script>
+        <script src="../lib/jquery-validation/jquery.validate.min.js" type="text/javascript"></script> 
+    <script src="../lib/jquery-validation/jquery.metadata.js" type="text/javascript"></script>
+    <script src="../lib/jquery-validation/messages_cn.js" type="text/javascript"></script>
+    <script src="../lib/js/changepassword.js" type="text/javascript"></script>
+    <script src="../lib/ligerUI/js/plugins/ligerForm.js" type="text/javascript"></script>
+    <script src="../lib/js/jquery.jqprint-0.3.js" type="text/javascript"></script> 
+    
+    <script src="../lib/js/DateTimeControl.js" type="text/javascript"></script>
+
+        <script language="javascript" type="text/javascript">
+            function wopen(pageURL, title, w, h) {
+                var left = (screen.width / 2) - (w / 2);
+                var top = (screen.height / 2) - (h / 2);
+                var targetWin = window.open(pageURL, title, ' width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+            
+            }
+
+            function CloseWindow() {
+                alert('保存信息成功！权限区域改动需重新启动系统后生效！');
+                window.opener.f_reload();
+                window.close();
+            }
+
+            function CloseWindow1() {
+                alert('保存信息成功！');
+                parent.f_reload();
+                parent.$.ligerDialog.close();
+                parent.$(".l-dialog,.l-window-mask").css("display", "none");
+            }
+
+            function ReadIDCard(txtName, txtIDCard) {
+                var iResut = 0;
+                var strVal = "";
+                iResut = IdCtrl.hxgc_OpenReader(1001);
+                if (iResut != 0) {
+                    alert("二代证设备打开失败！");
+                }
+                else {
+                    iResut = IdCtrl.hxgc_ReadIDCard(1001);
+                    strVal = IdCtrl.hxgc_GetName();
+                    txtName.value = strVal;
+                    strVal = IdCtrl.hxgc_GetIDCode();
+                    txtIDCard.value = strVal;
+                    iResut = IdCtrl.hxgc_CloseReader(1001);
+                }
+            }
+
+            function ReadIDCard(txtName, txtIDCard, txtSerialNumber) {
+                var iResut = 0;
+                var strVal = "";
+                iResut = IdCtrl.hxgc_OpenReader(1001);
+                if (iResut != 0) {
+                    alert("二代证设备打开失败！");
+                }
+                else {
+//                    strVal = IdCtrl.hxgc_GetSamIdToStr(1001);
+//                    alert(strVal);
+//                    strVal = IdCtrl.hxgc_ReadChipSerialNumber(1001);
+//                    alert(strVal);
+//                    strVal = IdCtrl.hxgc_ReadChipManageNumber(1001);
+//                    alert(strVal);
+                    iResut = IdCtrl.hxgc_ReadIDCard(1001);
+
+                    strVal = IdCtrl.hxgc_GetName();
+                    txtName.value = strVal;
+                    strVal = IdCtrl.hxgc_GetIDCode();
+                    txtIDCard.value = strVal;
+
+                    
+                    strVal = IdCtrl.hxgc_SavePhAsBmp("c:\\", "shenfen.bmp");
+                    iResut = IdCtrl.hxgc_CloseReader(1001);
+                }
+            }
+
+            function showDialog(url, txtRFIDNO, status) {
+                
+                if (document.all) //IE 
+                {
+                    feature = "dialogWidth:200px;dialogHeight:80px;status:no;help:no";
+                    rfid = window.showModalDialog(url, null, feature);
+                    //$.ligerDialog.open({ height: 30, width: 150, url: url, title: '添加印章文件' });
+                    if (status == "0" && rfid != "" && rfid != undefined) {
+                        txtRFIDNO.value = rfid;
+                    }
+                }
+                else { 
+                    feature = "width=200,height=80,menubar=no,toolbar=no,location=no,";
+                    feature += "scrollbars=no,status=no,modal=yes";
+                    rfid = window.showModalDialog(url, null, feature);
+                    if (status == "0" && rfid != "" && rfid != undefined) {
+                        txtRFIDNO.value = rfid;
+                    }
+                }
+            } 
+</script>
+</head>
+<body>
+<div style="display:none;"><object id="IdCtrl" classid="clsid:A66F5373-0A8A-4C42-814B-38A87B331D40" > </object>
+</div>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <div>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+        <td>
+            <div id="topmenu" class="l-topmenu">
+        <div class="l-topmenu-logoDetail"><%= LigerRM.Common.Global.GlobalHelper.GetSystemName()%></div>
+        
+    </div> 
+        </td>
+        </tr>
+        <tr>
+        <td>
+                <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            </asp:UpdatePanel>
+        </asp:ContentPlaceHolder>
+        </td>
+        </tr>
+    </table>
+
+    </div>
+    </form>
+</body>
+</html>

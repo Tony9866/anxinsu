@@ -1,0 +1,4269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="UpdateRetinues">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rentinueId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idcard" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateRetinuesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateRetinuesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Authentication" type="tns:Authentication" />
+      <s:complexType name="Authentication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="DeleteRetinue">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idcard" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="createdBy" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteRetinueResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteRetinueResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateLockDevice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deviceID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rentId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateLockDeviceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateLockDeviceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateLoginResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="deviceId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateHouseID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="houseID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateHouseIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateHouseIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateHouseBindLock">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="houseID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateHouseBindLockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateHouseBindLockResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHouseInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idcard" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHouseInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHouseInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHouseDetailInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rentNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHouseDetailInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHouseDetailInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHouseInfoByLoginName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="loginName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHouseInfoByLoginNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHouseInfoByLoginNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUserInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="loginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="realName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sex" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fax" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idcard" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nickName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUserInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddUserInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateLoginName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="loginName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateLoginNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateLoginNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddRentInfoTest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RentNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RAddress" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="RRentArea" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="RProperty" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ROwner" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RIDCard" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RLocationDescription" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddRentInfoTestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddRentInfoTestResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddRentInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RentNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RDName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RSName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RRName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RPSName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RDoor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RTotalDoor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RRoomType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RDirection" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RStructure" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RBuildingType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RFloor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RTotalFloor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RHouseAge" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="RRentArea" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="RProperty" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ROwner" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ROwnerTel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RIDCard" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RLocationDescription" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RPSParentName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="createdBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rentType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ownType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddRentInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddRentInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddRentRecord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RentNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RRAContactName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RRAContactTel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RRAIDCard" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RRentPrice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RRAStartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RRAEndDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RRADescription" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="createdBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddRentRecordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddRentRecordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRentAttribute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRentAttributeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRentAttributeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmRentAttribute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fee" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmRentAttributeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConfirmRentAttributeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RejectRentAttribute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RejectRentAttributeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RejectRentAttributeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelRentAttribute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelRentAttributeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CancelRentAttributeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsOrderConfirmed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsOrderConfirmedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IsOrderConfirmedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CompleteRentAttribute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CompleteRentAttributeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompleteRentAttributeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRentsByCoodinates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="distance" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRentsByCoodinatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRentsByCoodinatesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRentsByCoodinatesPopular">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="distance" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRentsByCoodinatesPopularResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRentsByCoodinatesPopularResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDistrictList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDistrictListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDistrictListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStreetList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="district" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStreetListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStreetListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRoadList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="district" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRoadListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRoadListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPoliceStationList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetPoliceStationListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPoliceStationListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocalPoliceStationList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parentstationId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocalPoliceStationListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLocalPoliceStationListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHouseType">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetHouseTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHouseTypeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHouseDirection">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetHouseDirectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHouseDirectionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHouseStructure">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetHouseStructureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHouseStructureResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBuildingStructure">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetBuildingStructureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBuildingStructureResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHouseClass">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetHouseClassResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHouseClassResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRentHistory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idCard" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRentHistoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRentHistoryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRentOwnerHistory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idCard" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRentOwnerHistoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRentOwnerHistoryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHouseProperty">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetHousePropertyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHousePropertyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHouseRentType">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetHouseRentTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHouseRentTypeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMessageToPlice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rentNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sign" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMessageToPliceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendMessageToPliceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHouseOwnType">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetHouseOwnTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHouseOwnTypeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteHouseInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="houseNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteHouseInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteHouseInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNationnalityList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetNationnalityListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNationnalityListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProvinceList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetProvinceListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProvinceListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAddress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lng" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAddressResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAddressResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HelloWord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="timestamp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HelloWordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLocationInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHousesByCondition">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pageSize" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageIndex" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="housetype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rentType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="isAvalible" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="startdate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="endate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHousesByConditionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHousesByConditionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHousesCountByCondition">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="housetype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rentType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="isAvalible" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHousesCountByConditionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHousesCountByConditionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangePassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oldPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangePasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChangePasswordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRentInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idcard" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRentInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRentInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRentList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idcard" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRentListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRentListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddRentImage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RentNO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="memo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="imageStr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddRentImageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddRentImageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRentImageList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rentNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRentImageListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRentImageListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelRentImageList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ImageId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ImagePath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelRentImageListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DelRentImageListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateOrderInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="appId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="body" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mchId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tradeNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fee" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="prepayId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ownerIdCard" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateOrderInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateOrderInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CanOpenDoor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lockId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idCard" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CanOpenDoorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CanOpenDoorResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CanRentTheHouse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rentNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="startdate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="enddate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CanRentTheHouseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CanRentTheHouseResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OpenDoor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lockId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OpenDoorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OpenDoorResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddRentExternalInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RentNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddRentExternalInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddRentExternalInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRentExternalInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RentNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRentExternalInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRentExternalInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUserWallet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idCard" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fee" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUserWalletResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateUserWalletResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DepositWallet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idCard" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fee" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DepositWalletResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DepositWalletResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PayUseWallet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rennteeIDCard" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ownerIDCard" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="money" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PayUseWalletResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PayUseWalletResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddPasswordToLock">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rentNO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="startdate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="enddate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddPasswordToLockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddPasswordToLockResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClearPasswordToLock">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aarId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClearPasswordToLockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClearPasswordToLockResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSystemClock">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSystemClockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSystemClockResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddBillLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="renteeIDCard" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ownerIDCard" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fee" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddBillLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddBillLogResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBillLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idCard" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBillLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBillLogResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDeviceID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="deviceId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDeviceIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateDeviceIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPayRateDesc">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fee" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPayRateDescResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPayRateDescResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMessageToDevice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="togleId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMessageToDeviceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendMessageToDeviceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsExistsPhone">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsExistsPhoneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IsExistsPhoneResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsExistsIDCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idcard" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsExistsIDCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IsExistsIDCardResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCreditCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idcard" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bankName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCreditCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateCreditCardResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ForgotPassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ForgotPasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ForgotPasswordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApplyCheckOut">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rraId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="applyer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reason" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApplyCheckOutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ApplyCheckOutResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmCheckOut">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rraId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmCheckOutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConfirmCheckOutResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetExpireTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rraId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetExpireTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetExpireTimeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExpiredOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rraId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExpiredOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExpiredOrderResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddEvaluation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="orderId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="evaObject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="evaType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="service" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="enviroment" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cost" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="evaPerson" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddEvaluationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddEvaluationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEvaluationList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obj" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEvaluationListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEvaluationListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEvaluationPersonList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obj" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEvaluationPersonListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEvaluationPersonListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsExistsSameAddress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsExistsSameAddressResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IsExistsSameAddressResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateRentInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RentNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RDName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RSName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RRName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RPSName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RDoor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RTotalDoor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RRoomType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RDirection" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RStructure" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RBuildingType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RFloor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RTotalFloor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RHouseAge" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="RRentArea" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="RProperty" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ROwner" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ROwnerTel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RIDCard" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RLocationDescription" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RPSParentName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="createdBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rentType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ownType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateRentInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateRentInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddIDCardToDevice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idcard" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="deviceId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddIDCardToDeviceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddIDCardToDeviceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOrderStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rraId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOrderStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOrderStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddRetinues">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rraId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="createdBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="jsonstr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddRetinuesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddRetinuesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRetinues">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rraId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRetinuesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRetinuesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRetinuesByIDCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idCard" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRetinuesByIDCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRetinuesByIDCardResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="UpdateRetinuesSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateRetinues" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRetinuesSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateRetinuesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRetinuesAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRetinueSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteRetinue" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRetinueSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteRetinueResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRetinueAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="CreateLockDeviceSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateLockDevice" />
+  </wsdl:message>
+  <wsdl:message name="CreateLockDeviceSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateLockDeviceResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateLockDeviceAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="ValidateLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateLogin" />
+  </wsdl:message>
+  <wsdl:message name="ValidateLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateLoginAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="ValidateHouseIDSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateHouseID" />
+  </wsdl:message>
+  <wsdl:message name="ValidateHouseIDSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateHouseIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateHouseIDAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="ValidateHouseBindLockSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateHouseBindLock" />
+  </wsdl:message>
+  <wsdl:message name="ValidateHouseBindLockSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateHouseBindLockResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateHouseBindLockAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHouseInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHouseInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseDetailInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHouseDetailInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseDetailInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHouseDetailInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseDetailInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseInfoByLoginNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHouseInfoByLoginName" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseInfoByLoginNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHouseInfoByLoginNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseInfoByLoginNameAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="AddUserInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUserInfo" />
+  </wsdl:message>
+  <wsdl:message name="AddUserInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUserInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUserInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="ValidateLoginNameSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateLoginName" />
+  </wsdl:message>
+  <wsdl:message name="ValidateLoginNameSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateLoginNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateLoginNameAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="AddRentInfoTestSoapIn">
+    <wsdl:part name="parameters" element="tns:AddRentInfoTest" />
+  </wsdl:message>
+  <wsdl:message name="AddRentInfoTestSoapOut">
+    <wsdl:part name="parameters" element="tns:AddRentInfoTestResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddRentInfoTestAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="AddRentInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:AddRentInfo" />
+  </wsdl:message>
+  <wsdl:message name="AddRentInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:AddRentInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddRentInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="AddRentRecordSoapIn">
+    <wsdl:part name="parameters" element="tns:AddRentRecord" />
+  </wsdl:message>
+  <wsdl:message name="AddRentRecordSoapOut">
+    <wsdl:part name="parameters" element="tns:AddRentRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddRentRecordAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetRentAttributeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRentAttribute" />
+  </wsdl:message>
+  <wsdl:message name="GetRentAttributeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRentAttributeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRentAttributeAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmRentAttributeSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfirmRentAttribute" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmRentAttributeSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmRentAttributeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmRentAttributeAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="RejectRentAttributeSoapIn">
+    <wsdl:part name="parameters" element="tns:RejectRentAttribute" />
+  </wsdl:message>
+  <wsdl:message name="RejectRentAttributeSoapOut">
+    <wsdl:part name="parameters" element="tns:RejectRentAttributeResponse" />
+  </wsdl:message>
+  <wsdl:message name="RejectRentAttributeAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="CancelRentAttributeSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelRentAttribute" />
+  </wsdl:message>
+  <wsdl:message name="CancelRentAttributeSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelRentAttributeResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelRentAttributeAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="IsOrderConfirmedSoapIn">
+    <wsdl:part name="parameters" element="tns:IsOrderConfirmed" />
+  </wsdl:message>
+  <wsdl:message name="IsOrderConfirmedSoapOut">
+    <wsdl:part name="parameters" element="tns:IsOrderConfirmedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsOrderConfirmedAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="CompleteRentAttributeSoapIn">
+    <wsdl:part name="parameters" element="tns:CompleteRentAttribute" />
+  </wsdl:message>
+  <wsdl:message name="CompleteRentAttributeSoapOut">
+    <wsdl:part name="parameters" element="tns:CompleteRentAttributeResponse" />
+  </wsdl:message>
+  <wsdl:message name="CompleteRentAttributeAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetRentsByCoodinatesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRentsByCoodinates" />
+  </wsdl:message>
+  <wsdl:message name="GetRentsByCoodinatesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRentsByCoodinatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRentsByCoodinatesAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetRentsByCoodinatesPopularSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRentsByCoodinatesPopular" />
+  </wsdl:message>
+  <wsdl:message name="GetRentsByCoodinatesPopularSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRentsByCoodinatesPopularResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRentsByCoodinatesPopularAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetDistrictListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDistrictList" />
+  </wsdl:message>
+  <wsdl:message name="GetDistrictListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDistrictListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDistrictListAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetStreetListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStreetList" />
+  </wsdl:message>
+  <wsdl:message name="GetStreetListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStreetListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStreetListAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetRoadListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRoadList" />
+  </wsdl:message>
+  <wsdl:message name="GetRoadListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRoadListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRoadListAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetPoliceStationListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPoliceStationList" />
+  </wsdl:message>
+  <wsdl:message name="GetPoliceStationListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPoliceStationListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPoliceStationListAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetLocalPoliceStationListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLocalPoliceStationList" />
+  </wsdl:message>
+  <wsdl:message name="GetLocalPoliceStationListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLocalPoliceStationListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLocalPoliceStationListAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHouseType" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHouseTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseTypeAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseDirectionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHouseDirection" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseDirectionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHouseDirectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseDirectionAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseStructureSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHouseStructure" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseStructureSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHouseStructureResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseStructureAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetBuildingStructureSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBuildingStructure" />
+  </wsdl:message>
+  <wsdl:message name="GetBuildingStructureSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBuildingStructureResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBuildingStructureAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseClassSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHouseClass" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseClassSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHouseClassResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseClassAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetRentHistorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetRentHistory" />
+  </wsdl:message>
+  <wsdl:message name="GetRentHistorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetRentHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRentHistoryAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetRentOwnerHistorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetRentOwnerHistory" />
+  </wsdl:message>
+  <wsdl:message name="GetRentOwnerHistorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetRentOwnerHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRentOwnerHistoryAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetHousePropertySoapIn">
+    <wsdl:part name="parameters" element="tns:GetHouseProperty" />
+  </wsdl:message>
+  <wsdl:message name="GetHousePropertySoapOut">
+    <wsdl:part name="parameters" element="tns:GetHousePropertyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHousePropertyAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseRentTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHouseRentType" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseRentTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHouseRentTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseRentTypeAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="SendMessageToPliceSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMessageToPlice" />
+  </wsdl:message>
+  <wsdl:message name="SendMessageToPliceSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMessageToPliceResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMessageToPliceAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseOwnTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHouseOwnType" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseOwnTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHouseOwnTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHouseOwnTypeAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="DeleteHouseInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteHouseInfo" />
+  </wsdl:message>
+  <wsdl:message name="DeleteHouseInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteHouseInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteHouseInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetNationnalityListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNationnalityList" />
+  </wsdl:message>
+  <wsdl:message name="GetNationnalityListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNationnalityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNationnalityListAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetProvinceListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProvinceList" />
+  </wsdl:message>
+  <wsdl:message name="GetProvinceListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProvinceListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProvinceListAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAddress" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="HelloWordSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWord" />
+  </wsdl:message>
+  <wsdl:message name="HelloWordSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWordResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloWordAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLocationInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLocationInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetHousesByConditionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHousesByCondition" />
+  </wsdl:message>
+  <wsdl:message name="GetHousesByConditionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHousesByConditionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHousesByConditionAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetHousesCountByConditionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHousesCountByCondition" />
+  </wsdl:message>
+  <wsdl:message name="GetHousesCountByConditionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHousesCountByConditionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHousesCountByConditionAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:ChangePassword" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:ChangePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetRentInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRentInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetRentInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRentInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRentInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetRentListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRentList" />
+  </wsdl:message>
+  <wsdl:message name="GetRentListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRentListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRentListAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="AddRentImageSoapIn">
+    <wsdl:part name="parameters" element="tns:AddRentImage" />
+  </wsdl:message>
+  <wsdl:message name="AddRentImageSoapOut">
+    <wsdl:part name="parameters" element="tns:AddRentImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddRentImageAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetRentImageListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRentImageList" />
+  </wsdl:message>
+  <wsdl:message name="GetRentImageListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRentImageListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRentImageListAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="DelRentImageListSoapIn">
+    <wsdl:part name="parameters" element="tns:DelRentImageList" />
+  </wsdl:message>
+  <wsdl:message name="DelRentImageListSoapOut">
+    <wsdl:part name="parameters" element="tns:DelRentImageListResponse" />
+  </wsdl:message>
+  <wsdl:message name="DelRentImageListAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOrderInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateOrderInfo" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOrderInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateOrderInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOrderInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="CanOpenDoorSoapIn">
+    <wsdl:part name="parameters" element="tns:CanOpenDoor" />
+  </wsdl:message>
+  <wsdl:message name="CanOpenDoorSoapOut">
+    <wsdl:part name="parameters" element="tns:CanOpenDoorResponse" />
+  </wsdl:message>
+  <wsdl:message name="CanOpenDoorAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="CanRentTheHouseSoapIn">
+    <wsdl:part name="parameters" element="tns:CanRentTheHouse" />
+  </wsdl:message>
+  <wsdl:message name="CanRentTheHouseSoapOut">
+    <wsdl:part name="parameters" element="tns:CanRentTheHouseResponse" />
+  </wsdl:message>
+  <wsdl:message name="CanRentTheHouseAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="OpenDoorSoapIn">
+    <wsdl:part name="parameters" element="tns:OpenDoor" />
+  </wsdl:message>
+  <wsdl:message name="OpenDoorSoapOut">
+    <wsdl:part name="parameters" element="tns:OpenDoorResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpenDoorAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="AddRentExternalInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:AddRentExternalInfo" />
+  </wsdl:message>
+  <wsdl:message name="AddRentExternalInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:AddRentExternalInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddRentExternalInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetRentExternalInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRentExternalInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetRentExternalInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRentExternalInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRentExternalInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserWalletSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateUserWallet" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserWalletSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateUserWalletResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserWalletAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="DepositWalletSoapIn">
+    <wsdl:part name="parameters" element="tns:DepositWallet" />
+  </wsdl:message>
+  <wsdl:message name="DepositWalletSoapOut">
+    <wsdl:part name="parameters" element="tns:DepositWalletResponse" />
+  </wsdl:message>
+  <wsdl:message name="DepositWalletAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="PayUseWalletSoapIn">
+    <wsdl:part name="parameters" element="tns:PayUseWallet" />
+  </wsdl:message>
+  <wsdl:message name="PayUseWalletSoapOut">
+    <wsdl:part name="parameters" element="tns:PayUseWalletResponse" />
+  </wsdl:message>
+  <wsdl:message name="PayUseWalletAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="AddPasswordToLockSoapIn">
+    <wsdl:part name="parameters" element="tns:AddPasswordToLock" />
+  </wsdl:message>
+  <wsdl:message name="AddPasswordToLockSoapOut">
+    <wsdl:part name="parameters" element="tns:AddPasswordToLockResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddPasswordToLockAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="ClearPasswordToLockSoapIn">
+    <wsdl:part name="parameters" element="tns:ClearPasswordToLock" />
+  </wsdl:message>
+  <wsdl:message name="ClearPasswordToLockSoapOut">
+    <wsdl:part name="parameters" element="tns:ClearPasswordToLockResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClearPasswordToLockAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetSystemClockSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSystemClock" />
+  </wsdl:message>
+  <wsdl:message name="GetSystemClockSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSystemClockResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSystemClockAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="AddBillLogSoapIn">
+    <wsdl:part name="parameters" element="tns:AddBillLog" />
+  </wsdl:message>
+  <wsdl:message name="AddBillLogSoapOut">
+    <wsdl:part name="parameters" element="tns:AddBillLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddBillLogAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetBillLogSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBillLog" />
+  </wsdl:message>
+  <wsdl:message name="GetBillLogSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBillLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBillLogAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDeviceIDSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateDeviceID" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDeviceIDSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateDeviceIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDeviceIDAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetPayRateDescSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPayRateDesc" />
+  </wsdl:message>
+  <wsdl:message name="GetPayRateDescSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPayRateDescResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPayRateDescAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="SendMessageToDeviceSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMessageToDevice" />
+  </wsdl:message>
+  <wsdl:message name="SendMessageToDeviceSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMessageToDeviceResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMessageToDeviceAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="IsExistsPhoneSoapIn">
+    <wsdl:part name="parameters" element="tns:IsExistsPhone" />
+  </wsdl:message>
+  <wsdl:message name="IsExistsPhoneSoapOut">
+    <wsdl:part name="parameters" element="tns:IsExistsPhoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsExistsPhoneAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="IsExistsIDCardSoapIn">
+    <wsdl:part name="parameters" element="tns:IsExistsIDCard" />
+  </wsdl:message>
+  <wsdl:message name="IsExistsIDCardSoapOut">
+    <wsdl:part name="parameters" element="tns:IsExistsIDCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsExistsIDCardAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCreditCardSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCreditCard" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCreditCardSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCreditCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCreditCardAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="ForgotPasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:ForgotPassword" />
+  </wsdl:message>
+  <wsdl:message name="ForgotPasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:ForgotPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="ForgotPasswordAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="ApplyCheckOutSoapIn">
+    <wsdl:part name="parameters" element="tns:ApplyCheckOut" />
+  </wsdl:message>
+  <wsdl:message name="ApplyCheckOutSoapOut">
+    <wsdl:part name="parameters" element="tns:ApplyCheckOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="ApplyCheckOutAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmCheckOutSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfirmCheckOut" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmCheckOutSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmCheckOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmCheckOutAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetExpireTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetExpireTime" />
+  </wsdl:message>
+  <wsdl:message name="GetExpireTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetExpireTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetExpireTimeAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="ExpiredOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:ExpiredOrder" />
+  </wsdl:message>
+  <wsdl:message name="ExpiredOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:ExpiredOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExpiredOrderAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="AddEvaluationSoapIn">
+    <wsdl:part name="parameters" element="tns:AddEvaluation" />
+  </wsdl:message>
+  <wsdl:message name="AddEvaluationSoapOut">
+    <wsdl:part name="parameters" element="tns:AddEvaluationResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddEvaluationAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetEvaluationListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEvaluationList" />
+  </wsdl:message>
+  <wsdl:message name="GetEvaluationListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEvaluationListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEvaluationListAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetEvaluationPersonListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEvaluationPersonList" />
+  </wsdl:message>
+  <wsdl:message name="GetEvaluationPersonListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEvaluationPersonListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEvaluationPersonListAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="IsExistsSameAddressSoapIn">
+    <wsdl:part name="parameters" element="tns:IsExistsSameAddress" />
+  </wsdl:message>
+  <wsdl:message name="IsExistsSameAddressSoapOut">
+    <wsdl:part name="parameters" element="tns:IsExistsSameAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsExistsSameAddressAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRentInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateRentInfo" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRentInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateRentInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRentInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="AddIDCardToDeviceSoapIn">
+    <wsdl:part name="parameters" element="tns:AddIDCardToDevice" />
+  </wsdl:message>
+  <wsdl:message name="AddIDCardToDeviceSoapOut">
+    <wsdl:part name="parameters" element="tns:AddIDCardToDeviceResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddIDCardToDeviceAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOrderStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOrderStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderStatusAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="AddRetinuesSoapIn">
+    <wsdl:part name="parameters" element="tns:AddRetinues" />
+  </wsdl:message>
+  <wsdl:message name="AddRetinuesSoapOut">
+    <wsdl:part name="parameters" element="tns:AddRetinuesResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddRetinuesAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetRetinuesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRetinues" />
+  </wsdl:message>
+  <wsdl:message name="GetRetinuesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRetinuesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRetinuesAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetRetinuesByIDCardSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRetinuesByIDCard" />
+  </wsdl:message>
+  <wsdl:message name="GetRetinuesByIDCardSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRetinuesByIDCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRetinuesByIDCardAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:portType name="ServicesSoap">
+    <wsdl:operation name="UpdateRetinues">
+      <wsdl:input message="tns:UpdateRetinuesSoapIn" />
+      <wsdl:output message="tns:UpdateRetinuesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRetinue">
+      <wsdl:input message="tns:DeleteRetinueSoapIn" />
+      <wsdl:output message="tns:DeleteRetinueSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateLockDevice">
+      <wsdl:input message="tns:CreateLockDeviceSoapIn" />
+      <wsdl:output message="tns:CreateLockDeviceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateLogin">
+      <wsdl:input message="tns:ValidateLoginSoapIn" />
+      <wsdl:output message="tns:ValidateLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <wsdl:input message="tns:GetUserInfoSoapIn" />
+      <wsdl:output message="tns:GetUserInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateHouseID">
+      <wsdl:input message="tns:ValidateHouseIDSoapIn" />
+      <wsdl:output message="tns:ValidateHouseIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateHouseBindLock">
+      <wsdl:input message="tns:ValidateHouseBindLockSoapIn" />
+      <wsdl:output message="tns:ValidateHouseBindLockSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseInfo">
+      <wsdl:input message="tns:GetHouseInfoSoapIn" />
+      <wsdl:output message="tns:GetHouseInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseDetailInfo">
+      <wsdl:input message="tns:GetHouseDetailInfoSoapIn" />
+      <wsdl:output message="tns:GetHouseDetailInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseInfoByLoginName">
+      <wsdl:input message="tns:GetHouseInfoByLoginNameSoapIn" />
+      <wsdl:output message="tns:GetHouseInfoByLoginNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUserInfo">
+      <wsdl:input message="tns:AddUserInfoSoapIn" />
+      <wsdl:output message="tns:AddUserInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateLoginName">
+      <wsdl:input message="tns:ValidateLoginNameSoapIn" />
+      <wsdl:output message="tns:ValidateLoginNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRentInfoTest">
+      <wsdl:input message="tns:AddRentInfoTestSoapIn" />
+      <wsdl:output message="tns:AddRentInfoTestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRentInfo">
+      <wsdl:input message="tns:AddRentInfoSoapIn" />
+      <wsdl:output message="tns:AddRentInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRentRecord">
+      <wsdl:input message="tns:AddRentRecordSoapIn" />
+      <wsdl:output message="tns:AddRentRecordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRentAttribute">
+      <wsdl:input message="tns:GetRentAttributeSoapIn" />
+      <wsdl:output message="tns:GetRentAttributeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmRentAttribute">
+      <wsdl:input message="tns:ConfirmRentAttributeSoapIn" />
+      <wsdl:output message="tns:ConfirmRentAttributeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RejectRentAttribute">
+      <wsdl:input message="tns:RejectRentAttributeSoapIn" />
+      <wsdl:output message="tns:RejectRentAttributeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelRentAttribute">
+      <wsdl:input message="tns:CancelRentAttributeSoapIn" />
+      <wsdl:output message="tns:CancelRentAttributeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsOrderConfirmed">
+      <wsdl:input message="tns:IsOrderConfirmedSoapIn" />
+      <wsdl:output message="tns:IsOrderConfirmedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CompleteRentAttribute">
+      <wsdl:input message="tns:CompleteRentAttributeSoapIn" />
+      <wsdl:output message="tns:CompleteRentAttributeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRentsByCoodinates">
+      <wsdl:input message="tns:GetRentsByCoodinatesSoapIn" />
+      <wsdl:output message="tns:GetRentsByCoodinatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRentsByCoodinatesPopular">
+      <wsdl:input message="tns:GetRentsByCoodinatesPopularSoapIn" />
+      <wsdl:output message="tns:GetRentsByCoodinatesPopularSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDistrictList">
+      <wsdl:input message="tns:GetDistrictListSoapIn" />
+      <wsdl:output message="tns:GetDistrictListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStreetList">
+      <wsdl:input message="tns:GetStreetListSoapIn" />
+      <wsdl:output message="tns:GetStreetListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoadList">
+      <wsdl:input message="tns:GetRoadListSoapIn" />
+      <wsdl:output message="tns:GetRoadListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPoliceStationList">
+      <wsdl:input message="tns:GetPoliceStationListSoapIn" />
+      <wsdl:output message="tns:GetPoliceStationListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocalPoliceStationList">
+      <wsdl:input message="tns:GetLocalPoliceStationListSoapIn" />
+      <wsdl:output message="tns:GetLocalPoliceStationListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseType">
+      <wsdl:input message="tns:GetHouseTypeSoapIn" />
+      <wsdl:output message="tns:GetHouseTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseDirection">
+      <wsdl:input message="tns:GetHouseDirectionSoapIn" />
+      <wsdl:output message="tns:GetHouseDirectionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseStructure">
+      <wsdl:input message="tns:GetHouseStructureSoapIn" />
+      <wsdl:output message="tns:GetHouseStructureSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBuildingStructure">
+      <wsdl:input message="tns:GetBuildingStructureSoapIn" />
+      <wsdl:output message="tns:GetBuildingStructureSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseClass">
+      <wsdl:input message="tns:GetHouseClassSoapIn" />
+      <wsdl:output message="tns:GetHouseClassSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRentHistory">
+      <wsdl:input message="tns:GetRentHistorySoapIn" />
+      <wsdl:output message="tns:GetRentHistorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRentOwnerHistory">
+      <wsdl:input message="tns:GetRentOwnerHistorySoapIn" />
+      <wsdl:output message="tns:GetRentOwnerHistorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseProperty">
+      <wsdl:input message="tns:GetHousePropertySoapIn" />
+      <wsdl:output message="tns:GetHousePropertySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseRentType">
+      <wsdl:input message="tns:GetHouseRentTypeSoapIn" />
+      <wsdl:output message="tns:GetHouseRentTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMessageToPlice">
+      <wsdl:input message="tns:SendMessageToPliceSoapIn" />
+      <wsdl:output message="tns:SendMessageToPliceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseOwnType">
+      <wsdl:input message="tns:GetHouseOwnTypeSoapIn" />
+      <wsdl:output message="tns:GetHouseOwnTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteHouseInfo">
+      <wsdl:input message="tns:DeleteHouseInfoSoapIn" />
+      <wsdl:output message="tns:DeleteHouseInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNationnalityList">
+      <wsdl:input message="tns:GetNationnalityListSoapIn" />
+      <wsdl:output message="tns:GetNationnalityListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProvinceList">
+      <wsdl:input message="tns:GetProvinceListSoapIn" />
+      <wsdl:output message="tns:GetProvinceListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAddress">
+      <wsdl:input message="tns:GetAddressSoapIn" />
+      <wsdl:output message="tns:GetAddressSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HelloWord">
+      <wsdl:input message="tns:HelloWordSoapIn" />
+      <wsdl:output message="tns:HelloWordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationInfo">
+      <wsdl:input message="tns:GetLocationInfoSoapIn" />
+      <wsdl:output message="tns:GetLocationInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHousesByCondition">
+      <wsdl:input message="tns:GetHousesByConditionSoapIn" />
+      <wsdl:output message="tns:GetHousesByConditionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHousesCountByCondition">
+      <wsdl:input message="tns:GetHousesCountByConditionSoapIn" />
+      <wsdl:output message="tns:GetHousesCountByConditionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <wsdl:input message="tns:ChangePasswordSoapIn" />
+      <wsdl:output message="tns:ChangePasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRentInfo">
+      <wsdl:input message="tns:GetRentInfoSoapIn" />
+      <wsdl:output message="tns:GetRentInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRentList">
+      <wsdl:input message="tns:GetRentListSoapIn" />
+      <wsdl:output message="tns:GetRentListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRentImage">
+      <wsdl:input message="tns:AddRentImageSoapIn" />
+      <wsdl:output message="tns:AddRentImageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRentImageList">
+      <wsdl:input message="tns:GetRentImageListSoapIn" />
+      <wsdl:output message="tns:GetRentImageListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DelRentImageList">
+      <wsdl:input message="tns:DelRentImageListSoapIn" />
+      <wsdl:output message="tns:DelRentImageListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrderInfo">
+      <wsdl:input message="tns:UpdateOrderInfoSoapIn" />
+      <wsdl:output message="tns:UpdateOrderInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CanOpenDoor">
+      <wsdl:input message="tns:CanOpenDoorSoapIn" />
+      <wsdl:output message="tns:CanOpenDoorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CanRentTheHouse">
+      <wsdl:input message="tns:CanRentTheHouseSoapIn" />
+      <wsdl:output message="tns:CanRentTheHouseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OpenDoor">
+      <wsdl:input message="tns:OpenDoorSoapIn" />
+      <wsdl:output message="tns:OpenDoorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRentExternalInfo">
+      <wsdl:input message="tns:AddRentExternalInfoSoapIn" />
+      <wsdl:output message="tns:AddRentExternalInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRentExternalInfo">
+      <wsdl:input message="tns:GetRentExternalInfoSoapIn" />
+      <wsdl:output message="tns:GetRentExternalInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserWallet">
+      <wsdl:input message="tns:UpdateUserWalletSoapIn" />
+      <wsdl:output message="tns:UpdateUserWalletSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DepositWallet">
+      <wsdl:input message="tns:DepositWalletSoapIn" />
+      <wsdl:output message="tns:DepositWalletSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PayUseWallet">
+      <wsdl:input message="tns:PayUseWalletSoapIn" />
+      <wsdl:output message="tns:PayUseWalletSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPasswordToLock">
+      <wsdl:input message="tns:AddPasswordToLockSoapIn" />
+      <wsdl:output message="tns:AddPasswordToLockSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClearPasswordToLock">
+      <wsdl:input message="tns:ClearPasswordToLockSoapIn" />
+      <wsdl:output message="tns:ClearPasswordToLockSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemClock">
+      <wsdl:input message="tns:GetSystemClockSoapIn" />
+      <wsdl:output message="tns:GetSystemClockSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBillLog">
+      <wsdl:input message="tns:AddBillLogSoapIn" />
+      <wsdl:output message="tns:AddBillLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBillLog">
+      <wsdl:input message="tns:GetBillLogSoapIn" />
+      <wsdl:output message="tns:GetBillLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDeviceID">
+      <wsdl:input message="tns:UpdateDeviceIDSoapIn" />
+      <wsdl:output message="tns:UpdateDeviceIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPayRateDesc">
+      <wsdl:input message="tns:GetPayRateDescSoapIn" />
+      <wsdl:output message="tns:GetPayRateDescSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMessageToDevice">
+      <wsdl:input message="tns:SendMessageToDeviceSoapIn" />
+      <wsdl:output message="tns:SendMessageToDeviceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsExistsPhone">
+      <wsdl:input message="tns:IsExistsPhoneSoapIn" />
+      <wsdl:output message="tns:IsExistsPhoneSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsExistsIDCard">
+      <wsdl:input message="tns:IsExistsIDCardSoapIn" />
+      <wsdl:output message="tns:IsExistsIDCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCreditCard">
+      <wsdl:input message="tns:UpdateCreditCardSoapIn" />
+      <wsdl:output message="tns:UpdateCreditCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ForgotPassword">
+      <wsdl:input message="tns:ForgotPasswordSoapIn" />
+      <wsdl:output message="tns:ForgotPasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ApplyCheckOut">
+      <wsdl:input message="tns:ApplyCheckOutSoapIn" />
+      <wsdl:output message="tns:ApplyCheckOutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmCheckOut">
+      <wsdl:input message="tns:ConfirmCheckOutSoapIn" />
+      <wsdl:output message="tns:ConfirmCheckOutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExpireTime">
+      <wsdl:input message="tns:GetExpireTimeSoapIn" />
+      <wsdl:output message="tns:GetExpireTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExpiredOrder">
+      <wsdl:input message="tns:ExpiredOrderSoapIn" />
+      <wsdl:output message="tns:ExpiredOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddEvaluation">
+      <wsdl:input message="tns:AddEvaluationSoapIn" />
+      <wsdl:output message="tns:AddEvaluationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEvaluationList">
+      <wsdl:input message="tns:GetEvaluationListSoapIn" />
+      <wsdl:output message="tns:GetEvaluationListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEvaluationPersonList">
+      <wsdl:input message="tns:GetEvaluationPersonListSoapIn" />
+      <wsdl:output message="tns:GetEvaluationPersonListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsExistsSameAddress">
+      <wsdl:input message="tns:IsExistsSameAddressSoapIn" />
+      <wsdl:output message="tns:IsExistsSameAddressSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRentInfo">
+      <wsdl:input message="tns:UpdateRentInfoSoapIn" />
+      <wsdl:output message="tns:UpdateRentInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddIDCardToDevice">
+      <wsdl:input message="tns:AddIDCardToDeviceSoapIn" />
+      <wsdl:output message="tns:AddIDCardToDeviceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderStatus">
+      <wsdl:input message="tns:GetOrderStatusSoapIn" />
+      <wsdl:output message="tns:GetOrderStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRetinues">
+      <wsdl:input message="tns:AddRetinuesSoapIn" />
+      <wsdl:output message="tns:AddRetinuesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRetinues">
+      <wsdl:input message="tns:GetRetinuesSoapIn" />
+      <wsdl:output message="tns:GetRetinuesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRetinuesByIDCard">
+      <wsdl:input message="tns:GetRetinuesByIDCardSoapIn" />
+      <wsdl:output message="tns:GetRetinuesByIDCardSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicesSoap" type="tns:ServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UpdateRetinues">
+      <soap:operation soapAction="http://tempuri.org/UpdateRetinues" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdateRetinuesAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRetinue">
+      <soap:operation soapAction="http://tempuri.org/DeleteRetinue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DeleteRetinueAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateLockDevice">
+      <soap:operation soapAction="http://tempuri.org/CreateLockDevice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CreateLockDeviceAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateLogin">
+      <soap:operation soapAction="http://tempuri.org/ValidateLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ValidateLoginAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <soap:operation soapAction="http://tempuri.org/GetUserInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetUserInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateHouseID">
+      <soap:operation soapAction="http://tempuri.org/ValidateHouseID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ValidateHouseIDAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateHouseBindLock">
+      <soap:operation soapAction="http://tempuri.org/ValidateHouseBindLock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ValidateHouseBindLockAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseInfo">
+      <soap:operation soapAction="http://tempuri.org/GetHouseInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetHouseInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseDetailInfo">
+      <soap:operation soapAction="http://tempuri.org/GetHouseDetailInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetHouseDetailInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseInfoByLoginName">
+      <soap:operation soapAction="http://tempuri.org/GetHouseInfoByLoginName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetHouseInfoByLoginNameAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserInfo">
+      <soap:operation soapAction="http://tempuri.org/AddUserInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AddUserInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateLoginName">
+      <soap:operation soapAction="http://tempuri.org/ValidateLoginName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ValidateLoginNameAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRentInfoTest">
+      <soap:operation soapAction="http://tempuri.org/AddRentInfoTest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AddRentInfoTestAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRentInfo">
+      <soap:operation soapAction="http://tempuri.org/AddRentInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AddRentInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRentRecord">
+      <soap:operation soapAction="http://tempuri.org/AddRentRecord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AddRentRecordAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRentAttribute">
+      <soap:operation soapAction="http://tempuri.org/GetRentAttribute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetRentAttributeAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmRentAttribute">
+      <soap:operation soapAction="http://tempuri.org/ConfirmRentAttribute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ConfirmRentAttributeAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RejectRentAttribute">
+      <soap:operation soapAction="http://tempuri.org/RejectRentAttribute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:RejectRentAttributeAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelRentAttribute">
+      <soap:operation soapAction="http://tempuri.org/CancelRentAttribute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CancelRentAttributeAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsOrderConfirmed">
+      <soap:operation soapAction="http://tempuri.org/IsOrderConfirmed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:IsOrderConfirmedAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompleteRentAttribute">
+      <soap:operation soapAction="http://tempuri.org/CompleteRentAttribute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CompleteRentAttributeAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRentsByCoodinates">
+      <soap:operation soapAction="http://tempuri.org/GetRentsByCoodinates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetRentsByCoodinatesAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRentsByCoodinatesPopular">
+      <soap:operation soapAction="http://tempuri.org/GetRentsByCoodinatesPopular" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetRentsByCoodinatesPopularAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDistrictList">
+      <soap:operation soapAction="http://tempuri.org/GetDistrictList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetDistrictListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStreetList">
+      <soap:operation soapAction="http://tempuri.org/GetStreetList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetStreetListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoadList">
+      <soap:operation soapAction="http://tempuri.org/GetRoadList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetRoadListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPoliceStationList">
+      <soap:operation soapAction="http://tempuri.org/GetPoliceStationList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPoliceStationListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocalPoliceStationList">
+      <soap:operation soapAction="http://tempuri.org/GetLocalPoliceStationList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetLocalPoliceStationListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseType">
+      <soap:operation soapAction="http://tempuri.org/GetHouseType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetHouseTypeAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseDirection">
+      <soap:operation soapAction="http://tempuri.org/GetHouseDirection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetHouseDirectionAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseStructure">
+      <soap:operation soapAction="http://tempuri.org/GetHouseStructure" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetHouseStructureAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBuildingStructure">
+      <soap:operation soapAction="http://tempuri.org/GetBuildingStructure" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetBuildingStructureAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseClass">
+      <soap:operation soapAction="http://tempuri.org/GetHouseClass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetHouseClassAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRentHistory">
+      <soap:operation soapAction="http://tempuri.org/GetRentHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetRentHistoryAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRentOwnerHistory">
+      <soap:operation soapAction="http://tempuri.org/GetRentOwnerHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetRentOwnerHistoryAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseProperty">
+      <soap:operation soapAction="http://tempuri.org/GetHouseProperty" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetHousePropertyAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseRentType">
+      <soap:operation soapAction="http://tempuri.org/GetHouseRentType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetHouseRentTypeAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessageToPlice">
+      <soap:operation soapAction="http://tempuri.org/SendMessageToPlice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SendMessageToPliceAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseOwnType">
+      <soap:operation soapAction="http://tempuri.org/GetHouseOwnType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetHouseOwnTypeAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteHouseInfo">
+      <soap:operation soapAction="http://tempuri.org/DeleteHouseInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DeleteHouseInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNationnalityList">
+      <soap:operation soapAction="http://tempuri.org/GetNationnalityList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetNationnalityListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProvinceList">
+      <soap:operation soapAction="http://tempuri.org/GetProvinceList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetProvinceListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddress">
+      <soap:operation soapAction="http://tempuri.org/GetAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetAddressAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWord">
+      <soap:operation soapAction="http://tempuri.org/HelloWord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:HelloWordAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationInfo">
+      <soap:operation soapAction="http://tempuri.org/GetLocationInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetLocationInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHousesByCondition">
+      <soap:operation soapAction="http://tempuri.org/GetHousesByCondition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetHousesByConditionAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHousesCountByCondition">
+      <soap:operation soapAction="http://tempuri.org/GetHousesCountByCondition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetHousesCountByConditionAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <soap:operation soapAction="http://tempuri.org/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ChangePasswordAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRentInfo">
+      <soap:operation soapAction="http://tempuri.org/GetRentInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetRentInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRentList">
+      <soap:operation soapAction="http://tempuri.org/GetRentList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetRentListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRentImage">
+      <soap:operation soapAction="http://tempuri.org/AddRentImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AddRentImageAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRentImageList">
+      <soap:operation soapAction="http://tempuri.org/GetRentImageList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetRentImageListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelRentImageList">
+      <soap:operation soapAction="http://tempuri.org/DelRentImageList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DelRentImageListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrderInfo">
+      <soap:operation soapAction="http://tempuri.org/UpdateOrderInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdateOrderInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CanOpenDoor">
+      <soap:operation soapAction="http://tempuri.org/CanOpenDoor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CanOpenDoorAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CanRentTheHouse">
+      <soap:operation soapAction="http://tempuri.org/CanRentTheHouse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CanRentTheHouseAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OpenDoor">
+      <soap:operation soapAction="http://tempuri.org/OpenDoor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:OpenDoorAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRentExternalInfo">
+      <soap:operation soapAction="http://tempuri.org/AddRentExternalInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AddRentExternalInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRentExternalInfo">
+      <soap:operation soapAction="http://tempuri.org/GetRentExternalInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetRentExternalInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserWallet">
+      <soap:operation soapAction="http://tempuri.org/UpdateUserWallet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdateUserWalletAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DepositWallet">
+      <soap:operation soapAction="http://tempuri.org/DepositWallet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DepositWalletAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayUseWallet">
+      <soap:operation soapAction="http://tempuri.org/PayUseWallet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:PayUseWalletAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPasswordToLock">
+      <soap:operation soapAction="http://tempuri.org/AddPasswordToLock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AddPasswordToLockAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClearPasswordToLock">
+      <soap:operation soapAction="http://tempuri.org/ClearPasswordToLock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ClearPasswordToLockAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemClock">
+      <soap:operation soapAction="http://tempuri.org/GetSystemClock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetSystemClockAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBillLog">
+      <soap:operation soapAction="http://tempuri.org/AddBillLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AddBillLogAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBillLog">
+      <soap:operation soapAction="http://tempuri.org/GetBillLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetBillLogAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDeviceID">
+      <soap:operation soapAction="http://tempuri.org/UpdateDeviceID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdateDeviceIDAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPayRateDesc">
+      <soap:operation soapAction="http://tempuri.org/GetPayRateDesc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPayRateDescAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessageToDevice">
+      <soap:operation soapAction="http://tempuri.org/SendMessageToDevice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SendMessageToDeviceAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExistsPhone">
+      <soap:operation soapAction="http://tempuri.org/IsExistsPhone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:IsExistsPhoneAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExistsIDCard">
+      <soap:operation soapAction="http://tempuri.org/IsExistsIDCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:IsExistsIDCardAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCreditCard">
+      <soap:operation soapAction="http://tempuri.org/UpdateCreditCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdateCreditCardAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ForgotPassword">
+      <soap:operation soapAction="http://tempuri.org/ForgotPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ForgotPasswordAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApplyCheckOut">
+      <soap:operation soapAction="http://tempuri.org/ApplyCheckOut" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ApplyCheckOutAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmCheckOut">
+      <soap:operation soapAction="http://tempuri.org/ConfirmCheckOut" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ConfirmCheckOutAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExpireTime">
+      <soap:operation soapAction="http://tempuri.org/GetExpireTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetExpireTimeAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExpiredOrder">
+      <soap:operation soapAction="http://tempuri.org/ExpiredOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ExpiredOrderAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddEvaluation">
+      <soap:operation soapAction="http://tempuri.org/AddEvaluation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AddEvaluationAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEvaluationList">
+      <soap:operation soapAction="http://tempuri.org/GetEvaluationList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetEvaluationListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEvaluationPersonList">
+      <soap:operation soapAction="http://tempuri.org/GetEvaluationPersonList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetEvaluationPersonListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExistsSameAddress">
+      <soap:operation soapAction="http://tempuri.org/IsExistsSameAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:IsExistsSameAddressAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRentInfo">
+      <soap:operation soapAction="http://tempuri.org/UpdateRentInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdateRentInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddIDCardToDevice">
+      <soap:operation soapAction="http://tempuri.org/AddIDCardToDevice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AddIDCardToDeviceAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderStatus">
+      <soap:operation soapAction="http://tempuri.org/GetOrderStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetOrderStatusAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRetinues">
+      <soap:operation soapAction="http://tempuri.org/AddRetinues" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AddRetinuesAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRetinues">
+      <soap:operation soapAction="http://tempuri.org/GetRetinues" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetRetinuesAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRetinuesByIDCard">
+      <soap:operation soapAction="http://tempuri.org/GetRetinuesByIDCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetRetinuesByIDCardAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicesSoap12" type="tns:ServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UpdateRetinues">
+      <soap12:operation soapAction="http://tempuri.org/UpdateRetinues" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdateRetinuesAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRetinue">
+      <soap12:operation soapAction="http://tempuri.org/DeleteRetinue" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DeleteRetinueAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateLockDevice">
+      <soap12:operation soapAction="http://tempuri.org/CreateLockDevice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CreateLockDeviceAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateLogin">
+      <soap12:operation soapAction="http://tempuri.org/ValidateLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ValidateLoginAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetUserInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetUserInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateHouseID">
+      <soap12:operation soapAction="http://tempuri.org/ValidateHouseID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ValidateHouseIDAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateHouseBindLock">
+      <soap12:operation soapAction="http://tempuri.org/ValidateHouseBindLock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ValidateHouseBindLockAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetHouseInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetHouseInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseDetailInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetHouseDetailInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetHouseDetailInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseInfoByLoginName">
+      <soap12:operation soapAction="http://tempuri.org/GetHouseInfoByLoginName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetHouseInfoByLoginNameAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserInfo">
+      <soap12:operation soapAction="http://tempuri.org/AddUserInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AddUserInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateLoginName">
+      <soap12:operation soapAction="http://tempuri.org/ValidateLoginName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ValidateLoginNameAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRentInfoTest">
+      <soap12:operation soapAction="http://tempuri.org/AddRentInfoTest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AddRentInfoTestAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRentInfo">
+      <soap12:operation soapAction="http://tempuri.org/AddRentInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AddRentInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRentRecord">
+      <soap12:operation soapAction="http://tempuri.org/AddRentRecord" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AddRentRecordAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRentAttribute">
+      <soap12:operation soapAction="http://tempuri.org/GetRentAttribute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetRentAttributeAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmRentAttribute">
+      <soap12:operation soapAction="http://tempuri.org/ConfirmRentAttribute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ConfirmRentAttributeAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RejectRentAttribute">
+      <soap12:operation soapAction="http://tempuri.org/RejectRentAttribute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RejectRentAttributeAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelRentAttribute">
+      <soap12:operation soapAction="http://tempuri.org/CancelRentAttribute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CancelRentAttributeAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsOrderConfirmed">
+      <soap12:operation soapAction="http://tempuri.org/IsOrderConfirmed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:IsOrderConfirmedAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompleteRentAttribute">
+      <soap12:operation soapAction="http://tempuri.org/CompleteRentAttribute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CompleteRentAttributeAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRentsByCoodinates">
+      <soap12:operation soapAction="http://tempuri.org/GetRentsByCoodinates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetRentsByCoodinatesAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRentsByCoodinatesPopular">
+      <soap12:operation soapAction="http://tempuri.org/GetRentsByCoodinatesPopular" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetRentsByCoodinatesPopularAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDistrictList">
+      <soap12:operation soapAction="http://tempuri.org/GetDistrictList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetDistrictListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStreetList">
+      <soap12:operation soapAction="http://tempuri.org/GetStreetList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetStreetListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoadList">
+      <soap12:operation soapAction="http://tempuri.org/GetRoadList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetRoadListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPoliceStationList">
+      <soap12:operation soapAction="http://tempuri.org/GetPoliceStationList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPoliceStationListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocalPoliceStationList">
+      <soap12:operation soapAction="http://tempuri.org/GetLocalPoliceStationList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetLocalPoliceStationListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseType">
+      <soap12:operation soapAction="http://tempuri.org/GetHouseType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetHouseTypeAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseDirection">
+      <soap12:operation soapAction="http://tempuri.org/GetHouseDirection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetHouseDirectionAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseStructure">
+      <soap12:operation soapAction="http://tempuri.org/GetHouseStructure" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetHouseStructureAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBuildingStructure">
+      <soap12:operation soapAction="http://tempuri.org/GetBuildingStructure" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetBuildingStructureAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseClass">
+      <soap12:operation soapAction="http://tempuri.org/GetHouseClass" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetHouseClassAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRentHistory">
+      <soap12:operation soapAction="http://tempuri.org/GetRentHistory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetRentHistoryAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRentOwnerHistory">
+      <soap12:operation soapAction="http://tempuri.org/GetRentOwnerHistory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetRentOwnerHistoryAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseProperty">
+      <soap12:operation soapAction="http://tempuri.org/GetHouseProperty" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetHousePropertyAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseRentType">
+      <soap12:operation soapAction="http://tempuri.org/GetHouseRentType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetHouseRentTypeAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessageToPlice">
+      <soap12:operation soapAction="http://tempuri.org/SendMessageToPlice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SendMessageToPliceAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHouseOwnType">
+      <soap12:operation soapAction="http://tempuri.org/GetHouseOwnType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetHouseOwnTypeAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteHouseInfo">
+      <soap12:operation soapAction="http://tempuri.org/DeleteHouseInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DeleteHouseInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNationnalityList">
+      <soap12:operation soapAction="http://tempuri.org/GetNationnalityList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetNationnalityListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProvinceList">
+      <soap12:operation soapAction="http://tempuri.org/GetProvinceList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetProvinceListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddress">
+      <soap12:operation soapAction="http://tempuri.org/GetAddress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetAddressAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWord">
+      <soap12:operation soapAction="http://tempuri.org/HelloWord" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:HelloWordAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetLocationInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetLocationInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHousesByCondition">
+      <soap12:operation soapAction="http://tempuri.org/GetHousesByCondition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetHousesByConditionAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHousesCountByCondition">
+      <soap12:operation soapAction="http://tempuri.org/GetHousesCountByCondition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetHousesCountByConditionAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <soap12:operation soapAction="http://tempuri.org/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ChangePasswordAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRentInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetRentInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetRentInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRentList">
+      <soap12:operation soapAction="http://tempuri.org/GetRentList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetRentListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRentImage">
+      <soap12:operation soapAction="http://tempuri.org/AddRentImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AddRentImageAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRentImageList">
+      <soap12:operation soapAction="http://tempuri.org/GetRentImageList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetRentImageListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelRentImageList">
+      <soap12:operation soapAction="http://tempuri.org/DelRentImageList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DelRentImageListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrderInfo">
+      <soap12:operation soapAction="http://tempuri.org/UpdateOrderInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdateOrderInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CanOpenDoor">
+      <soap12:operation soapAction="http://tempuri.org/CanOpenDoor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CanOpenDoorAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CanRentTheHouse">
+      <soap12:operation soapAction="http://tempuri.org/CanRentTheHouse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CanRentTheHouseAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OpenDoor">
+      <soap12:operation soapAction="http://tempuri.org/OpenDoor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:OpenDoorAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRentExternalInfo">
+      <soap12:operation soapAction="http://tempuri.org/AddRentExternalInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AddRentExternalInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRentExternalInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetRentExternalInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetRentExternalInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserWallet">
+      <soap12:operation soapAction="http://tempuri.org/UpdateUserWallet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdateUserWalletAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DepositWallet">
+      <soap12:operation soapAction="http://tempuri.org/DepositWallet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DepositWalletAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayUseWallet">
+      <soap12:operation soapAction="http://tempuri.org/PayUseWallet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:PayUseWalletAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPasswordToLock">
+      <soap12:operation soapAction="http://tempuri.org/AddPasswordToLock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AddPasswordToLockAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClearPasswordToLock">
+      <soap12:operation soapAction="http://tempuri.org/ClearPasswordToLock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ClearPasswordToLockAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemClock">
+      <soap12:operation soapAction="http://tempuri.org/GetSystemClock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetSystemClockAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBillLog">
+      <soap12:operation soapAction="http://tempuri.org/AddBillLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AddBillLogAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBillLog">
+      <soap12:operation soapAction="http://tempuri.org/GetBillLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetBillLogAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDeviceID">
+      <soap12:operation soapAction="http://tempuri.org/UpdateDeviceID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdateDeviceIDAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPayRateDesc">
+      <soap12:operation soapAction="http://tempuri.org/GetPayRateDesc" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPayRateDescAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessageToDevice">
+      <soap12:operation soapAction="http://tempuri.org/SendMessageToDevice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SendMessageToDeviceAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExistsPhone">
+      <soap12:operation soapAction="http://tempuri.org/IsExistsPhone" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:IsExistsPhoneAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExistsIDCard">
+      <soap12:operation soapAction="http://tempuri.org/IsExistsIDCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:IsExistsIDCardAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCreditCard">
+      <soap12:operation soapAction="http://tempuri.org/UpdateCreditCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdateCreditCardAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ForgotPassword">
+      <soap12:operation soapAction="http://tempuri.org/ForgotPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ForgotPasswordAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApplyCheckOut">
+      <soap12:operation soapAction="http://tempuri.org/ApplyCheckOut" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ApplyCheckOutAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmCheckOut">
+      <soap12:operation soapAction="http://tempuri.org/ConfirmCheckOut" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ConfirmCheckOutAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExpireTime">
+      <soap12:operation soapAction="http://tempuri.org/GetExpireTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetExpireTimeAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExpiredOrder">
+      <soap12:operation soapAction="http://tempuri.org/ExpiredOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ExpiredOrderAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddEvaluation">
+      <soap12:operation soapAction="http://tempuri.org/AddEvaluation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AddEvaluationAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEvaluationList">
+      <soap12:operation soapAction="http://tempuri.org/GetEvaluationList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetEvaluationListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEvaluationPersonList">
+      <soap12:operation soapAction="http://tempuri.org/GetEvaluationPersonList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetEvaluationPersonListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExistsSameAddress">
+      <soap12:operation soapAction="http://tempuri.org/IsExistsSameAddress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:IsExistsSameAddressAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRentInfo">
+      <soap12:operation soapAction="http://tempuri.org/UpdateRentInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdateRentInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddIDCardToDevice">
+      <soap12:operation soapAction="http://tempuri.org/AddIDCardToDevice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AddIDCardToDeviceAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderStatus">
+      <soap12:operation soapAction="http://tempuri.org/GetOrderStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetOrderStatusAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRetinues">
+      <soap12:operation soapAction="http://tempuri.org/AddRetinues" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AddRetinuesAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRetinues">
+      <soap12:operation soapAction="http://tempuri.org/GetRetinues" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetRetinuesAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRetinuesByIDCard">
+      <soap12:operation soapAction="http://tempuri.org/GetRetinuesByIDCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetRetinuesByIDCardAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Services">
+    <wsdl:port name="ServicesSoap" binding="tns:ServicesSoap">
+      <soap:address location="http://qxw2332340157.my3w.com/Services.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicesSoap12" binding="tns:ServicesSoap12">
+      <soap12:address location="http://qxw2332340157.my3w.com/Services.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

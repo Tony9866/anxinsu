@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetAreas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAreasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAreasResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Authentication" type="tns:Authentication" />
+      <s:complexType name="Authentication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="GetSignetAreas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSignetAreasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSignetAreasResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendIdentifyCodeMsg">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendIdentifyCodeMsgResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendIdentifyCodeMsgResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendBinHaiIdentifyCodeMsg">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendBinHaiIdentifyCodeMsgResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendBinHaiIdentifyCodeMsgResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMsg">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMsgResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendMsgResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendBinHaiMsg">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendBinHaiMsgResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendBinHaiMsgResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateIdentifyCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="number" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateIdentifyCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateIdentifyCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAreasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAreas" />
+  </wsdl:message>
+  <wsdl:message name="GetAreasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAreasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAreasAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetSignetAreasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSignetAreas" />
+  </wsdl:message>
+  <wsdl:message name="GetSignetAreasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSignetAreasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSignetAreasAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="SendIdentifyCodeMsgSoapIn">
+    <wsdl:part name="parameters" element="tns:SendIdentifyCodeMsg" />
+  </wsdl:message>
+  <wsdl:message name="SendIdentifyCodeMsgSoapOut">
+    <wsdl:part name="parameters" element="tns:SendIdentifyCodeMsgResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendIdentifyCodeMsgAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="SendBinHaiIdentifyCodeMsgSoapIn">
+    <wsdl:part name="parameters" element="tns:SendBinHaiIdentifyCodeMsg" />
+  </wsdl:message>
+  <wsdl:message name="SendBinHaiIdentifyCodeMsgSoapOut">
+    <wsdl:part name="parameters" element="tns:SendBinHaiIdentifyCodeMsgResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendBinHaiIdentifyCodeMsgAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="SendMsgSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMsg" />
+  </wsdl:message>
+  <wsdl:message name="SendMsgSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMsgResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMsgAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="SendBinHaiMsgSoapIn">
+    <wsdl:part name="parameters" element="tns:SendBinHaiMsg" />
+  </wsdl:message>
+  <wsdl:message name="SendBinHaiMsgSoapOut">
+    <wsdl:part name="parameters" element="tns:SendBinHaiMsgResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendBinHaiMsgAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="ValidateIdentifyCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateIdentifyCode" />
+  </wsdl:message>
+  <wsdl:message name="ValidateIdentifyCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateIdentifyCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateIdentifyCodeAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:portType name="CommonServicesSoap">
+    <wsdl:operation name="GetAreas">
+      <wsdl:input message="tns:GetAreasSoapIn" />
+      <wsdl:output message="tns:GetAreasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSignetAreas">
+      <wsdl:input message="tns:GetSignetAreasSoapIn" />
+      <wsdl:output message="tns:GetSignetAreasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendIdentifyCodeMsg">
+      <wsdl:input message="tns:SendIdentifyCodeMsgSoapIn" />
+      <wsdl:output message="tns:SendIdentifyCodeMsgSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendBinHaiIdentifyCodeMsg">
+      <wsdl:input message="tns:SendBinHaiIdentifyCodeMsgSoapIn" />
+      <wsdl:output message="tns:SendBinHaiIdentifyCodeMsgSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMsg">
+      <wsdl:input message="tns:SendMsgSoapIn" />
+      <wsdl:output message="tns:SendMsgSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendBinHaiMsg">
+      <wsdl:input message="tns:SendBinHaiMsgSoapIn" />
+      <wsdl:output message="tns:SendBinHaiMsgSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateIdentifyCode">
+      <wsdl:input message="tns:ValidateIdentifyCodeSoapIn" />
+      <wsdl:output message="tns:ValidateIdentifyCodeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CommonServicesSoap" type="tns:CommonServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAreas">
+      <soap:operation soapAction="http://tempuri.org/GetAreas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetAreasAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSignetAreas">
+      <soap:operation soapAction="http://tempuri.org/GetSignetAreas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetSignetAreasAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendIdentifyCodeMsg">
+      <soap:operation soapAction="http://tempuri.org/SendIdentifyCodeMsg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SendIdentifyCodeMsgAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendBinHaiIdentifyCodeMsg">
+      <soap:operation soapAction="http://tempuri.org/SendBinHaiIdentifyCodeMsg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SendBinHaiIdentifyCodeMsgAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMsg">
+      <soap:operation soapAction="http://tempuri.org/SendMsg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SendMsgAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendBinHaiMsg">
+      <soap:operation soapAction="http://tempuri.org/SendBinHaiMsg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SendBinHaiMsgAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateIdentifyCode">
+      <soap:operation soapAction="http://tempuri.org/ValidateIdentifyCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ValidateIdentifyCodeAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CommonServicesSoap12" type="tns:CommonServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAreas">
+      <soap12:operation soapAction="http://tempuri.org/GetAreas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetAreasAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSignetAreas">
+      <soap12:operation soapAction="http://tempuri.org/GetSignetAreas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetSignetAreasAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendIdentifyCodeMsg">
+      <soap12:operation soapAction="http://tempuri.org/SendIdentifyCodeMsg" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SendIdentifyCodeMsgAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendBinHaiIdentifyCodeMsg">
+      <soap12:operation soapAction="http://tempuri.org/SendBinHaiIdentifyCodeMsg" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SendBinHaiIdentifyCodeMsgAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMsg">
+      <soap12:operation soapAction="http://tempuri.org/SendMsg" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SendMsgAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendBinHaiMsg">
+      <soap12:operation soapAction="http://tempuri.org/SendBinHaiMsg" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SendBinHaiMsgAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateIdentifyCode">
+      <soap12:operation soapAction="http://tempuri.org/ValidateIdentifyCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ValidateIdentifyCodeAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CommonServices">
+    <wsdl:port name="CommonServicesSoap" binding="tns:CommonServicesSoap">
+      <soap:address location="http://www.guardts.com/CommonService/CommonServices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CommonServicesSoap12" binding="tns:CommonServicesSoap12">
+      <soap12:address location="http://www.guardts.com/CommonService/CommonServices.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

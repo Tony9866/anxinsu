@@ -1,0 +1,444 @@
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+		<title>扫描文件</title>
+                  <link href="../lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
+    <script src="../lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
+    <script src="../lib/ligerUI/js/ligerui.min.js" type="text/javascript"></script>   
+    <link href="../lib/css/common.css" rel="stylesheet" type="text/css" />  
+    <script src="../lib/js/common.js" type="text/javascript"></script>   
+    <script src="../lib/js/LG.js" type="text/javascript"></script>
+    <script src="../lib/js/ligerui.expand.js" type="text/javascript"></script> 
+    <script src="../lib/json2.js" type="text/javascript"></script> 
+        <link href="../lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
+    <script src="../lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
+    <script src="../lib/ligerUI/js/ligerui.min.js" type="text/javascript"></script>  
+    <script src="../lib/ligerUI/js/plugins/ligerTab.js" type="text/javascript"></script>
+    <script src="../lib/ligerUI/js/plugins/ligerLayout.js" type="text/javascript"></script>
+    <link href="../lib/css/common.css" rel="stylesheet" type="text/css" />  
+    <link href="../lib/css/index.css" rel="stylesheet" type="text/css" />
+    <script src="../lib/js/common.js" type="text/javascript"></script>
+    <script src="../lib/js/LG.js" type="text/javascript"></script>
+    <script src="../lib/js/login.js" type="text/javascript"></script>
+    <script src="../lib/commonvalidate.js" type="text/javascript"></script>
+        <script src="../lib/jquery-validation/jquery.validate.min.js" type="text/javascript"></script> 
+    <script src="../lib/jquery-validation/jquery.metadata.js" type="text/javascript"></script>
+    <script src="../lib/jquery-validation/messages_cn.js" type="text/javascript"></script>
+    <script src="../lib/js/changepassword.js" type="text/javascript"></script>
+    <script src="../lib/ligerUI/js/plugins/ligerForm.js" type="text/javascript"></script>
+    <script src="../lib/js/jquery.jqprint-0.3.js" type="text/javascript"></script> 
+    <script type="text/javascript">
+        var rootPath = "../";
+        var typeData;
+        $.ajax({
+            cache: false,
+            async: false,
+            type: 'post',
+            dataType: 'json',
+            data: { where: JSON2.stringify({
+                op: 'and',
+                rules: [
+               { field: 'gc_code_group', value: 'CF', op: 'equal' }
+               ]
+            })
+            },
+            url: rootPath + 'handler/select.ashx?view=t_general_code&idfield=gc_id&textfield=gc_name',
+            success: function (data) {
+                typeData = data;
+            }
+        });
+
+        $(function () {
+            $("#txtPro").ligerComboBox({ data: typeData, isMultiSelect: false, width: "200" });
+        });
+
+        function wopen(pageURL, title, w, h) {
+            var left = (screen.width / 2) - (w / 2);
+            var top = (screen.height / 2) - (h / 2);
+            var targetWin = window.open(pageURL, title, ' width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+        }
+
+</script>
+<Script language="javascript">
+    var nFileCount = 0;
+    var bAdjustMode = 0;
+    var bCropArea = 0;
+    var bSeriesCapture = 0;
+    var bReadBarCode = 0;
+    var bSetDenoise = 0;
+    var Width = 0;
+    var Height = 0;
+    var strFile;
+    var index = 0;
+    var strCardFile;
+    var cardIndex = 0;
+
+    function QueryString(name) {
+        var qs = name + "=";
+        var str = location.search;
+        if (str.length > 0) {
+            begin = str.indexOf(qs);
+            if (begin != -1) {
+                begin += qs.length;
+                end = str.indexOf("&", begin);
+                if (end == -1) end = str.length;
+                return (str.substring(begin, end));
+            }
+        }
+        return null;
+    }
+
+    function Capture(file) {
+        strFile = file || "d:\\test\\img0.bmp";
+        var index = 0;
+
+        CmCaptureOcx.SetFileType(1);
+
+
+        CmCaptureOcx.CaptureImage(strFile);
+        alert('文件扫描成功！');
+    }
+    function Adjust() {
+        if (bAdjustMode == 0) {
+            CmCaptureOcx.AutoCrop(1);
+            bAdjustMode = 1;
+        }
+        else {
+            CmCaptureOcx.AutoCrop(0);
+            bAdjustMode = 0;
+        }
+    }
+    function SetCropArea() {
+        if (bCropArea == 0) {
+            bCropArea = 1;
+            CmCaptureOcx.CusCrop(bCropArea);
+        }
+        else {
+            bCropArea = 0;
+            CmCaptureOcx.CusCrop(bCropArea);
+        }
+    }
+    function UpdataFile() {
+        var uploadUrl;
+        $.ajax({
+            cache: false,
+            async: false,
+            type: 'post',
+            dataType: 'json',
+            data: { version: "1" },
+            url: rootPath + 'handler/config.ashx?version=1',
+            success: function (data) {
+                var type;
+                for (var i = 0; i < typeData.length; i++) {
+                    if ($("#txtPro").val() == typeData[i].text)
+                        type = typeData[i].id;
+                }
+
+                var rows = grid.getCheckedRows();
+                var signetIds = '';
+                for (var i = 0, l = rows.length; i < l; i++) {
+                    signetIds += "," + rows[i].se_signet_id;
+
+                }
+
+
+                var Url = data.Data + "?SignetID=" + signetIds + "&type=" + type;
+                var a = CmCaptureOcx.UpdataFile(Url, strFile, 0);
+                if (a == 1) {
+                    alert('文件上传成功!');
+                    DeleteFile();
+                }
+                else {
+                }
+            }
+        });
+
+    }
+    function Preview() {
+        CmCaptureOcx.PreviewFile(strFile);
+    }
+
+    function SetResolution() {
+        var obj = document.getElementById("Resolution");
+        var index = obj.selectedIndex;
+        CmCaptureOcx.SetResolution(index);
+    }
+
+    function StartVideoRecord() {
+        var path = "d:\\test\\1.wmv"
+        CmCaptureOcx.StartVideo(path, 1);
+    }
+
+    function SeriesCapture() {
+        var path = "d:\\test\\自动连拍\\";
+        CmCaptureOcx.SeriesCapture(1, path);
+    }
+
+    function ReadBarCode() {
+        if (bReadBarCode == 0) {
+            bReadBarCode = 1;
+            CmCaptureOcx.ReadBarCode(bReadBarCode);
+        }
+        else {
+            bReadBarCode = 0;
+            CmCaptureOcx.ReadBarCode(bReadBarCode);
+        }
+    }
+
+    function DeleteFile() {
+        CmCaptureOcx.DeleteFile(strFile);
+    }
+
+    function GetDevSN() {
+        var strSN = CmCaptureOcx.GetDevSN(0);
+    }
+
+    function SetDenoise() {
+        if (bSetDenoise == 0) {
+            bSetDenoise = 1;
+            CmCaptureOcx.SetDenoise(bSetDenoise);
+        }
+        else {
+            bSetDenoise = 0;
+            CmCaptureOcx.SetDenoise(bSetDenoise);
+        }
+    }
+
+    function SetFileType() {
+        CmCaptureOcx.SetFileType(0);
+    }
+
+    function SetImageColorMode() {
+        var obj = document.getElementById("ColourMode");
+        var index = obj.selectedIndex;
+        CmCaptureOcx.SetImageColorMode(index);
+    }
+
+    function StartVideo() {
+        CmCaptureOcx.Initial();
+        CmCaptureOcx.StartRun(0);
+        //	AddResolution2Comb(Reso);
+        //	SetResolution();
+        SetFileType();
+        CmCaptureOcx.SetResolution(8);
+    }
+
+    function AddResolution2Comb(f) {
+        var i = 0;
+        var total = CmCaptureOcx.GetResolutionCount();
+        for (i = 0; i < total; i++) {
+            var resolution = CmCaptureOcx.GetResolution(i);
+            f.Resolution.options[i].text = resolution;
+        }
+    }
+
+    function ChangeDevice() {
+        var obj = document.getElementById("DeviceName");
+        index = obj.selectedIndex;
+        CmCaptureOcx.StartRun(index);
+        AddResolution2Comb(Reso);
+        SetResolution();
+    }
+
+    function SetPicMark() {
+        CmCaptureOcx.SetMarkPic("C:\\1.jpg");
+    }
+
+    function AddDevice() {
+        var i = 0;
+        var total = CmCaptureOcx.GetDevCount();
+        for (i = 0; i < total; i++) {
+            var DevEle = CmCaptureOcx.GetDevFriendName(i);
+            Reso.DeviceName.options[i].text = DevEle;
+        }
+    }
+
+    function Sleep(seconds) {
+        var d1 = new Date();
+        var t1 = d1.getTime();
+        for (; ; ) {
+            var d2 = new Date();
+            var t2 = d2.getTime();
+            if (t2 - t1 > seconds * 1000) {
+                break;
+            }
+        }
+    }
+
+    function Test() {
+        strCardFile = "d:\\test\\cardImage" + cardIndex;
+        strCardFile += ".jpg";
+        CmCaptureOcx.CaptureImage(strCardFile);
+        if (cardIndex == 0) {
+            cardIndex = 1;
+        }
+        else {
+            CmCaptureOcx.CombineTwoImage("d:\\test\\cardImage.jpg", "d:\\test\\cardImage0.jpg", "d:\\test\\cardImage1.jpg", 1);
+            cardIndex = 0;
+        }
+
+    }
+
+    function ConvertToPDF() {
+        var pdfFileName = "d:\\testpdf.pdf"
+        CmCaptureOcx.Convert2PDF(pdfFileName, 0);
+    }
+</script>
+<SCRIPT type="text/javascript" for="CmCaptureOcx" event="GetImageFileName(fileName);">
+	CmCaptureOcx.AddPDFImageFile(fileName);
+</SCRIPT>
+
+<SCRIPT type="text/javascript"  for="CmCaptureOcx"  event="GetRButtonDownPoint(x,y);"> 
+	alert(x);	
+</SCRIPT>
+
+	    <style type="text/css">
+            .style1
+            {
+                width: 204px;
+            }
+        </style>
+
+	</head>
+
+	<body onload ="CmCaptureOcx.Destory(); CmCaptureOcx.Initial();" onunload="CmCaptureOcx.Destory();">
+    <table border="0" cellpadding="0" cellspacing="0" width="95%" style="border:1px solid #c0c0c0; ">
+    <tr>
+    <td style="padding:10px;">
+    <center>
+			<OBJECT id="CmCaptureOcx" style="MARGIN-LEFT:5px; WIDTH: 550; HEIGHT:380" 
+			classid="clsid:3CA842C5-9B56-4329-A7CA-35CA77C7128D" style="z-index:-100;" > 		
+			</OBJECT>	
+	</center>
+    </td>
+    <td>
+    <center>
+            <table border="0" cellpadding="0" cellspacing="0" style="font-size:12px;" width="80%">
+                <tr><td colspan="2">
+                <div id="maingrid"></div> 
+                </td>
+                </tr>
+                <tr><td colspan="2" align="center">
+                <table>
+                <tr><td style="font-size:12px;">文件类型：</td>
+                <td align="center" class="style1">
+                <input type="text" id="txtPro" style="font-size:12px;width:200px;"/>
+                </td></tr>
+                </table>
+                </td></tr>
+                <tr><td colspan="2" align="center"><input type = "button" value = " 开始视频 " onClick = "StartVideo();" 
+                    name = "start" class="buttonDefault"/>
+				<input type = "button" value = " 停止视频 " onClick = "CmCaptureOcx.Destory();" 
+                    name = "Destory" class="buttonDefault"/>
+				<input type = "button" value = " 拍    照 " onClick = "Capture();" 
+                    name = "Capture" class="buttonDefault"/>
+				<input type = "button" value = " 预    览 " onClick = "Preview();" 
+                    name = "Preview" class="buttonDefault"/>
+				<input type = "button" value = " 图像设置 " 
+                    onClick = "CmCaptureOcx.ShowImageSettingWindow();" 
+                    name = "ShowImageSettingWindow" class="buttonDefault"/>&nbsp; <br>
+				&nbsp;&nbsp;&nbsp;
+				<input type = "button" value = " A  3 " 
+                    onClick = "CmCaptureOcx.SetCusCropType(1);" name = "A3" class="buttonDefault"/>
+				<input type = "button" value = " A  4 " 
+                    onClick = "CmCaptureOcx.SetCusCropType(2);" name = "A4" class="buttonDefault"/>
+			<input type = "button" value = " 文件上传 " onClick = "UpdataFile();" name = "Updata" 
+                    class="buttonDefault"/> <input type = "button" value = "提交备案 " onClick = "SubmitSignet();" name = "Submit" 
+                    class="buttonDefault"/><br>
+                </td>
+                </tr>
+
+            </table>
+                    
+
+			</center>
+    </td>
+    </tr>
+    </table>
+	
+			<script type="text/javascript">
+			    var rootPath = "../";
+			    //列表结构
+			    var toolbarOptions = {
+			        items: [
+            { id: 'view', text: '查看', click: toolbarBtnItemClick, img: "../lib/icons/32X32/order_159.gif" },
+            {id: 'upload', text: '文件添加', click: toolbarBtnItemClick, img: "../lib/icons/silkicons/add.png" }
+        ]
+			    };
+			    var grid = $("#maingrid").ligerGrid({
+			        columns: [{ display: "等级类别", name: "RegCategory", width: 100, type: "text", align: "left" },
+           { display: "印章编号", name: "se_signet_id", width: 100, type: "text", align: "left" },
+          { display: "印章内容", name: "se_content", width: 350, type: "text", align: "left" },
+          { display: "印章类型", name: "st_description", width: 100, type: "text", align: "left" },
+          { display: "申请人", name: "sr_who_apply", width: 150, type: "text", align: "left"}],
+			        dataAction: 'server', pageSize: 10, toolbar: toolbarOptions,
+			        url: rootPath + 'handler/grid.ashx?procedure=up_SignetInternet_SignetSelectByIDs', 
+                    sortName: 'se_signet_id',
+			        width: '99%', height: '300px', heightDiff: -10, checkbox: true, rowHeight: 26,
+			        selectRowButtonOnly: false, rownumbers: false,
+                              parms: { where: JSON2.stringify({
+              op: 'and',
+              rules: [{ field: 'signetIds', value: QueryString('signetIds'), type: 'string'}]
+          }
+          )
+          }
+
+			    });
+
+			    function toolbarBtnItemClick(item) {
+			        switch (item.id) {
+			            case "view":
+			                var selected = grid.getSelected();
+			                if (!selected) { LG.tip('请选择行!'); return }
+			                LG.ajax({
+			                    type: 'AjaxPage',
+			                    method: 'GetEncryptString',
+			                    loading: '正在获取中...',
+			                    data: { sourceStr: selected.se_signet_id },
+			                    success: function (data) {
+			                        wopen('../InfoRegister/SignetDetail.aspx?SignetID=' + data + '&type=V', '使用单位详细信息', '600', '600');
+			                    },
+			                    error: function (message) {
+			                    }
+			                });
+			                break;
+			            case "upload":
+			                wopen('SignetFileDetail.aspx?v=1&SignetID=' + QueryString('signetIds'), '添加印章文件', '600', '300');
+			                //$.ligerDialog.open({ height: 300, width: 600, url: 'SignetFileDetail.aspx?SignetID=' + QueryString('signetIds'), title: '添加印章文件' });
+			                break;
+			            case "print":
+			                $("#maingrid").jqprint();
+			                break;
+			        }
+			    }
+			    //加载toolbar
+			    LG.loadToolbar(grid, toolbarBtnItemClick);
+
+			    function f_reload() {
+			        grid.loadData();
+			    }
+			    function SubmitSignet() {
+			        if (confirm('您确定相关文件齐备，提交备案吗?')){
+			                f_submit();
+			        }
+			    }
+
+			    function f_submit() {
+			        LG.ajax({
+			            type: 'AjaxSignetManage',
+			            method: 'SubmitSignets',
+			            loading: '正在删除中...',
+			            data: { signetIds: QueryString('signetIds'), status: 0 },
+			            success: function () {
+			                alert('提交成功！');
+			                f_reload();
+			            },
+			            error: function (message) {
+			                LG.showError(message);
+			            }
+			        });
+			    }
+            </script>
+	</body>
+</html>

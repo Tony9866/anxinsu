@@ -1,0 +1,75 @@
+2018-02-05 15:15:32
+WeChartStart:<xml><appid>wxae25cb3fefdc75ae</appid><mch_id>1481965242</mch_id><nonce_str>OJO724A42YGE5A1P</nonce_str><body>支付房费</body><out_trade_no>CZ20180205151516OJO724A42Y</out_trade_no><total_fee>100</total_fee><spbill_create_ip>127.0.0.1</spbill_create_ip><notify_url>http://www.guardts.com/payment/WeChart_NotifyUrl.aspx</notify_url><trade_type>APP</trade_type><sign>B4E10A0124F3C53984E2B124B4724E60</sign></xml>
+2018-02-05 15:16:42
+WeChartReturn:<xml><return_code><![CDATA[SUCCESS]]></return_code>
+<return_msg><![CDATA[OK]]></return_msg>
+<appid><![CDATA[wxae25cb3fefdc75ae]]></appid>
+<mch_id><![CDATA[1481965242]]></mch_id>
+<nonce_str><![CDATA[wThaMRrymTrLO7wv]]></nonce_str>
+<sign><![CDATA[ECF5B35C6D3166AA212A1787A1E09566]]></sign>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<prepay_id><![CDATA[wx2018020515171689c47021440596786434]]></prepay_id>
+<trade_type><![CDATA[APP]]></trade_type>
+</xml>
+2018-02-05 15:17:25
+WeChartStart:<xml><appid>wxae25cb3fefdc75ae</appid><mch_id>1481965242</mch_id><nonce_str>U5ODH7W7HiAFS2BE</nonce_str><body>支付房费</body><out_trade_no>CZ20180205151719U5ODH7W7Hi</out_trade_no><total_fee>100</total_fee><spbill_create_ip>127.0.0.1</spbill_create_ip><notify_url>http://www.guardts.com/payment/WeChart_NotifyUrl.aspx</notify_url><trade_type>JSAPI</trade_type><sign>3759B1949AEF18513C2BDDFB9D873C39</sign></xml>
+2018-02-05 15:34:24
+WeChartReturn:<xml><return_code><![CDATA[FAIL]]></return_code>
+<return_msg><![CDATA[JSAPI支付必须传openid]]></return_msg>
+</xml>
+2018-02-05 15:35:47
+WeChartStart:<xml><appid>wxae25cb3fefdc75ae</appid><mch_id>1481965242</mch_id><nonce_str>TWSJ9VG3TiJTOEBM</nonce_str><body>支付房费</body><out_trade_no>CZ20180205153530TWSJ9VG3Ti</out_trade_no><total_fee>100</total_fee><spbill_create_ip>127.0.0.1</spbill_create_ip><notify_url>http://www.guardts.com/payment/WeChart_NotifyUrl.aspx</notify_url><trade_type>JSAPI</trade_type><openid>oGonz0FrABeJX5vMLtC1nJO59XRE</openid><sign>A5245536136815E6FB65B79C25205C88</sign></xml>
+2018-02-05 15:40:20
+WeChartReturn:<xml><return_code><![CDATA[FAIL]]></return_code>
+<return_msg><![CDATA[appid and openid not match]]></return_msg>
+</xml>
+2018-02-05 15:41:33
+WeChartStart:<xml><appid> wx9988d8c301815f63</appid><mch_id>1481965242</mch_id><nonce_str>5SJSUCFO34CMPXT4</nonce_str><body>支付房费</body><out_trade_no>CZ201802051541295SJSUCFO34</out_trade_no><total_fee>100</total_fee><spbill_create_ip>127.0.0.1</spbill_create_ip><notify_url>http://www.guardts.com/payment/WeChart_NotifyUrl.aspx</notify_url><trade_type>JSAPI</trade_type><openid>oGonz0FrABeJX5vMLtC1nJO59XRE</openid><sign>0179EF73D4502DBBE8F2F85E2F635F1B</sign></xml>
+2018-02-05 16:06:05
+WeChartReturn:<xml><return_code><![CDATA[FAIL]]></return_code>
+<return_msg><![CDATA[appid不存在]]></return_msg>
+</xml>
+2018-02-05 16:06:14
+WeChartStart:<xml><appid>wxae25cb3fefdc75ae</appid><mch_id>1481965242</mch_id><nonce_str>RXYJiDiL6G6UQHJD</nonce_str><body>支付房费</body><out_trade_no>CZ20180205160609RXYJiDiL6G</out_trade_no><total_fee>100</total_fee><spbill_create_ip>127.0.0.1</spbill_create_ip><notify_url>http://www.guardts.com/payment/WeChart_NotifyUrl.aspx</notify_url><trade_type>JSAPI</trade_type><openid>oGonz0FrABeJX5vMLtC1nJO59XRE</openid><sign>32E97685561920BD12BB57B8BED3F48B</sign></xml>
+2018-02-05 16:06:41
+WeChartReturn:<xml><return_code><![CDATA[FAIL]]></return_code>
+<return_msg><![CDATA[appid and openid not match]]></return_msg>
+</xml>
+2018-02-05 16:07:05
+WeChartStart:<xml><appid>wxae25cb3fefdc75ae</appid><mch_id>1481965242</mch_id><nonce_str>WUFB4UOL7T8TDQUT</nonce_str><body>支付房费</body><out_trade_no>CZ20180205160655WUFB4UOL7T</out_trade_no><total_fee>100</total_fee><spbill_create_ip>127.0.0.1</spbill_create_ip><notify_url>http://www.guardts.com/payment/WeChart_NotifyUrl.aspx</notify_url><trade_type>JSAPI</trade_type><openid>oGonz0FrABeJX5vMLtC1nJO59XRE</openid><sign>A106419B7DF43108CEB0F64C770E2490</sign></xml>
+2018-02-05 16:07:43
+WeChartReturn:<xml><return_code><![CDATA[FAIL]]></return_code>
+<return_msg><![CDATA[appid and openid not match]]></return_msg>
+</xml>
+2018-02-05 16:08:33
+WeChartStart:<xml><appid>wx659fd5beace1224d</appid><mch_id>1481965242</mch_id><nonce_str>QCX7LC4Y8H1P4TMK</nonce_str><body>支付房费</body><out_trade_no>CZ20180205160829QCX7LC4Y8H</out_trade_no><total_fee>100</total_fee><spbill_create_ip>127.0.0.1</spbill_create_ip><notify_url>http://www.guardts.com/payment/WeChart_NotifyUrl.aspx</notify_url><trade_type>JSAPI</trade_type><openid>oGonz0FrABeJX5vMLtC1nJO59XRE</openid><sign>6687B7888B8D0135F15E476C63897A41</sign></xml>
+2018-02-05 16:09:23
+WeChartReturn:<xml><return_code><![CDATA[FAIL]]></return_code>
+<return_msg><![CDATA[商户号mch_id与appid不匹配]]></return_msg>
+</xml>
+2018-02-05 16:18:15
+WeChartStart:<xml><appid>wx9988d8c301815f63</appid><mch_id>1481965242</mch_id><nonce_str>GOAS2FXGFE2G8CYD</nonce_str><body>支付房费</body><out_trade_no>CZ20180205161805GOAS2FXGFE</out_trade_no><total_fee>100</total_fee><spbill_create_ip>127.0.0.1</spbill_create_ip><notify_url>http://www.guardts.com/payment/WeChart_NotifyUrl.aspx</notify_url><trade_type>JSAPI</trade_type><openid>oGonz0FrABeJX5vMLtC1nJO59XRE</openid><sign>CA969C7F4DF593396A687480B97A70ED</sign></xml>
+2018-02-05 16:18:46
+WeChartReturn:<xml><return_code><![CDATA[SUCCESS]]></return_code>
+<return_msg><![CDATA[OK]]></return_msg>
+<appid><![CDATA[wx9988d8c301815f63]]></appid>
+<mch_id><![CDATA[1481965242]]></mch_id>
+<nonce_str><![CDATA[hVHnnGL0qHxn3No2]]></nonce_str>
+<sign><![CDATA[B95688531F60DAE4A9344405500C582D]]></sign>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<prepay_id><![CDATA[wx201802051619330f145b5ce90477224070]]></prepay_id>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+</xml>
+2018-02-05 16:19:08
+WeChartStart:<xml><appid>wx9988d8c301815f63</appid><mch_id>1481965242</mch_id><nonce_str>iP9HE95OCANLAGiJ</nonce_str><body>支付房费</body><out_trade_no>CZ20180205161905iP9HE95OCA</out_trade_no><total_fee>100</total_fee><spbill_create_ip>127.0.0.1</spbill_create_ip><notify_url>http://www.guardts.com/payment/WeChart_NotifyUrl.aspx</notify_url><trade_type>JSAPI</trade_type><openid>oGonz0FrABeJX5vMLtC1nJO59XRE</openid><sign>D1FDBAC1DC82D0F6E0DF2A0B9AE86694</sign></xml>
+2018-02-05 16:20:43
+WeChartReturn:<xml><return_code><![CDATA[SUCCESS]]></return_code>
+<return_msg><![CDATA[OK]]></return_msg>
+<appid><![CDATA[wx9988d8c301815f63]]></appid>
+<mch_id><![CDATA[1481965242]]></mch_id>
+<nonce_str><![CDATA[iWZXVatBkmj41YOg]]></nonce_str>
+<sign><![CDATA[86C9D2508127C26AAFAF118D8EF69DB3]]></sign>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<prepay_id><![CDATA[wx20180205162021ecd087e1660291408634]]></prepay_id>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+</xml>

@@ -1,0 +1,12 @@
+2017-08-25 15:12:51
+DELETE 语句与 REFERENCE 约束"FK_Rent_Road_Rent_Street"冲突。该冲突发生于数据库"qds236354518_db"，表"dbo.Rent_Road", column 'LSID'。
+语句已终止。
+2017-08-25 15:12:56
+DELETE 语句与 REFERENCE 约束"FK_Rent_Road_Rent_Street"冲突。该冲突发生于数据库"qds236354518_db"，表"dbo.Rent_Road", column 'LSID'。
+语句已终止。
+2017-08-25 15:12:58
+DELETE 语句与 REFERENCE 约束"FK_Rent_Road_Rent_Street"冲突。该冲突发生于数据库"qds236354518_db"，表"dbo.Rent_Road", column 'LSID'。
+语句已终止。
+2017-08-25 15:13:38
+DELETE 语句与 REFERENCE 约束"FK_Rent_Street_Rent_District"冲突。该冲突发生于数据库"qds236354518_db"，表"dbo.Rent_Street", column 'LDID'。
+语句已终止。

@@ -1,0 +1,1189 @@
+﻿<html>
+
+	<head>
+		<!--<meta http-equiv="Content-Type" content="text/html; charset=gb2312">-->
+        <meta http-equiv="Content-Type" content="IE=10"/>
+        	<title>扫描文件</title>
+   <link href="../lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
+    <script src="../lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
+    <script src="../lib/ligerUI/js/ligerui.min.js" type="text/javascript"></script>   
+    <link href="../lib/css/common.css" rel="stylesheet" type="text/css" />  
+    <script src="../lib/js/common.js" type="text/javascript"></script>   
+    <script src="../lib/js/LG.js" type="text/javascript"></script>
+    <script src="../lib/js/ligerui.expand.js" type="text/javascript"></script> 
+    <script src="../lib/json2.js" type="text/javascript"></script> 
+    <link href="../lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
+    <script src="../lib/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
+    <script src="../lib/ligerUI/js/ligerui.min.js" type="text/javascript"></script>  
+    <script src="../lib/ligerUI/js/plugins/ligerTab.js" type="text/javascript"></script>
+    <script src="../lib/ligerUI/js/plugins/ligerLayout.js" type="text/javascript"></script>
+    <link href="../lib/css/common.css" rel="stylesheet" type="text/css" />  
+    <link href="../lib/css/index.css" rel="stylesheet" type="text/css" />
+    <script src="../lib/js/common.js" type="text/javascript"></script>
+    <script src="../lib/js/LG.js" type="text/javascript"></script>
+    <script src="../lib/js/login.js" type="text/javascript"></script>
+    <script src="../lib/commonvalidate.js" type="text/javascript"></script>
+    <script src="../lib/jquery-validation/jquery.validate.min.js" type="text/javascript"></script> 
+    <script src="../lib/jquery-validation/jquery.metadata.js" type="text/javascript"></script>
+    <script src="../lib/jquery-validation/messages_cn.js" type="text/javascript"></script>
+    <script src="../lib/js/changepassword.js" type="text/javascript"></script>
+    <script src="../lib/ligerUI/js/plugins/ligerForm.js" type="text/javascript"></script>
+    <script src="../lib/js/jquery.jqprint-0.3.js" type="text/javascript"></script> 
+<script language="javascript">
+
+
+    var CamID = 0;  //此例程默认以第一个摄像头打开
+    var SupportFormat;    //设备支持的视频格式代号：1->MJPG; 2->YUY2 
+    var OpenFormat;      //打开格式：0->YUY；1->MJPG
+    var isOpen = false;
+    var isWiseCapture = false;
+
+    var nFileCount = 0;
+    var bAdjustMode = 0;
+    var bCropArea = 0;
+    var bSeriesCapture = 0;
+    var bReadBarCode = 0;
+    var bSetDenoise = 0;
+    var Width = 0;
+    var Height = 0;
+    var strFile;
+    var index = 0;
+    var strCardFile;
+    var cardIndex = 0;
+    var captureCount = 0;
+    var rootPath = "../";
+    var typeData;
+
+
+    $.ajax({
+        cache: false,
+        async: false,
+        type: 'post',
+        dataType: 'json',
+        data: { where: JSON2.stringify({
+            op: 'and',
+            rules: [
+               { field: 'gc_code_group', value: 'CF', op: 'equal' }
+               ]
+        })
+        },
+        url: rootPath + 'handler/select.ashx?view=t_general_code&idfield=gc_id&textfield=gc_name',
+        success: function (data) {
+            typeData = data;
+        }
+    });
+
+    $(function () {
+        $("#txtPro").ligerComboBox({ data: typeData, isMultiSelect: false, width: "180" });
+    });
+
+    function show(op) {
+
+    }
+
+    function wopen(pageURL, title, w, h) {
+        var left = (screen.width / 2) - (w / 2);
+        var top = (screen.height / 2) - (h / 2);
+        var targetWin = window.open(pageURL, title, ' width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+    }
+
+    function ShowInfo(op) {
+        var obj = document.getElementById("TextArea1");
+        obj.value = op
+    }
+
+    //获取设备;
+    function GetDevice() {
+        var i = 0;
+        var devCount = axCam_Ocx.GetDevCount();
+
+        if (devCount <= 0) {
+            var signetId = QueryString("SignetID");
+            var num = QueryString("num");
+            window.location.href = "MultipleCapture.htm?signetIds=" + QueryString("signetIds") + "&num=" + num;
+            window.resizeTo(510, 520);
+            return false;
+        }
+
+        var obj = document.getElementById("DeviceName");
+
+        for (i = 0; i < devCount; i++) {
+            var DevName = axCam_Ocx.GetDevFriendName(i);
+            var objOption = document.createElement("option");
+            objOption.text = DevName;
+            objOption.value = i;
+            obj.options.add(objOption);
+        }
+        if (devCount > 0) obj.value = 0;
+
+        var FormatSum = 0;  //设备支持的视频格式代号总和
+        var scount = axCam_Ocx.GetFormatCount(CamID);   //获取设备支持的视频格式数目
+        for (var k = 0; k < scount; k++) {
+            FormatSum = FormatSum + axCam_Ocx.GetFormatNumber(k);    //GetFormatNumber（）获取设备支持的视频格式代号
+        }
+
+        //判断视频格式代号总和的值
+        switch (FormatSum) {
+            case 1:   //（设备只支持MJPG格式）
+                OpenFormat = 1;     //打开格式为MJPG
+                SupportFormat = 1;
+                break;
+            case 2:   //（设备只支持YUY2格式）
+                OpenFormat = 0;     //打开格式为YUY
+                SupportFormat = 2;
+                break;
+            case 3:   //（设备支持MJPG与YUY2两种格式）
+                OpenFormat = 1;     //默认打开格式为MJPG
+                SupportFormat = 1;
+                break;
+        }
+
+        GetDeviceResolution();  //获取分辨率
+
+
+        var obj2 = document.getElementById("Text5");
+        obj2.value = "d:\\Image"
+
+        var filetypeobj = document.getElementById("FileType");
+        filetypeobj.value = 1;
+    }
+
+    //获取分辨率
+    function GetDeviceResolution() {
+        var i = 0;
+        var resCount = axCam_Ocx.GetResolutionCount(CamID, SupportFormat); //获取设备支持的分辨率数目
+        var obj = document.getElementById("Resolution");
+        for (i = 0; i < resCount; i++) {
+            var mResolution = axCam_Ocx.GetResolution(i);
+            var objOption = document.createElement("option");
+            objOption.text = mResolution;
+            objOption.value = i;
+            obj.options.add(objOption);
+        }
+        if (resCount > 0) obj.value = 0;
+    }
+
+    //开启摄像头
+    function StartVideo() {
+        var obj = document.getElementById("Resolution");
+        var restr = obj[obj.selectedIndex].text;
+        var pos = restr.lastIndexOf("*");
+        var width = parseInt(restr.substring(0, pos));
+        var height = parseInt(restr.substring(pos + 1, restr.length));
+        width = 1024;
+        height = 768;
+        var i = axCam_Ocx.CAM_Open(CamID, OpenFormat, width, height);
+        if (i == 0) {
+            ShowInfo("开启设备成功");
+            document.getElementById("Button3").disabled = false;
+            document.getElementById("Button1").disabled = true;
+            document.getElementById("Button2").disabled = false;
+        }
+        else ShowInfo("开启设备失败");
+
+        //    var i = axCam_Ocx2.CAM_Open(1, 0, 640, 480);
+
+    }
+
+    //关闭摄像头
+    function CloseVideo() {
+        axCam_Ocx.CAM_Close()
+        ShowInfo("关闭设备");
+        document.getElementById("Button2").disabled = true;
+        document.getElementById("Button3").disabled = true;
+        document.getElementById("Button1").disabled = false;
+        document.getElementById("Button7").disabled = true;
+    }
+
+    //抓图拍照
+    function Capture() {
+
+        if (document.getElementById("Radio7").checked) {
+            var waterType = 0; //水印类型为文字类型
+            var waterinfo = document.getElementById("Text1").value;   //文字内容
+            var pos = document.getElementById("Select1").selectedIndex;
+            var tran = parseInt(document.getElementById("Text2").value); //透明度
+            var FontSize = parseInt(document.getElementById("Text3").value); //字体大小
+            var mcolor = parseInt(document.getElementById("Text4").value); //颜色
+            axCam_Ocx.SetWaterMark(waterinfo, waterType, tran, pos, FontSize, mcolor);
+        }
+        if (document.getElementById("Radio8").checked) {
+            var waterType = 1; //水印类型为图片类型
+            var waterinfo = document.getElementById("Text1").value;   //图片路径
+            var pos = document.getElementById("Select1").selectedIndex;
+            var tran = parseInt(document.getElementById("Text2").value); //透明度
+            var FontSize = parseInt(document.getElementById("Text3").value); //字体大小
+            var mcolor = parseInt(document.getElementById("Text4").value); //颜色
+            axCam_Ocx.SetWaterMark(waterinfo, waterType, tran, pos, FontSize, mcolor);
+        }
+
+        captureCount = captureCount + 1;
+        var textobj = document.getElementById("Text5");
+
+        var strFolder = textobj.value;
+        var objFSO = new ActiveXObject("Scripting.FileSystemObject");
+        // 检查文件夹是否存在
+        if (!objFSO.FolderExists(strFolder)) {
+            // 创建文件夹
+            var strFolderName = objFSO.CreateFolder(strFolder);
+        }
+        var obj = document.getElementById("FileType");
+        var path = textobj.value + "\\Img";
+        var suffix = "";
+        if (obj.selectedIndex == 0) suffix = ".bmp";
+        if (obj.selectedIndex == 1) suffix = ".jpg";
+        if (obj.selectedIndex == 2) suffix = ".png";
+        if (obj.selectedIndex == 3) suffix = ".tiff";
+        if (obj.selectedIndex == 4) suffix = ".gif";
+        if (obj.selectedIndex == 5) suffix = ".pdf";
+        path = path + suffix;
+
+        axCam_Ocx.CaptureImage(path);
+
+        //var imgobj1 = document.getElementById("img1");
+        //var imgobj2 = document.getElementById("img2");
+
+        if (captureCount >= 2) {
+            var frontcount = captureCount - 1;
+            var frontpath = textobj.value + "\\Img" + suffix;
+            //imgobj1.src = path;
+            //imgobj2.src = path;
+        }
+        else {
+            //imgobj1.src = path;
+        }
+        var info = "拍照成功\n" + "位置:" + path;
+        ShowInfo(info);
+        alert('拍照成功！');
+        document.getElementById('Button7').disabled = false;
+    }
+
+    //切换摄像头
+    function ChangeDevice() {
+        axCam_Ocx.CAM_Close(); //先关闭摄像头
+        var devObj = document.getElementById("DeviceName");
+        var resObj = document.getElementById("Resolution");
+        CamID = devObj.selectedIndex;
+
+        var FormatSum = 0;  //设备支持的视频格式代号总和
+        var scount = axCam_Ocx.GetFormatCount(CamID);   //获取设备支持的视频格式数目
+        for (var k = 0; k < scount; k++) {
+            FormatSum = FormatSum + axCam_Ocx.GetFormatNumber(k);    //GetFormatNumber（）获取设备支持的视频格式代号
+        }
+
+        //判断视频格式代号总和的值
+        switch (FormatSum) {
+            case 1:   //（设备只支持MJPG格式）
+                OpenFormat = 1;     //打开格式为MJPG
+                SupportFormat = 1;
+                break;
+            case 2:   //（设备只支持YUY2格式）
+                OpenFormat = 0;     //打开格式为YUY
+                SupportFormat = 2;
+                break;
+            case 3:   //（设备支持MJPG与YUY2两种格式）
+                OpenFormat = 1;     //默认打开格式为MJPG
+                SupportFormat = 1;
+                break;
+        }
+
+        resObj.options.length = 0;
+        GetDeviceResolution();
+        var restr = resObj[resObj.selectedIndex].text;
+        var pos = restr.lastIndexOf("*");
+        var width = parseInt(restr.substring(0, pos));
+        var height = parseInt(restr.substring(pos + 1, restr.length));
+        var i = axCam_Ocx.CAM_Open(CamID, OpenFormat, width, height);
+        if (i == 0) ShowInfo("开启设备成功");
+        else ShowInfo("开启设备失败");
+    }
+
+    //切换分辨率
+    function ChangeResolution() {
+        axCam_Ocx.CAM_Close();  //先关闭摄像头
+        var obj = document.getElementById("Resolution");
+        var restr = obj[obj.selectedIndex].text;
+        var pos = restr.lastIndexOf("*");
+        var width = parseInt(restr.substring(0, pos));
+        var height = parseInt(restr.substring(pos + 1, restr.length));
+
+        var i = axCam_Ocx.CAM_Open(CamID, OpenFormat, width, height);
+    }
+
+    //设置图片类型
+    function SetFileType() {
+        var obj = document.getElementById("FileType");
+        axCam_Ocx.SetFileType(obj.selectedIndex);
+    }
+
+    //设置图片颜色格式
+    function SetImageColorMode() {
+        var obj = document.getElementById("ColourMode");
+        axCam_Ocx.SetImageColorMode(obj.selectedIndex);
+    }
+
+    //图像设置窗口
+    function ShowImageSettingWindow() {
+        axCam_Ocx.ShowImageSettingWindow();
+    }
+
+    //设置是否裁剪
+    function SetCutType() {
+        if (document.getElementById("Radio1").checked) {
+            axCam_Ocx.SetAutoCut(0);
+            axCam_Ocx.CusCrop(0);
+        }
+        if (document.getElementById("Radio2").checked) {
+            axCam_Ocx.SetAutoCut(1);
+            axCam_Ocx.CusCrop(0);
+        }
+        if (document.getElementById("Radio3").checked) {
+            axCam_Ocx.SetAutoCut(0);
+            axCam_Ocx.CusCrop(1);
+        }
+    }
+
+
+    //智能连拍
+    function WiseCapture() {
+
+        if (document.getElementById("Radio7").checked) {
+            var waterType = 0; //水印类型为文字类型
+            var waterinfo = document.getElementById("Text1").value;   //文字内容
+            var pos = document.getElementById("Select1").selectedIndex;
+            var tran = parseInt(document.getElementById("Text2").value); //透明度
+            var FontSize = parseInt(document.getElementById("Text3").value); //字体大小
+            var mcolor = parseInt(document.getElementById("Text4").value); //颜色
+            axCam_Ocx.SetWaterMark(waterinfo, waterType, tran, pos, FontSize, mcolor);
+        }
+        if (document.getElementById("Radio8").checked) {
+            var waterType = 1; //水印类型为图片类型
+            var waterinfo = document.getElementById("Text1").value;   //图片路径
+            var pos = document.getElementById("Select1").selectedIndex;
+            var tran = parseInt(document.getElementById("Text2").value); //透明度
+            var FontSize = parseInt(document.getElementById("Text3").value); //字体大小
+            var mcolor = parseInt(document.getElementById("Text4").value); //颜色
+            axCam_Ocx.SetWaterMark(waterinfo, waterType, tran, pos, FontSize, mcolor);
+        }
+
+
+        var textobj = document.getElementById("Text5");
+
+        var strFolder = textobj.value;
+        var objFSO = new ActiveXObject("Scripting.FileSystemObject");
+        // 检查文件夹是否存在
+        if (!objFSO.FolderExists(strFolder)) {
+            // 创建文件夹
+            var strFolderName = objFSO.CreateFolder(strFolder);
+        }
+
+        if (isWiseCapture == false) {
+            axCam_Ocx.WiseCapture(1, strFolder);
+            isWiseCapture = true;
+        }
+        else {
+            axCam_Ocx.WiseCapture(0, strFolder);
+            isWiseCapture = false;
+        }
+    }
+
+    //条码识别
+    function ReadBarCode() {
+        var path = "d:\\BarCode.jpg";
+        var CodeStr = axCam_Ocx.GetBarcodeContent(path);
+        ShowInfo("条码号:" + CodeStr);
+    }
+
+
+    //合并PDF
+    function ConvertToPDF() {
+        var pat1 = "d:\\add1.jpg";
+        var pat2 = "d:\\add2.jpg";
+        var pat3 = "d:\\add3.jpg";
+        var pdfpath = "d:\\Convert.pdf";
+        axCam_Ocx.AddPDFImageFile(pat1);
+        axCam_Ocx.AddPDFImageFile(pat2);
+        axCam_Ocx.AddPDFImageFile(pat3);
+        axCam_Ocx.Convert2PDF(pdfpath);
+    }
+
+    //合并TIFF
+    function ConvertToTiff() {
+        var pat1 = "d:\\add1.jpg";
+        var pat2 = "d:\\add2.jpg";
+        var pat3 = "d:\\add3.jpg";
+        var pdfpath = "d:\\Convert.tiff";
+        axCam_Ocx.AddTiffImageFile(pat1);
+        axCam_Ocx.AddTiffImageFile(pat2);
+        axCam_Ocx.AddTiffImageFile(pat3);
+        axCam_Ocx.Convert2Tiff(pdfpath);
+    }
+
+
+    //图片合并
+    function CombineTwoImage() {
+        var dir = 1;  // 1->垂直合并  2->水平合并
+        if (document.getElementById("Radio4").checked) { dir = 1; }
+        if (document.getElementById("Radio5").checked) { dir = 2; }
+
+        var combinePath = "d:\\CombineImg.jpg";
+        var ImgPath1 = "d:\\add1.jpg";
+        var ImgPath2 = "d:\\add2.jpg";
+        axCam_Ocx.CombineTwoImage(combinePath, ImgPath1, ImgPath2, dir);
+    }
+
+
+
+    //放大
+    function ZoomOut() {
+        axCam_Ocx.CAM_ZoomOut();
+    }
+
+    //缩小
+    function ZoomIn() {
+        axCam_Ocx.CAM_ZoomIn();
+    }
+
+    //左旋
+    function RoateL() {
+        axCam_Ocx.CAM_RotateL();
+    }
+
+    //右旋
+    function RoateR() {
+        axCam_Ocx.CAM_RotateR();
+    }
+
+    //适合大小
+    function BestSize() {
+        axCam_Ocx.BestSize();
+    }
+
+    //实际大小
+    function TrueSize() {
+        axCam_Ocx.TrueSize();
+    }
+
+    function UpdataFile() {
+
+        if ($("#txtPro").val() == "") {
+            alert("请选择文件类型！");
+            return false;
+        }
+
+        var uploadUrl;
+        $.ajax({
+            cache: false,
+            async: false,
+            type: 'post',
+            dataType: 'json',
+            data: { version: "1" },
+            url: rootPath + 'handler/config.ashx?version=2',
+            success: function (data) {
+                var type;
+                for (var i = 0; i < typeData.length; i++) {
+                    if ($("#txtPro").val() == typeData[i].text)
+                        type = typeData[i].id;
+                }
+                var Url = data.Data + "?SignetID=" + QueryString("signetIds") + "&type=" + type;
+                var tempStr;
+                var host;
+                var port;
+                var webUrl;
+                tempStr = data.Data.toString().substring(0, data.Data.toString().indexOf("/handler"));
+                webUrl = data.Data.toString().substring(data.Data.toString().indexOf("/handler"), data.Data.toString().length);
+                tempStr = tempStr.substring(tempStr.lastIndexOf("/") + 1, tempStr.length);
+                if (tempStr.indexOf(":") > 0) {
+                    host = tempStr.substring(0, tempStr.indexOf(":"));
+                    port = tempStr.substring(tempStr.lastIndexOf(":") + 1, tempStr.length);
+                }
+                else {
+                    host = tempStr;
+                    port = 80;
+                }
+
+                var a = axCam_Ocx.UpdataFile(host, port, webUrl + "?SignetID=" + QueryString("signetIds") + "&type=" + type, "d:\\Image\\Img.jpg");
+                if (a == 0) {
+                    alert('文件上传成功!');
+                    window.opener.f_reload();
+                }
+                else {
+                }
+            }
+        });
+    }
+    function QueryString(name) {
+        var qs = name + "=";
+        var str = location.search;
+        if (str.length > 0) {
+            begin = str.indexOf(qs);
+            if (begin != -1) {
+                begin += qs.length;
+                end = str.indexOf("&", begin);
+                if (end == -1) end = str.length;
+                return (str.substring(begin, end));
+            }
+        }
+        return null;
+    }
+
+    function getBase64() {
+        var textobj = document.getElementById("File1");
+        var strpath = textobj.value;
+        //    var strpath = "C:\\Users\\ljb\\Desktop\\123.jpg";
+        var basestr = axCam_Ocx.GetBase64FromFile(strpath);
+        ShowInfo(basestr);
+    }
+
+    function SetWaterType() {
+        if (document.getElementById("Radio6").checked) {
+            axCam_Ocx.SetAddMark(0);
+        }
+        if (document.getElementById("Radio7").checked) {
+            axCam_Ocx.SetAddMark(1); //使能水印
+        }
+        if (document.getElementById("Radio8").checked) {
+            axCam_Ocx.SetAddMark(1); //使能水印
+            var waterType = 1; //水印类型为图片类型
+        }
+    }
+
+
+    function browseFolder() {
+        try {
+            var Message = "选择目录"; //选择框提示信息
+            var Shell = new ActiveXObject("Shell.Application");
+            var Folder = Shell.BrowseForFolder(0, Message, 64, 17); //起始目录为：我的电脑
+            //var Folder = Shell.BrowseForFolder(0, Message, 0); //起始目录为：桌面
+            if (Folder != null) {
+                Folder = Folder.items(); // 返回 FolderItems 对象
+                Folder = Folder.item(); // 返回 Folderitem 对象
+                Folder = Folder.Path; // 返回路径
+                if (Folder.charAt(Folder.length - 1) != "\\") {
+                    Folder = Folder + "\\";
+                }
+                show(Folder);
+                return Folder;
+            }
+        }
+        catch (e) {
+            alert(e.message);
+        }
+    }
+
+
+
+</script>
+
+<script type="text/javascript" for="axCam_Ocx" event="GetImageFileName(fileName);"> </script>
+
+<style type="text/css">
+    #Text1
+    {
+        width: 193px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    #DeviceName
+    {
+        width: 175px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    .style1
+    {
+        width: 175px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    .style3
+    {
+        width: 175px;
+        height: 20px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    .style5
+    {
+        height: 20px;
+        width: 69px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    #Select1
+    {
+        width: 76px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    #Select2
+    {
+        width: 158px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    #Resolution
+    {
+        width: 176px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    #Button1
+    {
+        width: 70px;
+        height: 25px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    
+    }
+    
+        .btn
+    {
+        width: 60px;
+        height: 25px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    
+    }
+    
+    .hr
+    {
+         border:solid 1px #cccccc;
+        }
+    
+    #Button2
+    {
+        height: 25px;
+        width: 70px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    #Button3
+    {
+        height: 57px;
+        width: 83px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+        #Button7
+    {
+        height: 57px;
+        width: 83px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    .style11
+    {
+        width: 12px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    .style12
+    {
+        width: 38px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    .style13
+    {
+        width: 72px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    .style14
+    {
+        width: 150px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    #FileType
+    {
+        width: 158px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    #ColourMode
+    {
+        width: 158px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    #Button4
+    {
+        height: 25px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    #Radio1
+    {
+        margin-bottom: 0px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    #Button5
+    {
+        height: 25px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    .style15
+    {
+        height: 27px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    .style16
+    {
+        width: 67px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    #Text2
+    {
+        width: 75px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    .style17
+    {
+        width: 41px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    #Text4
+    {
+        width: 75px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    #Text3
+    {
+        width: 77px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    #Text5
+    {
+        width: 182px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    #File1
+    {
+        width: 242px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    #Button6
+    {
+        width: 242px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    #Text6
+    {
+        height: 148px;
+        width: 155px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    #TextArea1
+    {
+        height: 144px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    .style18
+    {
+        width: 62px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    .style19
+    {
+        width: 74px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    #URL
+    {
+        width: 168px;
+        font-size:12px;
+        font-family:@微软雅黑;
+    }
+    </style>
+
+</head>
+
+	<body onload ="GetDevice();" style="font-size:10px;" onunload="CloseVideo();">
+
+    <table border="0" cellpadding="0" cellspacing="0" width="90%">
+        <tr>
+        <td><div style="width:500px; height: 400px; border: 1px solid #cccccc; background:#ffffff;  float:left; font-size:12px; padding:5px;">
+
+                <object id="axCam_Ocx" style=" width:100%; height:352px;" 
+			    classid="clsid:ce2d72f2-ad28-4013-a24b-c3f76c5a1944"  codebase="CamOcx.cab #version=1,0,0,1"> 	
+			    </object>
+                                
+                <p align="center" style=" width:100%; height:36px; text-align:center; vertical-align:middle; padding-top:10px; background-color:#cccccc;">   
+                    <input type = "button" value = " 放大 " onclick = "ZoomOut();" class="btn" />
+                    <input type = "button" value = " 缩小 " onclick = "ZoomIn();" class="btn" />
+                    <input type = "button" value = " 左旋 " onclick = "RoateL();" class="btn" />
+                    <input type = "button" value = " 右旋 " onclick = "RoateR();" class="btn" />
+                    <input type = "button" value = " 适合大小 " onclick = "BestSize();" class="btn" />
+                    <input type = "button" value = " 实际大小 " onclick = "TrueSize();" class="btn" />
+                </p>	
+        </div>
+        </td>
+        <td>
+        <div style="width:100%;height:400px;background:#ffffff; border: 1px solid #cccccc;float:left; font-size:12px; padding:5px;">
+                    <table style="width:300px;">
+                        <tr>
+                            <td class="style5" >
+                                设备</td>
+                            <td class="style1">
+                                <select id="DeviceName" name="D1"onchange = "ChangeDevice()">
+                                </select></td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="style5" >
+                                分辨率</td>
+                            <td class="style3">
+                                <select id="Resolution" name="D2"onchange = "ChangeResolution()">
+                                </select></td>
+                        </tr>
+                    </table>
+                    <!-- 分割线-->
+                    <hr style="border:1px solid #cccccc;" />
+
+                    <table style="border: 1px; width:300px; height: 67px; font-size:12px;">
+                        <tr>
+                            <td class="style11" >
+                                <input id="Button1" type="button" value="打开" onclick = "StartVideo();"/></td>
+                            <td rowspan="2" class="style12">
+                                <input id="Button3" type="button" value="拍照" onclick = "Capture();" 
+                                    disabled="true"/></td>
+                            <td class="style11" style="" rowspan="2" >
+                                <input id="Button7" type="button" value="上传" onclick = "UpdataFile();" 
+                                    disabled="true"/></td>
+                            <td class="style11" style="display:none;" >
+                                <input id="Button5" type="button" value="智能连拍" onclick = "WiseCapture();"/></td>
+                        </tr>
+                        <tr>
+                            <td class="style11" >
+                                <input id="Button2" type="button" value="关闭" onclick = "CloseVideo();" 
+                                    disabled="true"/></td>      
+                            <td  class="style11" style="display:none;">
+                                 <input id="Button4" type="button" value="参数设置" onclick = "ShowImageSettingWindow();" /></td>
+                        </tr>
+
+                    </table>
+
+
+                    <!-- 分割线-->
+
+                    <table style="width:300px">
+                        <tr style="display:none;">
+                            <td  class="style13">
+                               保存格式</td>
+                            <td class="style14">
+                                <select id = "FileType" onchange = "SetFileType()">
+                                    <option value="0">bmp</option>
+					                <option value="1">jpg</option>
+					                <option value="2">png</option>
+					                <option value="3">tiff</option>
+                                    <option value="4">gif</option>
+                                    <option value="5">pdf</option>
+                                </select></td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="style13">
+                                颜色格式</td>
+                            <td class="style14">
+                                <select id = "ColourMode" onchange = "SetImageColorMode()">
+                                    <option value="0">彩色</option>
+					                <option value="1">灰度</option>
+					                <option value="2">黑白</option>
+                                </select></td>
+                        </tr>
+                    </table>
+                    <hr  style="border:1px solid #cccccc;" />
+
+                     <table border="0" cellpadding="0" cellspacing="0" style="font-size:12px;">
+                <tr><td>文件类型：</td>
+                <td>
+                <div class=""><div class=""><input type="text" id="txtPro" style="font-size:12px;width:200px;"/></div></div>
+                </td></tr>
+            </table>
+            <hr style="border:1px solid #cccccc;"  />
+
+                    <table style="width:300px; font-size:12px;">
+                        <tr>
+                            <td>
+                               <input id="Radio1" checked="checked" name="R1" type="radio" value="V1" onclick="SetCutType()"/>不裁切
+                            </td>
+                            <td>
+                               <input id="Radio2"  name="R1" type="radio" value="V2" onclick="SetCutType()"/>自动裁切
+                            </td>
+                            <td>
+                                <input id="Radio3"  name="R1" type="radio" value="V3" onclick="SetCutType()"/>手动裁切
+                            </td>
+                        </tr>
+
+                    </table>
+
+
+                     <!-- 分割线-->
+
+                    <table style="width: 300px">
+                        <tr style="display:none;">
+                            <td class="style15">
+                                <input type = "button" value = " 合并PDF " onclick = "ConvertToPDF();" 
+                                    style="width: 69px" />
+                            </td>
+                            <td class="style15">
+                                <input type = "button" value = " 合并TIFF " onclick = "ConvertToTiff();" 
+                                    style="width: 81px" />
+                            </td>
+                            <td class="style15">
+                                <input type = "button" value = " 条码识别 " onclick = "ReadBarCode();" 
+                                    style="width: 88px" />
+                            </td>
+                        </tr>
+
+                    </table>
+
+                     <!-- 分割线-->
+
+                    <table style="width:300px">
+                        <tr  style="display:none;">
+                            <td>
+                               <input type = "button" value = " 图片合并 " onclick = "CombineTwoImage();" />
+                            </td>
+                            <td>
+                                方向:                       
+                            </td>
+                            <td>
+                                <input id="Radio4" checked="checked" name="R2" type="radio" value="V1" />垂直                       
+                            </td>
+                            <td>
+                                <input id="Radio5"  name="R2" type="radio" value="V2" />水平
+                            </td>
+                        </tr>
+                    </table>
+
+                    <hr  style="border:1px solid #cccccc;" /><!-- 分割线-->
+
+                    <div style="font-size: x-small">
+                        <table style="width:300px; font-size: small;">
+                            <tr>
+                                <td style="font-size: small; text-align:left;">
+                                    <input id="Radio6" type="radio" checked="checked" name="R3"  value="V1" onclick = "SetWaterType();"/>无水印
+                                </td>
+                                <td class="style19" style="font-size: small; text-align:left;">
+                                    <input id="Radio7" type="radio" name="R3"  value="V2" onclick = "SetWaterType();"/>文字
+                                </td>
+                                <td style="font-size: small; width:30%;">
+                                    <span style="display:none;"><input id="Radio8" type="radio" name="R3"  value="V3"  onclick = "SetWaterType();"/>图片</span>
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="width: 300px;">
+                           <tr>
+                                <td class="style17" style="font-size: small" >
+                                    内容</td>
+                                <td>
+                                    <input id="Text1" type="text" value="我的水印" />
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table style="width:300px;">
+                            <tr>
+                                <td class="style17" style="font-size: small">
+                                    位置</td>
+                                <td class="style16" >
+                                    <select id="Select1" name="D3">
+                                        <option>左上</option>
+                                        <option>右上</option>
+                                        <option>左下</option>
+                                        <option>右下</option>
+                                        <option>中间</option>
+                                    </select></td>
+                                <td style="font-size: small">
+                                    透明</td>
+                                <td>
+                                    <input id="Text2" type="text" value="50" /></td>
+                            </tr>
+                            <tr>
+                                <td class="style17" style="font-size: small">
+                                    字号</td>
+                                <td class="style16" >
+                                    <input id="Text3" type="text" value="100" /></td>
+                                <td style="font-size: small">
+                                    颜色</td>
+                                <td>
+                                   <input id="Text4" type="text" value="0xFF0000" /></td>
+                            </tr>
+                        </table>
+                  
+                    </div>
+
+                     
+                    <table style="width:300px; display:none;">
+                        <tr>
+                            <td style="font-size: small">
+                                输入需要Base64编码的文件路径
+                            </td>
+                
+                        </tr>
+                        <tr>
+                            <td>
+                                 <!--<input id="File1" type="file" />-->
+                                <input id="File1" type="text" />
+      
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="Button6" type="button" value="开始Base64编码" onclick = "getBase64();"/>
+                            </td>
+                        </tr>
+                    </table>
+
+
+                    
+
+                    <table style="width:300px; display:none;">
+                        <tr>
+                            <td style="font-size: small">
+                            
+                                URL</td>
+                            <td>
+                            
+                                <input id="URL" type="text" value = "http://192.168.0.218:19890/WebSite1/WebService.asmx/HelloWorld?cmd1=cmd1"/></td>
+                            <td>
+                            
+                                </td>
+                        </tr>
+
+                    </table>
+
+                    <hr  style="border:1px solid #cccccc;" />
+
+                    <table style="width:300px; display:none;">
+                        <tr>
+                            <td style="font-size: small" class="style18"> 保存路径</td>
+                           
+                            <td>  
+                                <input id="Text5" type="text" /></td>                            
+                        </tr>
+                    </table>
+             <table border="0" cellpadding="0" cellspacing="0" width="100%" style=" display:none;">
+                <tr><td align="center">           </td></tr>
+                <tr><td><label style="font-size:12px;">操作的内容</label></td></tr>
+                <tr><td><textarea id="TextArea1" cols="20" style="width: 100%;height:70px;"></textarea> </td></tr>
+             </table>
+             <div id="maingrid"></div> 
+                
+                
+   
+<script type="text/javascript">
+    var rootPath = "../";
+    //列表结构
+    var toolbarOptions = {
+        items: [
+            { id: 'view', text: '查看', click: toolbarBtnItemClick, img: "../lib/icons/32X32/order_159.gif" },
+            { id: 'upload', text: '文件添加', click: toolbarBtnItemClick, img: "../lib/icons/silkicons/add.png" },
+            { id: 'submit', text: '提交备案', click: toolbarBtnItemClick, img: "../lib/icons/32X32/sign_in.gif" }
+        ]
+    };
+    var grid = $("#maingrid").ligerGrid({
+        columns: [{ display: "等级类别", name: "RegCategory", width: 100, type: "text", align: "left" },
+           { display: "印章编号", name: "se_signet_id", width: 100, type: "text", align: "left" },
+          { display: "印章内容", name: "se_content", width: 350, type: "text", align: "left" },
+          { display: "印章类型", name: "st_description", width: 100, type: "text", align: "left" },
+          { display: "申请人", name: "sr_who_apply", width: 150, type: "text", align: "left"}],
+        dataAction: 'server', pageSize: 10, toolbar: toolbarOptions,
+        url: rootPath + 'handler/grid.ashx?procedure=up_SignetInternet_SignetSelectByIDs',
+        sortName: 'se_signet_id',
+        width: '99%', height: '170px', heightDiff: -10, checkbox: true, rowHeight: 26,
+        selectRowButtonOnly: false, rownumbers: false,
+        parms: { where: JSON2.stringify({
+            op: 'and',
+            rules: [{ field: 'signetIds', value: QueryString('signetIds'), type: 'string'}]
+        }
+          )
+        }
+
+    });
+
+    function toolbarBtnItemClick(item) {
+        switch (item.id) {
+            case "view":
+                var selected = grid.getSelected();
+                if (!selected) { LG.tip('请选择行!'); return }
+                LG.ajax({
+                    type: 'AjaxPage',
+                    method: 'GetEncryptString',
+                    loading: '正在获取中...',
+                    data: { sourceStr: selected.se_signet_id },
+                    success: function (data) {
+                        wopen('../InfoRegister/SignetDetail.aspx?SignetID=' + data + '&type=V', '使用单位详细信息', '600', '600');
+                    },
+                    error: function (message) {
+                    }
+                });
+                break;
+            case "upload":
+                wopen('SignetFileDetail.aspx?v=1&SignetID=' + QueryString('signetIds'), '添加印章文件', '600', '300');
+                //$.ligerDialog.open({ height: 300, width: 600, url: 'SignetFileDetail.aspx?SignetID=' + QueryString('signetIds'), title: '添加印章文件' });
+                break;
+            case "submit":
+                SubmitSignet();
+                break;
+            case "print":
+                $("#maingrid").jqprint();
+                break;
+        }
+    }
+    //加载toolbar
+    LG.loadToolbar(grid, toolbarBtnItemClick);
+
+    function f_reload() {
+        grid.loadData();
+    }
+    function SubmitSignet() {
+        if (confirm('您确定相关文件齐备，提交备案吗?')) {
+            f_submit();
+        }
+    }
+
+    function f_submit() {
+        LG.ajax({
+            type: 'AjaxSignetManage',
+            method: 'SubmitSignets',
+            loading: '正在删除中...',
+            data: { signetIds: QueryString('signetIds'), status: 0 },
+            success: function () {
+                alert('提交成功！');
+                f_reload();
+            },
+            error: function (message) {
+                LG.showError(message);
+            }
+        });
+    }
+            </script>
+            
+        </div>
+        </td></tr>
+    </table>
+        
+
+
+        
+		
+	</body>
+
+</html>

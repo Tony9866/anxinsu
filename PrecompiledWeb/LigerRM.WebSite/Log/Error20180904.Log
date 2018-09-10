@@ -1,0 +1,12 @@
+2018-09-04 15:39:27
+不能将值 NULL 插入列 'PSID'，表 'House.dbo.Rent_PoliceStation'；列不允许有 Null 值。INSERT 失败。
+语句已终止。
+2018-09-04 16:48:15
+违反了 PRIMARY KEY 约束“PK_Rent_PoliceStation”。不能在对象“dbo.Rent_PoliceStation”中插入重复键。重复键值为 (1)。
+语句已终止。
+2018-09-04 16:48:36
+违反了 PRIMARY KEY 约束“PK_Rent_PoliceStation”。不能在对象“dbo.Rent_PoliceStation”中插入重复键。重复键值为 (1)。
+语句已终止。
+2018-09-04 16:50:45
+违反了 PRIMARY KEY 约束“PK_Rent_PoliceStation”。不能在对象“dbo.Rent_PoliceStation”中插入重复键。重复键值为 (1)。
+语句已终止。

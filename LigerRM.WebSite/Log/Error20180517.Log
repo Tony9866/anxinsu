@@ -1,0 +1,6 @@
+2018-05-17 16:47:48
+不能将值 NULL 插入列 'PSID'，表 'House.dbo.Rent_PoliceStation'；列不允许有 Null 值。INSERT 失败。
+语句已终止。
+2018-05-17 16:54:58
+不能将值 NULL 插入列 'PSID'，表 'House.dbo.Rent_PoliceStation'；列不允许有 Null 值。INSERT 失败。
+语句已终止。

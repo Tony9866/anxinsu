@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <method name="RemoveDepartment" type="AjaxMemberManage" />
+  <method name="RemoveRole" type="AjaxMemberManage" />
+  <method name="RemoveUser" type="AjaxMemberManage" />
+  <!--<method name="RemoveCustomers" type="AjaxCustomerManage" />
+  <method name="RemoveCategories" type="AjaxBaseManage" />
+  <method name="RemoveProducts" type="AjaxBaseManage" />
+  <method name="RemoveSuppliers" type="AjaxBaseManage" />
+  <method name="RemoveEmployees" type="AjaxBaseManage" />
+  <method name="RemoveShippers" type="AjaxOrderManage" />-->
+  <method name="AddRole" type="AjaxSystem" />
+  <method name="UpdateRole" type="AjaxSystem" />
+  <method name="RemoveRole" type="AjaxSystem" />
+  <method name="AddMenu" type="AjaxSystem" />
+  <method name="UpdateMenu" type="AjaxSystem" />
+  <method name="RemoveMenu" type="AjaxSystem" />
+  <method name="AddButton" type="AjaxSystem" />
+  <method name="UpdateButton" type="AjaxSystem" />
+  <method name="RemoveButton" type="AjaxSystem" />
+  <method name="AddCUDButtons" type="AjaxSystem" />
+  <method name="ClearButtons" type="AjaxSystem" />
+  <method name="AddDataPrivilege" type="AjaxSystem" />
+  <method name="UpdateDataPrivilege" type="AjaxSystem" />
+  <method name="RemoveDataPrivilege" type="AjaxSystem" />
+  <method name="SaveAdminMethodSetting" type="AjaxSystem" />
+  <method name="SaveUserPermission" type="AjaxSystem" />
+  <method name="SaveRolePermission" type="AjaxSystem" />
+</settings>

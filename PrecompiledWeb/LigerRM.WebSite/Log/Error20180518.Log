@@ -1,0 +1,2 @@
+2018-05-18 14:03:30
+当 IDENTITY_INSERT 设置为 OFF 时，不能为表 'Rent_Road' 中的标识列插入显式值。

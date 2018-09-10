@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="frmTransfer.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="frmTransfer_DataRequestServiceNew_DataRequestNewImplService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://103.231.144.162:11020/drs/ws/DataRequestNew</Value>
+    </Setting>
+    <Setting Name="frmTransfer_DataRequestService_DataRequestNewImplService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://103.231.144.162:11020/drs/ws/DataRequestNew</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="IhzbAttenServiceservice" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types />
+  <message name="hzb_SetPassengerInfo0Request">
+    <part name="index" type="xs:int" />
+    <part name="Unit_id" type="xs:string" />
+    <part name="infovalue" type="xs:string" />
+  </message>
+  <message name="hzb_SetPassengerInfo0Response">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="hzb_SetDoorOpen1Request">
+    <part name="index" type="xs:int" />
+    <part name="Unit_id" type="xs:string" />
+    <part name="doorvalue" type="xs:string" />
+  </message>
+  <message name="hzb_SetDoorOpen1Response">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="hzb_GetLockerStatus2Request">
+    <part name="index" type="xs:int" />
+    <part name="Unit_id" type="xs:string" />
+    <part name="lockerIdList" type="xs:string" />
+  </message>
+  <message name="hzb_GetLockerStatus2Response">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="hzb_GetLockerListCount3Request">
+    <part name="index" type="xs:int" />
+    <part name="Unit_id" type="xs:string" />
+    <part name="userinfo" type="xs:string" />
+  </message>
+  <message name="hzb_GetLockerListCount3Response">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="hzb_GetLockerListDetail4Request">
+    <part name="index" type="xs:int" />
+    <part name="Unit_id" type="xs:string" />
+    <part name="userinfo" type="xs:string" />
+    <part name="packageindex" type="xs:int" />
+  </message>
+  <message name="hzb_GetLockerListDetail4Response">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="hzb_GetOprateResult5Request">
+    <part name="index" type="xs:int" />
+    <part name="Unit_id" type="xs:string" />
+    <part name="schValueInfo" type="xs:string" />
+  </message>
+  <message name="hzb_GetOprateResult5Response">
+    <part name="return" type="xs:string" />
+  </message>
+  <portType name="IhzbAttenService">
+    <operation name="hzb_SetPassengerInfo">
+      <input message="tns:hzb_SetPassengerInfo0Request" />
+      <output message="tns:hzb_SetPassengerInfo0Response" />
+    </operation>
+    <operation name="hzb_SetDoorOpen">
+      <input message="tns:hzb_SetDoorOpen1Request" />
+      <output message="tns:hzb_SetDoorOpen1Response" />
+    </operation>
+    <operation name="hzb_GetLockerStatus">
+      <input message="tns:hzb_GetLockerStatus2Request" />
+      <output message="tns:hzb_GetLockerStatus2Response" />
+    </operation>
+    <operation name="hzb_GetLockerListCount">
+      <input message="tns:hzb_GetLockerListCount3Request" />
+      <output message="tns:hzb_GetLockerListCount3Response" />
+    </operation>
+    <operation name="hzb_GetLockerListDetail">
+      <input message="tns:hzb_GetLockerListDetail4Request" />
+      <output message="tns:hzb_GetLockerListDetail4Response" />
+    </operation>
+    <operation name="hzb_GetOprateResult">
+      <input message="tns:hzb_GetOprateResult5Request" />
+      <output message="tns:hzb_GetOprateResult5Response" />
+    </operation>
+  </portType>
+  <binding name="IhzbAttenServicebinding" type="tns:IhzbAttenService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="hzb_SetPassengerInfo">
+      <soap:operation soapAction="urn:hzbAttenService-IhzbAttenService#hzb_SetPassengerInfo" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:hzbAttenService-IhzbAttenService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:hzbAttenService-IhzbAttenService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="hzb_SetDoorOpen">
+      <soap:operation soapAction="urn:hzbAttenService-IhzbAttenService#hzb_SetDoorOpen" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:hzbAttenService-IhzbAttenService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:hzbAttenService-IhzbAttenService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="hzb_GetLockerStatus">
+      <soap:operation soapAction="urn:hzbAttenService-IhzbAttenService#hzb_GetLockerStatus" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:hzbAttenService-IhzbAttenService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:hzbAttenService-IhzbAttenService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="hzb_GetLockerListCount">
+      <soap:operation soapAction="urn:hzbAttenService-IhzbAttenService#hzb_GetLockerListCount" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:hzbAttenService-IhzbAttenService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:hzbAttenService-IhzbAttenService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="hzb_GetLockerListDetail">
+      <soap:operation soapAction="urn:hzbAttenService-IhzbAttenService#hzb_GetLockerListDetail" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:hzbAttenService-IhzbAttenService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:hzbAttenService-IhzbAttenService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="hzb_GetOprateResult">
+      <soap:operation soapAction="urn:hzbAttenService-IhzbAttenService#hzb_GetOprateResult" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:hzbAttenService-IhzbAttenService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:hzbAttenService-IhzbAttenService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="IhzbAttenServiceservice">
+    <port name="IhzbAttenServicePort" binding="tns:IhzbAttenServicebinding">
+      <soap:address location="http://121.201.34.89:21309/soap/IhzbAttenService" />
+    </port>
+  </service>
+</definitions>

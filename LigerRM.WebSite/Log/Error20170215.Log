@@ -1,0 +1,25 @@
+2017-02-15 00:47:05
+Invalid column name 'LSShortName'.
+2017-02-15 00:49:24
+Cannot insert the value NULL into column 'LDName', table 'LigerUI.dbo.Rent_Street'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+2017-02-15 23:03:15
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+2017-02-15 23:17:58
+The DELETE statement conflicted with the REFERENCE constraint "FK_Rent_Street_Rent_District". The conflict occurred in database "LigerUI", table "dbo.Rent_Street", column 'LDID'.
+The statement has been terminated.
+2017-02-15 23:18:10
+The DELETE statement conflicted with the REFERENCE constraint "FK_Rent_Road_Rent_Street". The conflict occurred in database "LigerUI", table "dbo.Rent_Road", column 'LSID'.
+The statement has been terminated.
+2017-02-15 23:18:44
+The DELETE statement conflicted with the REFERENCE constraint "FK_Rent_Road_Rent_Street". The conflict occurred in database "LigerUI", table "dbo.Rent_Road", column 'LSID'.
+The statement has been terminated.
+2017-02-15 23:21:16
+The DELETE statement conflicted with the REFERENCE constraint "FK_Rent_Road_Rent_Street". The conflict occurred in database "LigerUI", table "dbo.Rent_Road", column 'LSID'.
+The statement has been terminated.
+2017-02-15 23:21:21
+The DELETE statement conflicted with the REFERENCE constraint "FK_Rent_Road_Rent_Street". The conflict occurred in database "LigerUI", table "dbo.Rent_Road", column 'LSID'.
+The statement has been terminated.
+2017-02-15 23:21:27
+The DELETE statement conflicted with the REFERENCE constraint "FK_Rent_Street_Rent_District". The conflict occurred in database "LigerUI", table "dbo.Rent_Street", column 'LDID'.
+The statement has been terminated.

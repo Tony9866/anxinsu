@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="CreateHomeLock">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="familyName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ownerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ownerMobile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ownerId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ownerAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="homeStatus" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateHomeLockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateHomeLockResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Authentication" type="tns:Authentication" />
+      <s:complexType name="Authentication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="GetHomeLockReturnInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="newLockId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHomeLockReturnInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHomeLockReturnInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddGateway">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="gatewayId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="devKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newLockID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddGatewayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddGatewayResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPinInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="newLockId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPinInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPinInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGatewayLock">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="newLockID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGatewayLockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteGatewayLockResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserNewLockList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserNewLockListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserNewLockListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNewFamilyInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="newLockId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNewFamilyInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNewFamilyInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateNewFamilyInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="newLockId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="familyName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ownerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ownerMobile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ownerId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ownerAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="homeStatus" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateNewFamilyInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateNewFamilyInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NewOpenDoor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="newLockId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NewOpenDoorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NewOpenDoorResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NewAddPasswordICcard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="newLockId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwdAndCard" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="startTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="endTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NewAddPasswordICcardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NewAddPasswordICcardResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NewDelPasswordICcard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NewDelPasswordICcardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NewDelPasswordICcardResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NewSelPasswordICcard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="newLockId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NewSelPasswordICcardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NewSelPasswordICcardResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataBindInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="gatewayJson" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataBindInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DataBindInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateHomeLockSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateHomeLock" />
+  </wsdl:message>
+  <wsdl:message name="CreateHomeLockSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateHomeLockResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateHomeLockAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetHomeLockReturnInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHomeLockReturnInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetHomeLockReturnInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHomeLockReturnInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHomeLockReturnInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="AddGatewaySoapIn">
+    <wsdl:part name="parameters" element="tns:AddGateway" />
+  </wsdl:message>
+  <wsdl:message name="AddGatewaySoapOut">
+    <wsdl:part name="parameters" element="tns:AddGatewayResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddGatewayAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetPinInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPinInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetPinInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPinInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPinInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGatewayLockSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteGatewayLock" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGatewayLockSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteGatewayLockResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGatewayLockAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetUserNewLockListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserNewLockList" />
+  </wsdl:message>
+  <wsdl:message name="GetUserNewLockListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserNewLockListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserNewLockListAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="GetNewFamilyInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNewFamilyInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetNewFamilyInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNewFamilyInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNewFamilyInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="UpdateNewFamilyInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateNewFamilyInfo" />
+  </wsdl:message>
+  <wsdl:message name="UpdateNewFamilyInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateNewFamilyInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateNewFamilyInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="NewOpenDoorSoapIn">
+    <wsdl:part name="parameters" element="tns:NewOpenDoor" />
+  </wsdl:message>
+  <wsdl:message name="NewOpenDoorSoapOut">
+    <wsdl:part name="parameters" element="tns:NewOpenDoorResponse" />
+  </wsdl:message>
+  <wsdl:message name="NewOpenDoorAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="NewAddPasswordICcardSoapIn">
+    <wsdl:part name="parameters" element="tns:NewAddPasswordICcard" />
+  </wsdl:message>
+  <wsdl:message name="NewAddPasswordICcardSoapOut">
+    <wsdl:part name="parameters" element="tns:NewAddPasswordICcardResponse" />
+  </wsdl:message>
+  <wsdl:message name="NewAddPasswordICcardAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="NewDelPasswordICcardSoapIn">
+    <wsdl:part name="parameters" element="tns:NewDelPasswordICcard" />
+  </wsdl:message>
+  <wsdl:message name="NewDelPasswordICcardSoapOut">
+    <wsdl:part name="parameters" element="tns:NewDelPasswordICcardResponse" />
+  </wsdl:message>
+  <wsdl:message name="NewDelPasswordICcardAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="NewSelPasswordICcardSoapIn">
+    <wsdl:part name="parameters" element="tns:NewSelPasswordICcard" />
+  </wsdl:message>
+  <wsdl:message name="NewSelPasswordICcardSoapOut">
+    <wsdl:part name="parameters" element="tns:NewSelPasswordICcardResponse" />
+  </wsdl:message>
+  <wsdl:message name="NewSelPasswordICcardAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="DataBindInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:DataBindInfo" />
+  </wsdl:message>
+  <wsdl:message name="DataBindInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:DataBindInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataBindInfoAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:portType name="LockManageServicesSoap">
+    <wsdl:operation name="CreateHomeLock">
+      <wsdl:input message="tns:CreateHomeLockSoapIn" />
+      <wsdl:output message="tns:CreateHomeLockSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHomeLockReturnInfo">
+      <wsdl:input message="tns:GetHomeLockReturnInfoSoapIn" />
+      <wsdl:output message="tns:GetHomeLockReturnInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddGateway">
+      <wsdl:input message="tns:AddGatewaySoapIn" />
+      <wsdl:output message="tns:AddGatewaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPinInfo">
+      <wsdl:input message="tns:GetPinInfoSoapIn" />
+      <wsdl:output message="tns:GetPinInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGatewayLock">
+      <wsdl:input message="tns:DeleteGatewayLockSoapIn" />
+      <wsdl:output message="tns:DeleteGatewayLockSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserNewLockList">
+      <wsdl:input message="tns:GetUserNewLockListSoapIn" />
+      <wsdl:output message="tns:GetUserNewLockListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewFamilyInfo">
+      <wsdl:input message="tns:GetNewFamilyInfoSoapIn" />
+      <wsdl:output message="tns:GetNewFamilyInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNewFamilyInfo">
+      <wsdl:input message="tns:UpdateNewFamilyInfoSoapIn" />
+      <wsdl:output message="tns:UpdateNewFamilyInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NewOpenDoor">
+      <wsdl:input message="tns:NewOpenDoorSoapIn" />
+      <wsdl:output message="tns:NewOpenDoorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NewAddPasswordICcard">
+      <wsdl:input message="tns:NewAddPasswordICcardSoapIn" />
+      <wsdl:output message="tns:NewAddPasswordICcardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NewDelPasswordICcard">
+      <wsdl:input message="tns:NewDelPasswordICcardSoapIn" />
+      <wsdl:output message="tns:NewDelPasswordICcardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NewSelPasswordICcard">
+      <wsdl:input message="tns:NewSelPasswordICcardSoapIn" />
+      <wsdl:output message="tns:NewSelPasswordICcardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DataBindInfo">
+      <wsdl:input message="tns:DataBindInfoSoapIn" />
+      <wsdl:output message="tns:DataBindInfoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LockManageServicesSoap" type="tns:LockManageServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateHomeLock">
+      <soap:operation soapAction="http://tempuri.org/CreateHomeLock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CreateHomeLockAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHomeLockReturnInfo">
+      <soap:operation soapAction="http://tempuri.org/GetHomeLockReturnInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetHomeLockReturnInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddGateway">
+      <soap:operation soapAction="http://tempuri.org/AddGateway" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AddGatewayAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPinInfo">
+      <soap:operation soapAction="http://tempuri.org/GetPinInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPinInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGatewayLock">
+      <soap:operation soapAction="http://tempuri.org/DeleteGatewayLock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DeleteGatewayLockAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserNewLockList">
+      <soap:operation soapAction="http://tempuri.org/GetUserNewLockList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetUserNewLockListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewFamilyInfo">
+      <soap:operation soapAction="http://tempuri.org/GetNewFamilyInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetNewFamilyInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNewFamilyInfo">
+      <soap:operation soapAction="http://tempuri.org/UpdateNewFamilyInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdateNewFamilyInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewOpenDoor">
+      <soap:operation soapAction="http://tempuri.org/NewOpenDoor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:NewOpenDoorAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewAddPasswordICcard">
+      <soap:operation soapAction="http://tempuri.org/NewAddPasswordICcard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:NewAddPasswordICcardAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewDelPasswordICcard">
+      <soap:operation soapAction="http://tempuri.org/NewDelPasswordICcard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:NewDelPasswordICcardAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewSelPasswordICcard">
+      <soap:operation soapAction="http://tempuri.org/NewSelPasswordICcard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:NewSelPasswordICcardAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DataBindInfo">
+      <soap:operation soapAction="http://tempuri.org/DataBindInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DataBindInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LockManageServicesSoap12" type="tns:LockManageServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateHomeLock">
+      <soap12:operation soapAction="http://tempuri.org/CreateHomeLock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CreateHomeLockAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHomeLockReturnInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetHomeLockReturnInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetHomeLockReturnInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddGateway">
+      <soap12:operation soapAction="http://tempuri.org/AddGateway" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AddGatewayAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPinInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetPinInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPinInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGatewayLock">
+      <soap12:operation soapAction="http://tempuri.org/DeleteGatewayLock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DeleteGatewayLockAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserNewLockList">
+      <soap12:operation soapAction="http://tempuri.org/GetUserNewLockList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetUserNewLockListAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewFamilyInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetNewFamilyInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetNewFamilyInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNewFamilyInfo">
+      <soap12:operation soapAction="http://tempuri.org/UpdateNewFamilyInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdateNewFamilyInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewOpenDoor">
+      <soap12:operation soapAction="http://tempuri.org/NewOpenDoor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:NewOpenDoorAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewAddPasswordICcard">
+      <soap12:operation soapAction="http://tempuri.org/NewAddPasswordICcard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:NewAddPasswordICcardAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewDelPasswordICcard">
+      <soap12:operation soapAction="http://tempuri.org/NewDelPasswordICcard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:NewDelPasswordICcardAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewSelPasswordICcard">
+      <soap12:operation soapAction="http://tempuri.org/NewSelPasswordICcard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:NewSelPasswordICcardAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DataBindInfo">
+      <soap12:operation soapAction="http://tempuri.org/DataBindInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DataBindInfoAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LockManageServices">
+    <wsdl:port name="LockManageServicesSoap" binding="tns:LockManageServicesSoap">
+      <soap:address location="http://localhost:39124/LockManageServices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LockManageServicesSoap12" binding="tns:LockManageServicesSoap12">
+      <soap12:address location="http://localhost:39124/LockManageServices.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

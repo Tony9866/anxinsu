@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SignetInternet_BusinessLayer.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SignetInternet_BusinessLayer_SMS_CommonServices" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.guardts.com/CommonService/CommonServices.asmx</Value>
+    </Setting>
+    <Setting Name="SignetInternet_BusinessLayer_LockServices_IhzbAttenServiceservice" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://121.201.34.89:21309/soap/IhzbAttenService</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

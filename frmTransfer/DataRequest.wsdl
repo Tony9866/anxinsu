@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="DataRequestImplService" targetNamespace="http://impl.service.drs.xdja.com/" xmlns:ns1="http://service.drs.xdja.com/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://impl.service.drs.xdja.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:import location="http://103.231.144.162:11020/drs/ws/DataRequest?wsdl=DataRequest.wsdl" namespace="http://service.drs.xdja.com/">
+    </wsdl:import>
+  <wsdl:binding name="DataRequestImplServiceSoapBinding" type="ns1:DataRequest">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="queryByJson">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="queryByJson">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="queryByJsonResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="exeIDUByJson">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="exeIDUByJson">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="exeIDUByJsonResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="query">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="query">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="queryResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="executeIDU">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="executeIDU">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="executeIDUResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDS">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getDS">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getDSResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DataRequestImplService">
+    <wsdl:port binding="tns:DataRequestImplServiceSoapBinding" name="DataRequestImplPort">
+      <soap:address location="http://103.231.144.162:11020/drs/ws/DataRequest" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
