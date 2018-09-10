@@ -110,9 +110,6 @@ namespace SignetInternet_BusinessLayer
 
         #endregion
 
-        //测试github
-        //再测试
-        //换了默认的远程库
 
     }
 }
