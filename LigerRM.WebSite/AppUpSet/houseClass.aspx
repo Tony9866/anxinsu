@@ -106,7 +106,7 @@
         switch (item.id) {
             case "add":
                 //top.f_addTab(null, '增加客户信息', 'CustomerManage/CustomersDetail.aspx');
-                wopen('houseClass.aspx?RentNo=&type=E', '新增房源', '700', '570');
+                wopen('classDetail.aspx?RentNo=&type=E', '新增房源', '700', '570');
                 break;
             case "view":
                 var selected = grid.getSelected();
