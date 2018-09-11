@@ -110,8 +110,6 @@ namespace SignetInternet_BusinessLayer
 
         #endregion
 
-        //测试github
-        //再测试
 
     }
 }
