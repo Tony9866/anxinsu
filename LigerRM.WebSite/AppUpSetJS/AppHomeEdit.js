@@ -132,7 +132,7 @@ var clipArea = new bjj.PhotoClip("#clipArea", {
 
 
 
-function GetMod() {
+function GetMod(BannerId) {
 
 
     $.ajax({
