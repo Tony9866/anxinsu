@@ -24,7 +24,7 @@ namespace LigerRM.Common.ImageHelper
         {
             try
             {
-                string FileName = @"\SysFiles\Image" + DateTime.Now.ToString("yyyyMMDDHHmmssfff") + ".jpg";
+                string FileName = @"\SysFiles\Image\" + DateTime.Now.ToString("yyyyMMDDHHmmssfff") + ".jpg";
                 FileStream fileStream = new FileStream(FlieUrl + FileName, FileMode.Create);
                 byte[] buffer = ToImage(StringBase64);
                 fileStream.Write(buffer, 0, buffer.Length);
