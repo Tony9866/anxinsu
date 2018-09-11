@@ -77,4 +77,7 @@
     </div>
 </body>
 </html>
+
 <script src="../AppUpSetJS/AppHome.js" type="text/javascript"></script>
+<script src="../AppUpSetJS/sepcialInfo.js" type="text/javascript"></script>
+
