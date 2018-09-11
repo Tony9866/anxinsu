@@ -16,11 +16,27 @@ public class ajax : IHttpHandler
                 context.Response.Write(SetBanner(context));
                 break;
             case "GetMod":
-                context.Response.Write(SetBanner(context));
+                context.Response.Write(GetMod(context));
+                break;
+            case "DeleteBanner":
+                context.Response.Write(DeleteBanner(context));
                 break;
         }
     }
+    public string DeleteBanner(HttpContext context)
+    {
+        AppHomeHelper apphome = new AppHomeHelper();
+        try
+        {
+            AppHomeHelper app = new AppHomeHelper();
+            return app.DeleteBanner(long.Parse(context.Request["BannerId"].ToString()));
+        }
+        catch (Exception ex)
+        {
 
+            throw;
+        }
+    }
     public string SetBanner(HttpContext context)
     {
         AppHomeHelper apphome = new AppHomeHelper();
@@ -28,6 +44,19 @@ public class ajax : IHttpHandler
         {
             AppHomeHelper app = new AppHomeHelper();
             return app.SetBanner(context.Request["data"].ToString(), 1);
+        }
+        catch (Exception ex)
+        {
+
+            throw;
+        }
+    }
+
+    public string GetMod(HttpContext context)
+    {
+        try
+        {
+            return new AppHomeHelper().GetMod(long.Parse(context.Request["BannerId"].ToString()));
         }
         catch (Exception ex)
         {

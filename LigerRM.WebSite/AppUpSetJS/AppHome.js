@@ -29,45 +29,38 @@ LG.loadToolbar(grid, toolbarBtnItemClick);
 //工具条事件
 function toolbarBtnItemClick(item) {
     switch (item.id) {
-        case "modify":
+        case "add":
             //top.f_addTab(null, '增加客户信息', 'CustomerManage/CustomersDetail.aspx');
-            wopen('AppHomeEdit.aspx?RentNo=&type=E', '新增房源', '1200', '870');
+            wopen('AppHomeEdit.aspx?BannerId=0', '新增房源', '1200', '870');
             break;
         case "view":
             var selected = grid.getSelected();
-            if (!selected) { LG.tip('请选择行!'); return }
-            LG.ajax({
-                type: 'AjaxPage',
-                method: 'GetEncryptString',
-                loading: '正在获取中...',
-                data: { sourceStr: selected.RentNO },
-                success: function (data) {
-                    wopen('RentDetail.aspx?RentNo=' + data, '查看房源信息', '700', '570');
-                },
-                error: function (message) {
-                }
-            });
+            wopen('AppHomeEdit.aspx?BannerId=' + selected.BannerId, '编辑APP首页轮播图', '1200', '870');
             break;
-        case "modify1":
-
+        case "modify":
             var selected = grid.getSelected();
-            if (!selected) { LG.tip('请选择行!'); return }
-            LG.ajax({
-                type: 'AjaxPage',
-                method: 'GetEncryptString',
-                loading: '正在获取中...',
-                data: { sourceStr: selected.RentNO },
-                success: function (data) {
-                    wopen('AppHomeEdit.aspx?RentNo=' + data + '&type=E', '修改房源信息', '700', '570');
-                },
-                error: function (message) {
-                }
-            });
+            wopen('AppHomeEdit.aspx?BannerId=' + selected.BannerId, '编辑APP首页轮播图', '1200', '870');
             break;
         case "delete":
+            var selected = grid.getSelected();
             jQuery.ligerDialog.confirm('确定删除吗?', function (confirm) {
                 if (confirm)
-                    f_delete();
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    type: 'post',
+                    dataType: 'json',
+                    data: { "type": "DeleteBanner", "BannerId": selected.BannerId },
+                    url: "/AppUpSetAshx/ajax.ashx",
+                    success: function (data) {
+                        if (data.Code == "0") {
+                            LG.showSuccess(data.Msg);
+                            grid.loadData();
+                        } else {
+                            LG.showSuccess(data.Msg);
+                        }
+                    }
+                });
             });
             break;
         //case "viewRentPerson": 

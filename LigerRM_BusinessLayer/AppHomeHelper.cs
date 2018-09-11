@@ -21,13 +21,13 @@ namespace SignetInternet_BusinessLayer
             }
             catch (Exception ex)
             {
-                
+
                 throw;
             }
         }
 
         #region  Banner
-        public string SetBanner(string data,int UserId)
+        public string SetBanner(string data, int UserId)
         {
             ReturnJosn Return = new ReturnJosn();
             try
@@ -37,20 +37,119 @@ namespace SignetInternet_BusinessLayer
                 Mod.AddUser = UserId;
                 Mod.ImageUrl = new ImageHelper().Base64Decode(Mod.ImageUrl);
                 StringBuilder str = new StringBuilder();
-                str.Append("Insert into  AppHome_Banner VALUES(" + Mod .BannerType+ ",'"+Mod.ImageUrl+"','"+Mod.Url+"','"+Mod.Describe+"',"+Mod.innerClassId+",'"+Mod.innerContent+"','"+Mod.AddTime+"',"+Mod.AddUser+")");
+                if (Mod.BannerId > 0)
+                {
+                    AppHome_Banner DBMod = GetModel<AppHome_Banner>("SELECT *  FROM AppHome_Banner WHERE BannerId=" + Mod.BannerId);
+                    if (DBMod != null)
+                    {
+                        DBMod.BannerType = Mod.BannerType;
+                        DBMod.Describe = Mod.Describe;
+                        if (Mod.ImageUrl != "") DBMod.ImageUrl = Mod.ImageUrl;
+                        DBMod.innerClassId = Mod.innerClassId;
+                        DBMod.innerContent = Mod.innerContent;
+                        DBMod.Url = Mod.Url;
+                        switch (DBMod.BannerType)
+                        {
+                            case 1:
+                                DBMod.innerClassId = -1;
+                                DBMod.innerContent = "";
+                                break;
+                            case 2:
+                                DBMod.Url = "";
+                                break;
+                            case 3:
+                                DBMod.Url = "";
+                                DBMod.innerClassId = -1;
+                                DBMod.innerContent = "";
+                                break;
+                        }
+         
+                    }
+                    else
+                    {
+                        Return.Code = "";
+                        Return.Msg = "操作失败，未能成功修改数据！！！";
+                        return JSONHelper.ToJson(Return);
+                    }
+                    str.Append("update AppHome_Banner set  BannerType=" + DBMod.BannerType + " ,Describe='" + DBMod.Describe + "',ImageUrl='" + DBMod.ImageUrl + "',innerClassId=" + DBMod.innerClassId + ",innerContent='" + DBMod.innerContent + "',Url='" + DBMod.Url + "' where  BannerId=" + Mod.BannerId);
 
-               int count= MySQLHelper.ExecuteNonQuery(MySQLHelper.SqlConnString, MySQLHelper.CreateCommand(str.ToString()));
-               if (count > 0)
-               {
-                   Return.Code = "0";
-                   Return.Msg = "添加成功！！！";
-               }
-               else
-               {
-                   Return.Code = "";
-                   Return.Msg = "操作失败，未能成功插入数据！！！";
-               }
-               return JSONHelper.ToJson(Return) ;
+
+                }
+                else
+                {
+                    str.Append("Insert into  AppHome_Banner VALUES(" + Mod.BannerType + ",'" + Mod.ImageUrl + "','" + Mod.Url + "','" + Mod.Describe + "'," + Mod.innerClassId + ",'" + Mod.innerContent + "','" + Mod.AddTime + "'," + Mod.AddUser + ")");
+                }
+
+
+                int count = MySQLHelper.ExecuteNonQuery(MySQLHelper.SqlConnString, MySQLHelper.CreateCommand(str.ToString()));
+                if (count > 0)
+                {
+                    Return.Code = "0";
+                    Return.Msg = "操作成功！！！";
+                }
+                else
+                {
+                    Return.Code = "";
+                    Return.Msg = "操作失败，未能成功插入数据！！！";
+                }
+                return JSONHelper.ToJson(Return);
+            }
+            catch (Exception ex)
+            {
+                Return.Code = "1";
+                Return.Msg = "操作失败，出现系统异常！";
+                return JSONHelper.ToJson(Return);
+            }
+        }
+
+        public string GetMod(long BannerId)
+        {
+            ReturnJosn Return = new ReturnJosn();
+            try
+            {
+                StringBuilder str = new StringBuilder();
+                str.Append("SELECT *  FROM AppHome_Banner WHERE BannerId=").Append(BannerId);
+                AppHome_Banner Mod = GetModel<AppHome_Banner>(str.ToString());
+                if (Mod != null)
+                {
+                    Return.Code = "0";
+                    Return.Data = Mod;
+                }
+                else
+                {
+                    Return.Code = "1";
+                    Return.Msg = "未能找到相关数据！！！";
+                }
+                return JSONHelper.ToJson(Return);
+            }
+            catch (Exception ex)
+            {
+                Return.Code = "1";
+                Return.Msg = "发生错误！！！";
+                return JSONHelper.ToJson(Return);
+
+            }
+        }
+
+        public string DeleteBanner(long BannerId)
+        {
+            ReturnJosn Return = new ReturnJosn();
+            try
+            {
+                StringBuilder str = new StringBuilder();
+                str.Append("DELETE AppHome_Banner WHERE BannerId=" + BannerId);
+                int count = MySQLHelper.ExecuteNonQuery(MySQLHelper.SqlConnString, MySQLHelper.CreateCommand(str.ToString()));
+                if (count > 0)
+                {
+                    Return.Code = "0";
+                    Return.Msg = "删除成功！！！";
+                }
+                else
+                {
+                    Return.Code = "1";
+                    Return.Msg = "删除失败！！！";
+                }
+                return JSONHelper.ToJson(Return);
             }
             catch (Exception ex)
             {

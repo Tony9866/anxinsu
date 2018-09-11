@@ -1,18 +1,31 @@
-﻿$(function () {
-    var BannerId = GetQueryString("BannerId");
-    //判断BannerId是否有值
-    if (typeof (obj) == "BannerId") {
-        GetMod(BannerId);
-    }
+﻿var jsonData = {};
 
-    $("form").ligerForm();
+$(function () {
+
+
+
+
+    //    $("#BannerType").ligerGetComboBoxManager().clearContent();
+    //    var data = [{ value: "1", text: "外联" }, { value: "2", text: "内链" }, { value: "3", text: "无链接"}];
+    //    var fruitManager = $("#BannerType").ligerComboBox({
+    //        data: data,
+    //        isMultiSelect: true,
+    //        selectBoxWidth: 150,
+    //        width: 150,
+    //        selectBoxHeight: 155,
+    //        isShowCheckBox: true,
+    //        initText: '请选择',
+    //        valueFieldID: 'fruitList',
+    //        valueField: 'value',
+    //        textField: 'text'
+    //    });
+    //    liger.get("BannerType").setData(data);
+    //    fruitManager.updateStyle()
 
 
     $("[name='InnerChain']").hide();
     $("[name='OuterChain']").hide();
     $(document).on("change", "[name='BannerType']", function () {
-        var html = "";
-
         if ($(this).val() == "3") {
             $("[name='InnerChain']").hide();
             $("[name='OuterChain']").hide();
@@ -41,21 +54,72 @@
 
     })
 
-    $("#Class").ligerGetComboBoxManager().clearContent();
-    var data = [{ id: 1, name: "桔子" }, { id: 2, name: "苹果" }, { id: 1, name: "梨子"}];
-    var fruitManager = $("#Class").ligerComboBox({
-        data: data,
-        isMultiSelect: true,
-        selectBoxWidth: 150,
-        width: 150,
-        selectBoxHeight: 155,
-        isShowCheckBox: true,
-        initText: '请选择',
-        valueFieldID: 'fruitList',
-        valueField: 'id',
-        textField: 'name'
-    });
-    liger.get("Class").setData(data);
+
+    var BannerId = GetQueryString("BannerId");
+    //判断BannerId是否有值
+    if (typeof (BannerId) != "undefined " && BannerId != null && BannerId != "0") {
+        GetMod(BannerId);
+        $("#BannerId").val(BannerId);
+    }
+
+    if (typeof (jsonData.BannerId) != "undefined") {
+        $("#BannerType").val(jsonData.BannerType);
+        $("#view").html("<img src='" + jsonData.ImageUrl + "'  />");
+        $("#Url").val(jsonData.Url);
+        $("#Describe").val(jsonData.Describe);
+        $("#InnerChainType").val(jsonData.innerClassId);
+        if (jsonData.innerClassId == 1) {
+            $("#Class").val(jsonData.innerContent);
+        } else {
+            $("#InnerChain_fyfl").hide();
+            $("#InnerChain_fy").show();
+            $("#RentNO").val(jsonData.innerContent);
+        }
+
+        $("#Url").html(jsonData.Url);
+        $("form").ligerForm();
+
+        switch (jsonData.BannerType) {
+            case 1:
+                //外链
+                $("[name='InnerChain']").hide();
+                $("[name='OuterChain']").show();
+                break;
+            case 2:
+                //内链
+                $("[name='InnerChain']").show();
+                $("[name='OuterChain']").hide();
+                $("#InnerChain_fy").hide();
+                break;
+            case 3:
+                $("[name='InnerChain']").hide();
+                $("[name='OuterChain']").hide();
+                //无链接
+                break;
+        }
+
+        switch (jsonData.innerClassId) {
+            case 1:
+                $("#InnerChain_fyfl").show();
+                $("#InnerChain_fy").hide();
+                break;
+            case 2:
+                $("#InnerChain_fyfl").hide();
+                $("#InnerChain_fy").show();
+                break;
+        }
+
+    } else {
+        $("form").ligerForm();
+        $("[name='InnerChain']").hide();
+        $("[name='OuterChain']").hide();
+    }
+
+
+
+
+
+
 
     $(document).on("click", "#submit", function () {
         var BannerType = $("#BannerType").val(); //轮播图类型
@@ -65,11 +129,12 @@
         var InnerChainType = $("#InnerChainType").val(); //内链类型
         var Class = $("#Class").val(); //内链-分类ID
         var RentNO = $("#RentNO").val(); //内链-房屋详情
-
+        var BannerId = $("#BannerId").val();
         var JsonMod = {};
         JsonMod.BannerType = BannerType;
         JsonMod.ImageUrl = ImageUrl;
         JsonMod.Url = Url;
+        JsonMod.BannerId = BannerId;
         JsonMod.Describe = Describe;
         JsonMod.innerClassId = InnerChainType;
         if (InnerChainType == "1") {
@@ -105,7 +170,7 @@
 //上传封面
 //document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 var clipArea = new bjj.PhotoClip("#clipArea", {
-    size: [100, 50], // 截取框的宽和高组成的数组。默认值为[260,260]
+    size: [428, 321], // 截取框的宽和高组成的数组。默认值为[260,260]
     outputSize: [428, 321], // 输出图像的宽和高组成的数组。默认值为[0,0]，表示输出图像原始大小
     //outputType: "jpg", // 指定输出图片的类型，可选 "jpg" 和 "png" 两种种类型，默认为 "jpg"
     file: "#file", // 上传图片的<input type="file">控件的选择器或者DOM对象
@@ -133,19 +198,19 @@ var clipArea = new bjj.PhotoClip("#clipArea", {
 
 
 function GetMod(BannerId) {
-
-
     $.ajax({
         cache: false,
         async: false,
         type: 'post',
         dataType: 'json',
-        data: { "type": "GetHousing", "data": JSON.stringify(JsonMod) },
+        data: { "type": "GetMod", "BannerId": BannerId },
         url: "/AppUpSetAshx/ajax.ashx",
         success: function (data) {
             if (data.Code == "0") {
-                alert(data.Msg);
-                window.close();
+                jsonData = data.Data;
+
+
+                console.log(data.Data);
             } else {
                 alert(data.Msg);
             }

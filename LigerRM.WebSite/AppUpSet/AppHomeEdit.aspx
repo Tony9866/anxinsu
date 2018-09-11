@@ -66,14 +66,14 @@
     <form name="form1" action="" method="post" id="form1">
     <div>
     </div>
-    
+    <input type="hidden" id="BannerId" value="0" />
     <table cellpadding="0" cellspacing="0" class="l-table-edit">
         <tr>
             <td align="right" class="l-table-edit-td">
                 轮播图类型:
             </td>
             <td align="left" class="l-table-edit-td">
-                <select name="BannerType" id="BannerType" ltype="select" style="line-height: normal;">
+                <select name="BannerType" id="BannerType" ltype="BannerType" style="line-height: normal;">
                     <option value="3">无链接</option>
                     <option value="2">内链</option>
                     <option value="1">外联</option>
