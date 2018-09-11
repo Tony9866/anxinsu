@@ -33,11 +33,8 @@ function toolbarBtnItemClick(item) {
     switch (item.id) {
         case "add":
             //top.f_addTab(null, '增加客户信息', 'CustomerManage/CustomersDetail.aspx');
-<<<<<<< HEAD
-            wopen('AppHomeEdit.aspx?BannerId=&type=E', '新增头部轮播图', '1200', '870');
-=======
+            // wopen('AppHomeEdit.aspx?BannerId=&type=E', '新增头部轮播图', '1200', '870');
             wopen('AppHomeEdit.aspx?BannerId=0', '新增房源', '1200', '870');
->>>>>>> 864e080041293c34e12c9fac267b55a50e2086bc
             break;
         case "view":
             var selected = grid.getSelected();
@@ -45,7 +42,6 @@ function toolbarBtnItemClick(item) {
             break;
         case "modify":
             var selected = grid.getSelected();
-<<<<<<< HEAD
             if (!selected) { LG.tip('请选择行!'); return }
             LG.ajax({
                 type: 'AjaxPage',
@@ -58,9 +54,7 @@ function toolbarBtnItemClick(item) {
                 error: function (message) {
                 }
             });
-=======
             wopen('AppHomeEdit.aspx?BannerId=' + selected.BannerId, '编辑APP首页轮播图', '1200', '870');
->>>>>>> 864e080041293c34e12c9fac267b55a50e2086bc
             break;
         case "delete":
             var selected = grid.getSelected();

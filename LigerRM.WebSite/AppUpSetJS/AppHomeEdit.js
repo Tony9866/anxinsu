@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿//此为
 $(function () {
     var BannerId = GetQueryString("BannerId");
@@ -10,7 +9,7 @@ $(function () {
 ﻿var jsonData = {};
 
 $(function () {
->>>>>>> 864e080041293c34e12c9fac267b55a50e2086bc
+
 
 
 
