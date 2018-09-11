@@ -36,7 +36,7 @@ namespace SignetInternet_BusinessLayer
             {
                 AppHome_Banner Mod = Newtonsoft.Json.JsonConvert.DeserializeObject<AppHome_Banner>(data);
                 Mod.AddTime = DateTime.Now;
-                //UserId 是获取当前页面session的用户id
+                
                 //UserId = covert.tostring(Session["RentNo"]);
                 Mod.AddUser = UserId;
                 Mod.ImageUrl = new ImageHelper().Base64Decode(Mod.ImageUrl);
