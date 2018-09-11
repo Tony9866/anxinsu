@@ -13,6 +13,7 @@ namespace SignetInternet_BusinessLayer
 
         public List<AppHouse_Class> GetListClass()
         {
+            //ceshi yixai 
             try
             {
                 string str = "SELECT *  FROM appHouse_Class ";
