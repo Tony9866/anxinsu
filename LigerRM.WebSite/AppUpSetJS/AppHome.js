@@ -10,9 +10,9 @@ var grid = $("#maingrid").ligerGrid({
                 { display: "地址", name: "Url", width: 200, type: "text", align: "left" },
                 { display: "描述", name: "Describe", width: 300, type: "text", align: "left"}],
    
-    dataAction: 'server', pageSize: 3, toolbar: {},
+    dataAction: 'server', pageSize: 4, toolbar: {},
     url: rootPath + 'handler/grid.ashx?view=AppHome_Banner', sortName: 'BannerId',
-    width: '98%', height: '30%', heightDiff: -10, checkbox: true, fixedCellHeight: true, rowHeight: 26,
+    width: '98%', height: '40%', heightDiff: -10, checkbox: true, fixedCellHeight: true, rowHeight: 26,
     selectRowButtonOnly: true
 });
 
