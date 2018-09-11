@@ -27,6 +27,7 @@ public partial class AppUpSet_AppHomeEdit : System.Web.UI.Page
     
     public string GetHousing()
     {
+        //测试一下
         AppHomeHelper apphome = new AppHomeHelper();
         try
         {
