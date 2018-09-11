@@ -1,21 +1,11 @@
 ﻿$(function () {
+    var BannerId = GetQueryString("BannerId");
+    //判断BannerId是否有值
+    if (typeof (obj) == "BannerId") {
+        GetMod(BannerId);
+    }
 
     $("form").ligerForm();
-    //    $("form").ligerForm({
-    //        inputWidth: 170, labelWidth: 90, space: 40,
-    //        fields: [
-    //    { name: "ProductID", type: "hidden" },
-    //    { display: "产品名称", name: "ProductName", newline: true, type: "text", group: "基础信息", groupicon: "23232" },
-    //    { display: "供应商", name: "SupplierID", newline: false, type: "select", comboboxName: "CompanyName", options: { valueFieldID: "SupplierID"} },
-    //    { display: "类别 ", name: "CategoryID", newline: true, type: "select", comboboxName: "CategoryName", options: { valueFieldID: "CategoryID" }, width: 240 },
-    //    { display: "日期 ", name: "AddTime", newline: true, type: "date" },
-    //    { display: "折扣", name: "QuantityPerUnit", newline: false, type: "number" },
-    //    { display: "单价", name: "UnitPrice", newline: true, type: "number" },
-    //    { display: "库存量", name: "UnitsInStock", newline: true, type: "digits", group: "库存", groupicon: "22" },
-    //    { display: "订购量", name: "UnitsOnOrder", newline: false, type: "digits" },
-    //    { display: "备注", name: "Remark", newline: true, type: "text", width: 470 }
-    //    ]
-    //    });
 
 
     $("[name='InnerChain']").hide();
@@ -53,7 +43,6 @@
 
     $("#Class").ligerGetComboBoxManager().clearContent();
     var data = [{ id: 1, name: "桔子" }, { id: 2, name: "苹果" }, { id: 1, name: "梨子"}];
-　
     var fruitManager = $("#Class").ligerComboBox({
         data: data,
         isMultiSelect: true,
@@ -163,4 +152,13 @@ function GetMod() {
         }
     });
 
+}
+
+
+//获取参数
+function GetQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return decodeURI(r[2]);
+    return null;
 }
