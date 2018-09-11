@@ -78,8 +78,10 @@
     <Compile Include="Global\GSMHelper.cs" />
     <Compile Include="Global\RegisterHelper.cs" />
     <Compile Include="GZip\GZipHelper.cs" />
+    <Compile Include="Helper\Basics.cs" />
     <Compile Include="Helper\CookieHelper.cs" />
     <Compile Include="Helper\DbEntityHelper.cs" />
+    <Compile Include="ImageHelper\ImageHelper.cs" />
     <Compile Include="JSON\JSONHelper.cs" />
     <Compile Include="Log\LogManager.cs" />
     <Compile Include="Payment\Md5Algorithm.cs" />
