@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Reflection;
+using LigerRM.Common.Helper;
 
 namespace SignetInternet_BusinessLayer
 {
-    public class BaseHelper
+    public class BaseHelper : Basics
     {
         private static String SqlConnString = MySQLHelper.SqlConnString;
 
