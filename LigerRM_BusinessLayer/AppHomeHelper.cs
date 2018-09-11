@@ -5,6 +5,7 @@ using System.Text;
 using LigerRM.Common;
 using LigerRM.Common.ImageHelper;
 
+
 namespace SignetInternet_BusinessLayer
 {
     public class AppHomeHelper : BaseHelper
@@ -13,6 +14,7 @@ namespace SignetInternet_BusinessLayer
 
         public List<AppHouse_Class> GetListClass()
         {
+            //ceshi yixai 
             try
             {
                 string str = "SELECT *  FROM appHouse_Class ";
@@ -34,6 +36,8 @@ namespace SignetInternet_BusinessLayer
             {
                 AppHome_Banner Mod = Newtonsoft.Json.JsonConvert.DeserializeObject<AppHome_Banner>(data);
                 Mod.AddTime = DateTime.Now;
+                //11111
+                //UserId = covert.tostring(Session["RentNo"]);
                 Mod.AddUser = UserId;
                 Mod.ImageUrl = new ImageHelper().Base64Decode(Mod.ImageUrl);
                 StringBuilder str = new StringBuilder();
