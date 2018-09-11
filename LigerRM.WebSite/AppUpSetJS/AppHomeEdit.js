@@ -1,4 +1,5 @@
-﻿$(function () {
+﻿//此为
+$(function () {
     var BannerId = GetQueryString("BannerId");
     //判断BannerId是否有值
     if (typeof (obj) == "BannerId") {
@@ -7,7 +8,7 @@
 
     $("form").ligerForm();
 
-
+    //默认为无连接
     $("[name='InnerChain']").hide();
     $("[name='OuterChain']").hide();
     $(document).on("change", "[name='BannerType']", function () {
@@ -28,12 +29,11 @@
             $("[name='OuterChain']").show();
         }
     })
-
+    
     $(document).on("change", "#InnerChainType", function () {
         if ($(this).val() == "1") {
             $("#InnerChain_fyfl").show();
             $("#InnerChain_fy").hide();
-            //无链接
         } else {
             $("#InnerChain_fyfl").hide();
             $("#InnerChain_fy").show();
@@ -72,6 +72,7 @@
         JsonMod.Url = Url;
         JsonMod.Describe = Describe;
         JsonMod.innerClassId = InnerChainType;
+        //如果是内链并且跳转的是房屋列表，所取的值是内链列表类型，并且获取我所要展示的某个分类中下面所有房屋的列表，固取content = classId。
         if (InnerChainType == "1") {
             JsonMod.innerContent = Class;
         } else {

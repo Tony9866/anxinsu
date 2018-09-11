@@ -1,16 +1,18 @@
 ﻿
-
+//以下是ligerUI的列表写法。 其中add modify delete等都是id 属于管理页面展示。
 //相对路径
 var rootPath = "../";
 //列表结构
 var grid = $("#maingrid").ligerGrid({
-    columns: [{ display: "编号", name: "BannerId", width: 100, type: "text", align: "left" },
-                { display: "类型", name: "BannerType", width: 200, type: "textarea", align: "left" },
-                { display: "图片地址", name: "ImageUrl", width: 50, type: "text", align: "left" },
-                { display: "地址", name: "Url", width: 150, type: "text", align: "left" },
-                { display: "描述", name: "Describe", width: 150, type: "text", align: "left"}],
+    columns: [{ display: "编号", name: "BannerId", width: 50, type: "text", align: "left" },
+                { display: "类型", name: "BannerType", width: 50, type: "textarea", align: "left" },
+                { display: "图片地址", name: "ImageUrl", width: 200, type: "text", align: "left" },
+                { display: "地址", name: "Url", width: 200, type: "text", align: "left" },
+                { display: "描述", name: "Describe", width: 300, type: "text", align: "left" },
+                { display: "添加人编号", name: "AddUser", width: 100, type: "text", align: "left" },
+                { display: "添加时间", name: "AddTime", width: 150, type: "date", align: "left"}],
    
-    dataAction: 'server', pageSize: 3, toolbar: {},
+    dataAction: 'server', pageSize: 10, toolbar: {},
     url: rootPath + 'handler/grid.ashx?view=AppHome_Banner', sortName: 'BannerId',
     width: '98%', height: '30%', heightDiff: -10, checkbox: true, fixedCellHeight: true, rowHeight: 26,
     selectRowButtonOnly: true
@@ -31,7 +33,7 @@ function toolbarBtnItemClick(item) {
     switch (item.id) {
         case "modify":
             //top.f_addTab(null, '增加客户信息', 'CustomerManage/CustomersDetail.aspx');
-            wopen('AppHomeEdit.aspx?RentNo=&type=E', '新增房源', '1200', '870');
+            wopen('AppHomeEdit.aspx?BannerId=&type=E', '新增头部轮播图', '1200', '870');
             break;
         case "view":
             var selected = grid.getSelected();
@@ -56,7 +58,7 @@ function toolbarBtnItemClick(item) {
                 type: 'AjaxPage',
                 method: 'GetEncryptString',
                 loading: '正在获取中...',
-                data: { sourceStr: selected.RentNO },
+                data: { sourceStr: selected.BannerId },
                 success: function (data) {
                     wopen('AppHomeEdit.aspx?RentNo=' + data + '&type=E', '修改房源信息', '700', '570');
                 },
