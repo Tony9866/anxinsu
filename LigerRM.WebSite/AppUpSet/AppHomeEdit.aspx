@@ -101,7 +101,7 @@
             </td>
             <td align="left" class="l-table-edit-td">
                 <select name="Class" id="Class" ltype="Class">
-                    <%=new AppUpSet_AppHomeEdit().GetHousing() %>
+                    <%=new AppUpSet_AppHomeEdit().GetHousing()%>
                 </select>
             </td>
         </tr>
