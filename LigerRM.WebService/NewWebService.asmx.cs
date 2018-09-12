@@ -138,6 +138,7 @@ namespace LigerRM.WebService
         {
             try
             {
+                //http://api.map.baidu.com/geocoder/v2/?ak=KDvCCHCGFeWjO9rHFSCX3p83b8Gz5COk&callback=renderReverse&location=  自己网上申请
                 string url = @"http://api.map.baidu.com/geocoder/v2/?ak=KDvCCHCGFeWjO9rHFSCX3p83b8Gz5COk&callback=renderReverse&location=" + lat + "," + lng + @"&output=xml&pois=1";
                 WebRequest request = WebRequest.Create(url);
                 request.Method = "POST";

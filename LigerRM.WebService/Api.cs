@@ -28,7 +28,6 @@ namespace LigerRM.WebService
             ReturnJosn Return = new ReturnJosn();
             try
             {
-                
                 AppHomeModel cf = new AppHomeModel();
                 cf.Banner = apilay.GetBanner();
                 cf.Especially = apilay.GetEspecially(cityName);

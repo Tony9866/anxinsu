@@ -52,10 +52,10 @@ namespace SignetInternet_BusinessLayer.Models.AppHome
         /// </summary>
         public string cityId { get; set; }
 
-        /// <summary>
-        /// 省编号
-        /// </summary>
-        public string provinceid { get; set; }
+        ///// <summary>
+        ///// 省编号
+        ///// </summary>
+        //public string provinceid { get; set; }
 
         ///// <summary>
         ///// 排序编号
