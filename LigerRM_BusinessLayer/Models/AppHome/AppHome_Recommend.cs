@@ -41,5 +41,20 @@ namespace SignetInternet_BusinessLayer.Models.AppHome
         /// 热门推荐图片地址
         /// </summary>
         public string ImageUrl { get; set; }
+
+        /// <summary>
+        /// 图片占比
+        /// </summary>
+        public string imageSize { get; set; }
+
+        /// <summary>
+        /// 城市编号
+        /// </summary>
+        public string cityId { get; set; }
+
+        /// <summary>
+        /// 省编号
+        /// </summary>
+        public string provinceid { get; set; }
     }
 }
