@@ -112,7 +112,7 @@ namespace SignetInternet_BusinessLayer
             try
             {
                 StringBuilder str = new StringBuilder();
-                str.Append("SELECT *  FROM AppHome_Banner WHERE BannerId=").Append(BannerId);
+                str.Append("SELECT *  FROM AppHome_Banner WHERE BannerId='").Append(BannerId).Append("'");
                 AppHome_Banner Mod = GetModel<AppHome_Banner>(str.ToString());
                 if (Mod != null)
                 {

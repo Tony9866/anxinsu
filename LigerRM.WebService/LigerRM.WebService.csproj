@@ -61,6 +61,31 @@
     <Content Include="NewWebService.asmx" />
     <Content Include="Services.asmx" />
     <None Include="Web References\AlertServer\AlertService.disco" />
+    <Content Include="UploadedFiles\decrition\en.png" />
+    <Content Include="UploadedFiles\decrition\jan.png" />
+    <Content Include="UploadedFiles\decrition\midsea.png" />
+    <Content Include="UploadedFiles\decrition\northstyle.png" />
+    <Content Include="UploadedFiles\decrition\zh.png" />
+    <Content Include="UploadedFiles\fangzhuguize.html" />
+    <Content Include="UploadedFiles\header\banner01.png" />
+    <Content Include="UploadedFiles\icon\home%402x.png" />
+    <Content Include="UploadedFiles\icon\home0%402x.png" />
+    <Content Include="UploadedFiles\icon\message%402x.png" />
+    <Content Include="UploadedFiles\icon\message02%402x.png" />
+    <Content Include="UploadedFiles\icon\mine%402x.png" />
+    <Content Include="UploadedFiles\icon\mine02%402x.png" />
+    <Content Include="UploadedFiles\icon\order%402x.png" />
+    <Content Include="UploadedFiles\icon\order02%402x.png" />
+    <Content Include="UploadedFiles\recommend\01.png" />
+    <Content Include="UploadedFiles\recommend\02.png" />
+    <Content Include="UploadedFiles\recommend\03.png" />
+    <Content Include="UploadedFiles\recommend\4.png" />
+    <Content Include="UploadedFiles\recommend\5.png" />
+    <Content Include="UploadedFiles\recommend\6.png" />
+    <Content Include="UploadedFiles\view\egleofTianjin.png" />
+    <Content Include="UploadedFiles\view\endimage.png" />
+    <Content Include="UploadedFiles\view\oldstreet.png" />
+    <Content Include="UploadedFiles\view\street.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -137,9 +162,7 @@
       <Name>XGAPI</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UploadedFiles\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WebReferences Include="Web References\" />
   </ItemGroup>
