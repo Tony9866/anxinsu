@@ -1,29 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <publishData>
-  <publishProfile publishUrl="F:\WebSite" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
-    <file relUrl="bin/XGAPI.dll" publishTime="09/07/2018 11:10:09" />
-    <file relUrl="NewWebService.asmx" publishTime="09/03/2018 13:12:43" />
-    <file relUrl="AlertService.asmx" publishTime="07/04/2018 13:31:34" />
-    <file relUrl="bin/SignetInternet_DataLayer.pdb" publishTime="09/07/2018 11:10:10" />
-    <file relUrl="bin/LigerRM.Server.dll" publishTime="09/10/2018 10:09:46" />
-    <file relUrl="bin/LigerRM.WebService.pdb" publishTime="09/10/2018 10:09:47" />
-    <file relUrl="bin/SignetInternet_BusinessLayer.dll" publishTime="09/10/2018 10:09:46" />
-    <file relUrl="AlertTempService.asmx" publishTime="07/04/2018 13:32:40" />
-    <file relUrl="bin/LigerRM.Entity.pdb" publishTime="09/07/2018 11:10:10" />
-    <file relUrl="bin/SignetInternet_DataLayer.dll" publishTime="09/07/2018 11:10:10" />
-    <file relUrl="bin/LigerRM.WebService.dll" publishTime="09/10/2018 10:09:47" />
-    <file relUrl="bin/LigerRM.Common.pdb" publishTime="09/07/2018 11:10:10" />
-    <file relUrl="bin/LigerRM.Entity.dll" publishTime="09/07/2018 11:10:10" />
-    <file relUrl="LockManageServices.asmx" publishTime="04/17/2018 15:41:02" />
-    <file relUrl="bin/LigerRM.Common.dll" publishTime="09/07/2018 11:10:10" />
-    <file relUrl="bin/XGAPI.pdb" publishTime="09/07/2018 11:10:09" />
+  <publishProfile publishUrl="D:\Projects\House\WebServiceCompiled" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="bin/XGAPI.dll" publishTime="09/11/2018 10:35:28" />
+    <file relUrl="NewWebService.asmx" publishTime="09/11/2018 10:23:12" />
+    <file relUrl="bin/SignetInternet_DataLayer.pdb" publishTime="09/11/2018 10:35:29" />
+    <file relUrl="bin/LigerRM.Server.dll" publishTime="09/13/2018 11:17:17" />
+    <file relUrl="bin/LigerRM.WebService.pdb" publishTime="09/13/2018 11:17:17" />
+    <file relUrl="bin/SignetInternet_BusinessLayer.dll" publishTime="09/13/2018 11:17:16" />
+    <file relUrl="AlertTempService.asmx" publishTime="09/11/2018 10:23:12" />
+    <file relUrl="Services.asmx" publishTime="09/11/2018 10:23:12" />
+    <file relUrl="bin/SignetInternet_DataLayer.dll" publishTime="09/11/2018 10:35:29" />
+    <file relUrl="bin/LigerRM.WebService.dll" publishTime="09/13/2018 11:17:17" />
+    <file relUrl="bin/LigerRM.Common.pdb" publishTime="09/11/2018 13:20:35" />
+    <file relUrl="bin/LigerRM.Entity.dll" publishTime="09/11/2018 10:35:29" />
+    <file relUrl="bin/Newtonsoft.Json.Net20.dll" publishTime="09/11/2018 10:33:41" />
+    <file relUrl="bin/LigerRM.Common.dll" publishTime="09/11/2018 13:20:35" />
+    <file relUrl="bin/XGAPI.pdb" publishTime="09/11/2018 10:35:28" />
+    <file relUrl="Web.config" publishTime="09/13/2018 11:19:00" />
     <file relUrl="bin/Liger.Common.dll" publishTime="12/26/2017 16:40:40" />
-    <file relUrl="bin/LigerRM.Server.pdb" publishTime="09/10/2018 10:09:46" />
-    <file relUrl="bin/Liger.Data.pdb" publishTime="09/07/2018 11:10:09" />
-    <file relUrl="Web.config" publishTime="09/10/2018 10:09:47" />
+    <file relUrl="bin/LigerRM.Server.pdb" publishTime="09/13/2018 11:17:17" />
+    <file relUrl="bin/Liger.Data.pdb" publishTime="09/11/2018 10:35:28" />
+    <file relUrl="bin/LigerRM.Entity.pdb" publishTime="09/11/2018 10:35:29" />
+    <file relUrl="LockManageServices.asmx" publishTime="09/11/2018 10:23:12" />
     <file relUrl="bin/ThoughtWorks.QRCode.dll" publishTime="12/26/2017 16:40:40" />
-    <file relUrl="bin/Liger.Data.dll" publishTime="09/07/2018 11:10:09" />
-    <file relUrl="Services.asmx" publishTime="12/26/2017 16:40:40" />
-    <file relUrl="bin/SignetInternet_BusinessLayer.pdb" publishTime="09/10/2018 10:09:46" />
+    <file relUrl="bin/Liger.Data.dll" publishTime="09/11/2018 10:35:28" />
+    <file relUrl="AlertService.asmx" publishTime="09/11/2018 10:23:12" />
+    <file relUrl="bin/SignetInternet_BusinessLayer.pdb" publishTime="09/13/2018 11:17:16" />
   </publishProfile>
 </publishData>
