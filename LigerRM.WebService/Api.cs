@@ -6,6 +6,8 @@ using System.Web.Services;
 using System.Web.Services.Protocols;
 using SignetInternet_BusinessLayer;
 using LigerRM.Common;
+using System.Text;
+
 
 
 namespace LigerRM.WebService
@@ -21,15 +23,15 @@ namespace LigerRM.WebService
         /// app首页
         /// </summary>
         /// <returns></returns>   
-        public string AppHome()
+        public string AppHome(string cityName)
         {
             ReturnJosn Return = new ReturnJosn();
             try
             {
                 AppHomeModel cf = new AppHomeModel();
                 cf.Banner = apilay.GetBanner();
-                cf.Especially = apilay.GetEspecially();
-                cf.Recommend = apilay.GetRecommend();
+                cf.Especially = apilay.GetEspecially(cityName);
+                cf.Recommend = apilay.GetRecommend(cityName);
                 cf.about = apilay.GetaboutUs();
                 cf.Class = apilay.GethouseClass();
                 cf.Label = apilay.GetfooterLabel();
@@ -281,6 +283,7 @@ namespace LigerRM.WebService
         //        throw;
         //    }
         //}
+
 
 
 

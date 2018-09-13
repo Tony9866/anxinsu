@@ -50,7 +50,7 @@ namespace SignetInternet_BusinessLayer
                 {
                     try
                     {
-                       var o= row[item.Name];
+                        var o = row[item.Name];
                     }
                     catch (Exception)
                     {
@@ -73,10 +73,10 @@ namespace SignetInternet_BusinessLayer
             }
             catch (Exception ex)
             {
-                
+
                 throw;
             }
-           
+
         }
 
         /// <summary>
@@ -94,5 +94,69 @@ namespace SignetInternet_BusinessLayer
             }
             return default(T);
         }
+
+        //#region  通过城市名称获取城市编号
+        //public string GetLocal(string cityName)
+        //{
+        //    StringBuilder str = new StringBuilder();
+        //    str.Append("SELECT ");
+        //    str.Append("provinceid ");
+        //    str.Append("FROM Public_Provinces ");
+        //    str.Append("WHERE  ");
+        //    str.Append("    Public_Provinces.province = '").Append(cityName).Append("'");
+        //    LocalMod ModP = GetModel<LocalMod>(str.ToString());
+        //    //判断名字属省类
+        //    if (ModP != null)
+        //    {
+        //        return ModP.provinceid;
+        //    }
+        //    //判断名字属城市类
+        //    else 
+        //    {
+        //        StringBuilder strC = new StringBuilder();
+        //        strC.Append("SELECT ");
+        //        strC.Append("cityId ");
+        //        strC.Append("FROM Public_City ");
+        //        strC.Append("WHERE  ");
+        //        strC.Append("    Public_City.city='").Append(cityName).Append("'");
+        //        ModP = GetModel<LocalMod>(strC.ToString());
+        //        if (ModP != null)
+        //        {
+        //            return ModP.cityId;
+        //        }
+        //        //如果依旧null 返回天津市编号
+        //        return "120000";
+        //    }
+            
+        
+        //    //return "天津市";
+        //}
+
+        #region  通过城市名称获取城市编号
+        public string GetLocal(string cityName)
+        {
+            StringBuilder str = new StringBuilder();
+            str.Append("SELECT ");
+            str.Append("cityId ");
+            str.Append("FROM Public_City ");
+            str.Append("WHERE  ");
+            str.Append("    Public_City.city='").Append(cityName).Append("'");
+            LocalMod ModCity = GetModel<LocalMod>(str.ToString());
+            //城市名字对应的编号
+            if (ModCity != null)
+            {
+                return ModCity.cityId;
+            }
+            return "120100";
+        }
+
+        public class LocalMod
+        {
+            //城市编号
+            public string cityId { get; set; }
+        }
+        #endregion
+
+  
     }
 }

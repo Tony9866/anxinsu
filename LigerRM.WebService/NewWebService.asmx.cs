@@ -4,6 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
+using System.Net;
+using System.Xml;
+using System.IO;
+using System.Text;
+//using System.Net.Security;
+//using System.Security.Cryptography.X509Certificates;
 
 namespace LigerRM.WebService
 {
@@ -25,16 +31,19 @@ namespace LigerRM.WebService
         /// </summary>
         Api api = new Api();
 
-
+        /// <summary>
+        /// 首页数据
+        /// </summary>
+        /// <returns></returns>
         [WebMethod]
         [SoapHeader("authentication")]
-        public string AppHome()
+        public string AppHome(string lng, string lat)
         {
             //if (!authentication.ValideUser())
             //{
             //    return "{'headerError'}";
             //}
-            return api.AppHome();
+            return api.AppHome(GetAddress(lng, lat));
         }
 
         [WebMethod]
@@ -47,6 +56,63 @@ namespace LigerRM.WebService
             //}
             //return api.AppLogin();
             return "";
+        }
+
+
+
+
+        /// <summary>
+        /// 根据经纬度获取地址
+        /// </summary>
+        /// <param name="lat">纬度</param>
+        /// <param name="lng">经度</param>
+        /// <returns></returns>
+        [WebMethod]
+        [SoapHeader("authentication")]
+        private string GetAddress(string lng, string lat)
+        {
+            try
+            {
+                //http://api.map.baidu.com/geocoder/v2/?ak=KDvCCHCGFeWjO9rHFSCX3p83b8Gz5COk&callback=renderReverse&location=  自己网上申请
+                string url = @"http://api.map.baidu.com/geocoder/v2/?ak=KDvCCHCGFeWjO9rHFSCX3p83b8Gz5COk&callback=renderReverse&location=" + lat + "," + lng + @"&output=xml&pois=1";
+                WebRequest request = WebRequest.Create(url);
+                request.Method = "POST";
+                XmlDocument xmlDoc = new XmlDocument();
+                string sendData = xmlDoc.InnerXml;
+                byte[] byteArray = Encoding.Default.GetBytes(sendData);
+
+                Stream dataStream = request.GetRequestStream();
+                dataStream.Write(byteArray, 0, byteArray.Length);
+                dataStream.Close();
+
+                WebResponse response = request.GetResponse();
+                dataStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(dataStream, System.Text.Encoding.GetEncoding("utf-8"));
+                string responseXml = reader.ReadToEnd();
+
+                XmlDocument xml = new XmlDocument();
+                xml.LoadXml(responseXml);
+                string status = xml.DocumentElement.SelectSingleNode("status").InnerText;
+                if (status == "0")
+                {
+                    //("city")city参数是通过xml里获得的，属返回标签名称如<city></city>
+                    XmlNodeList nodes = xml.DocumentElement.GetElementsByTagName("city");
+                    if (nodes.Count > 0)
+                    {
+                        return nodes[0].InnerText;
+                    }
+                    else
+                        return "未获取到位置信息,错误码3";
+                }
+                else
+                {
+                    return "未获取到位置信息,错误码1";
+                }
+            }
+            catch (System.Exception ex)
+            {
+                return "未获取到位置信息,错误码2";
+            }
         }
 
     }

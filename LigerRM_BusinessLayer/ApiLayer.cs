@@ -9,6 +9,8 @@ namespace SignetInternet_BusinessLayer
     public class ApiLayer : BaseHelper
     {
 
+
+
         #region  接口基础返回类
 
         //获取banner 头里的3张图片和文字描述
@@ -27,13 +29,19 @@ namespace SignetInternet_BusinessLayer
                 throw;
             }
         }
+
+
         //获取特色房源里的 3个class 来展示图片跟文字信息。
-        public List<EspeciallyModel> GetEspecially()
+        public List<EspeciallyModel> GetEspecially(string cityName)
         {
             try
             {
+                string CityId = GetLocal(cityName);
                 StringBuilder str = new StringBuilder();
-                str.Append("SELECT *  FROM AppHome_SpecialInfo");
+                str.Append("SELECT * ");
+                str.Append("FROM AppHome_SpecialInfo ");
+                str.Append("WHERE  ");
+                str.Append("    cityId = '").Append(CityId).Append("'");
                 List<EspeciallyModel> List = GetList<EspeciallyModel>(str.ToString());
                 return List;
             }
@@ -43,13 +51,20 @@ namespace SignetInternet_BusinessLayer
                 throw;
             }
         }
+
+
+
         //获取热门推荐里的6个class来展示图片跟文字信息。
-        public List<AppHome_Recommend> GetRecommend()
+        public List<AppHome_Recommend> GetRecommend(string cityName)
         {
             try
             {
+                string CityId = GetLocal(cityName);
                 StringBuilder str = new StringBuilder();
-                str.Append("select * from appHome_Recommend");
+                str.Append("SELECT * ");
+                str.Append("FROM appHome_Recommend ");
+                str.Append("WHERE  ");
+                str.Append("    cityId = '").Append(CityId).Append("'");
                 List<AppHome_Recommend> List = GetList<AppHome_Recommend>(str.ToString());
                 return List;
             }
@@ -60,7 +75,7 @@ namespace SignetInternet_BusinessLayer
             }
         }
         //获取热门推荐里底部3个content_Name公司信息展示
-        public List<appHome_aboutUs> GetaboutUs() 
+        public List<appHome_aboutUs> GetaboutUs()
         {
             try
             {
@@ -71,12 +86,12 @@ namespace SignetInternet_BusinessLayer
             }
             catch (Exception e)
             {
-                
+
                 throw;
             }
         }
         //层末分类显示
-        public List<appHouse_Class> GethouseClass() 
+        public List<appHouse_Class> GethouseClass()
         {
             try
             {
@@ -87,12 +102,12 @@ namespace SignetInternet_BusinessLayer
             }
             catch (Exception e)
             {
-                
+
                 throw;
             }
         }
         //底部标签显示
-        public List<footerLabel> GetfooterLabel() 
+        public List<footerLabel> GetfooterLabel()
         {
             try
             {
@@ -103,7 +118,7 @@ namespace SignetInternet_BusinessLayer
             }
             catch (Exception e)
             {
-                
+
                 throw;
             }
         }
