@@ -40,9 +40,13 @@ namespace SignetInternet_BusinessLayer
                 StringBuilder str = new StringBuilder();
                 str.Append("SELECT * ");
                 str.Append("FROM AppHome_SpecialInfo ");
-                str.Append("WHERE  ");
+                str.Append("WHERE ");
                 str.Append("    cityId = '").Append(CityId).Append("'");
                 List<EspeciallyModel> List = GetList<EspeciallyModel>(str.ToString());
+                if (cityName != "天津市" && (List == null || List.Count == 0))
+                {
+                    List = GetEspecially("天津市");
+                }
                 return List;
             }
             catch (Exception ex)
@@ -51,6 +55,7 @@ namespace SignetInternet_BusinessLayer
                 throw;
             }
         }
+
 
 
 
@@ -66,7 +71,14 @@ namespace SignetInternet_BusinessLayer
                 str.Append("WHERE  ");
                 str.Append("    cityId = '").Append(CityId).Append("'");
                 List<AppHome_Recommend> List = GetList<AppHome_Recommend>(str.ToString());
-                return List;
+                if (cityName != "天津市" && (List == null || List.Count == 0))
+                {
+                    //CityId != "120100"
+                    List = GetRecommend("天津市");
+                }
+
+                    return List;
+                
             }
             catch (Exception e)
             {

@@ -89,7 +89,7 @@ namespace SignetInternet_BusinessLayer
             DataTable rentTable = MySQLHelper.ExecuteDataset(SqlConnString, MySQLHelper.CreateCommand(sqlStr.ToString(), parameters)).Tables[0];
             if (rentTable != null && rentTable.Rows.Count > 0)
             {
-                m_RRAID = Convert.ToInt16(rentTable.Rows[0]["RRAID"]);
+                m_RRAID = Convert.ToInt32(rentTable.Rows[0]["RRAID"]);
                 m_RentNo = rentTable.Rows[0]["RentNo"].ToString();
                 m_RRAContactName = rentTable.Rows[0]["RRAContactName"].ToString();
                 m_RRAContactTel = rentTable.Rows[0]["RRAContactTel"].ToString();
@@ -131,7 +131,7 @@ namespace SignetInternet_BusinessLayer
             DataTable rentTable = MySQLHelper.ExecuteDataset(SqlConnString, MySQLHelper.CreateCommand(sqlStr.ToString(), parameters)).Tables[0];
             if (rentTable != null && rentTable.Rows.Count > 0)
             {
-                m_RRAID = Convert.ToInt16(rentTable.Rows[0]["RRAID"]);
+                m_RRAID = Convert.ToInt32(rentTable.Rows[0]["RRAID"]);
                 m_RentNo = rentTable.Rows[0]["RentNo"].ToString();
                 m_RRAContactName = rentTable.Rows[0]["RRAContactName"].ToString();
                 m_RRAContactTel = rentTable.Rows[0]["RRAContactTel"].ToString();
