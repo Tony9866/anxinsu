@@ -22,11 +22,6 @@ namespace SignetInternet_BusinessLayer.Models.AppHome
         public string TypeName { get; set; }
 
         /// <summary>
-        /// 类别
-        /// </summary>
-        public int ClassId { get; set; }
-
-        /// <summary>
         /// 名称
         /// </summary>
         public string Name { get; set; }

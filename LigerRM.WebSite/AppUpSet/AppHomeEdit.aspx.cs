@@ -46,6 +46,4 @@ public partial class AppUpSet_AppHomeEdit : System.Web.UI.Page
         }
     }
 
-
-
 }

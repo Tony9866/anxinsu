@@ -110,7 +110,8 @@
                 房屋编号
             </td>
             <td align="left" class="l-table-edit-td">
-                <input name="RentNO" type="text" id="RentNO" class="l-text-field" style="width: 174px;" />
+                <%--<input name="RentNO" type="text" id="RentNO" class="l-text-field" style="width: 174px;" />--%>
+                <input name="RentNO" id="Text1" type="text" /></td>
             </td>
         </tr>
         <tr name="OuterChain">
@@ -118,7 +119,7 @@
                 外联地址
             </td>
             <td align="left" class="l-table-edit-td">
-                <input name="Url" id="Url" type="text" ltype="text" />
+                <input name="Url" id="Url" type="text" />
             </td>
             <td align="left">
             </td>

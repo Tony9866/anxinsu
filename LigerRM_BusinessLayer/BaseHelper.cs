@@ -95,6 +95,7 @@ namespace SignetInternet_BusinessLayer
             return default(T);
         }
 
+
         //#region  通过城市名称获取城市编号
         //public string GetLocal(string cityName)
         //{
@@ -131,7 +132,6 @@ namespace SignetInternet_BusinessLayer
         
         //    //return "天津市";
         //}
-
         #region  通过城市名称获取城市编号
         public string GetLocal(string cityName)
         {
