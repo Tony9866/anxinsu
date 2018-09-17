@@ -11,7 +11,7 @@ namespace SignetInternet_BusinessLayer
     public class AppHomeHelper : BaseHelper
     {
 
-
+        //获得房屋分类列表
         public List<AppHouse_Class> GetListClass()
         {
             //ceshi yixai 
@@ -106,6 +106,7 @@ namespace SignetInternet_BusinessLayer
             }
         }
 
+        //获得头部信息
         public string GetMod(long BannerId)
         {
             ReturnJosn Return = new ReturnJosn();
@@ -163,6 +164,7 @@ namespace SignetInternet_BusinessLayer
             }
         }
 
+        //头部属性
         public class AppHome_Banner
         {
             /// <summary>
@@ -205,8 +207,102 @@ namespace SignetInternet_BusinessLayer
 
         #endregion
 
+        //获取各省列表
+        public List<Public_Provinces> GetListProvince() 
+        {
+            try
+            {
+                StringBuilder str = new StringBuilder();
+                str.Append("SELECT * ");
+                str.Append("FROM Public_Provinces ");
+                List<Public_Provinces> List = GetList<Public_Provinces>(str.ToString());
+                return List;
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
+        }
+
+        //获取城市列表
+        public string GetListCity(string provinceid) 
+        {
+            ReturnJosn Return = new ReturnJosn();
+            try
+            {
+                StringBuilder str = new StringBuilder();
+                str.Append("SELECT * ");
+                str.Append("FROM Public_City where provinceid= " + provinceid);
+                List<Public_City> List = GetList<Public_City>(str.ToString());
+                if (List != null)
+                {
+                    Return.Code = "0";
+                    Return.Data = List;
+                }
+                else
+                {
+                    Return.Code = "1";
+                    Return.Msg = "未能找到相关数据！！！";
+                }
+                return JSONHelper.ToJson(Return);
+            }
+            catch (Exception ex)
+            {
+                Return.Code = "1";
+                Return.Msg = "发生错误！！！";
+                return JSONHelper.ToJson(Return);
+
+            }
+
+
+        }
+
+        /// <summary>
+        /// 获取排序编号，通过cityId查找是否存在
+        /// </summary>
+        /// <param name="cityId"></param>
+        /// <returns></returns>
+        public string GetSortId(string cityId ) 
+        {
+            ReturnJosn Return = new ReturnJosn();
+            try
+            {
+                StringBuilder str = new StringBuilder();
+                str.Append("SELECT sortId ");
+                str.Append("FROM AppHome_SpecialInfo where cityId= " + cityId);
+                List<AppHome_SpecialInfo> List = GetList<AppHome_SpecialInfo>(str.ToString());
+                if (List != null)
+                {
+                    Return.Code = "0";
+                    Return.Data = List;
+                }
+                else
+                {
+                    Return.Code = "1";
+                    Return.Msg = "未能找到相关数据！！！";
+                }
+                return JSONHelper.ToJson(Return);
+            }
+            catch (Exception ex)
+            {
+
+                Return.Code = "1";
+                Return.Msg = "发生错误！！！";
+                return JSONHelper.ToJson(Return);
+            }
+        }
+
     }
 
+
+
+
+
+
+
+
+    //房屋分类字段属性读写
     public class AppHouse_Class
     {
         /// <summary>
@@ -220,5 +316,61 @@ namespace SignetInternet_BusinessLayer
 
     }
 
+    //省表中的属性读写
+    public class Public_Provinces
+    {
+        /// <summary>
+        /// 唯一标识
+        /// </summary>
+        public int id { get; set; }
+
+        /// <summary>
+        /// 省编号
+        /// </summary>
+        public string provinceid { get; set; }
+
+        /// <summary>
+        /// 省名称
+        /// </summary>
+        public string province { get; set; }
+    }
+
+    //城市表中获取所需数据
+    public class Public_City
+    {
+        /// <summary>
+        /// 唯一标识
+        /// </summary>
+        public int id { get; set; }
+
+        /// <summary>
+        /// 城市编号
+        /// </summary>
+        public string cityId { get; set; }
+
+        /// <summary>
+        /// 省编号
+        /// </summary>
+        public string provinceid { get; set; }
+
+        /// <summary>
+        /// 城市名称
+        /// </summary>
+        public string city { get; set; }
+    }
+
+    //获取特色房源中的排序编号
+    public class AppHome_SpecialInfo {
+
+        /// <summary>
+        /// 区域排序
+        /// </summary>
+        public int sortId {get; set;}
+
+        /// <summary>
+        /// 城市编号
+        /// </summary>
+        public string cityId { get; set; }
+    }
 
 }

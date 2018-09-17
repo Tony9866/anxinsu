@@ -8,7 +8,9 @@ var grid2 = $("#Div1").ligerGrid({
                 { display: "单一元素名称", name: "Name", width: 200, type: "text", align: "left" },
                 { display: "描述", name: "Describe", width: 200, type: "text", align: "left" },
                 { display: "图片地址", name: "ImageUrl", width: 200, type: "text", align: "left" },
-                { display: "图片占比", name: "imageSize", width: 100, type: "text", align: "left" },               
+                { display: "图片占比", name: "imageSize", width: 100, type: "text", align: "left" },
+                { display: "所属城市", name: "cityName", width: 100, type: "text", align: "left" },
+                { display: "所属省", name: "provinceName", width: 100, type: "text", align: "left" },               
                 { display: "省编号", name: "provinceid", width: 100, type: "text", align: "left" },
                 { display: "城市编号", name: "cityId", width: 100, type: "text", align: "left"}],
 
@@ -18,13 +20,13 @@ var grid2 = $("#Div1").ligerGrid({
     selectRowButtonOnly: true
 });
 
-//加载toolbar
+加载toolbar
 LG.loadToolbar(grid2, toolbarBtnItemClick);
 
-//双击事件
+双击事件
 LG.setGridDoubleClick(grid2, 'modify');
 
-//工具条事件
+工具条事件
 function toolbarBtnItemClick(item) {
     switch (item.id) {
         case "add":
@@ -44,3 +46,5 @@ function wopen(pageURL, title, w, h) {
     var random = Math.floor(Math.random() * (1000 + 1));
     var targetWin = window.open(pageURL + '&' + random, title, ' width=' + w + ', height=' + h + ', top=' + top + ', left=' + left + ',scrollbars=yes');
 }
+
+

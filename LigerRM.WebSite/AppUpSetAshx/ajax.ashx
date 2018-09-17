@@ -21,6 +21,9 @@ public class ajax : IHttpHandler
             case "DeleteBanner":
                 context.Response.Write(DeleteBanner(context));
                 break;
+            case "GetListCity":
+                context.Response.Write(GetListCity(context));
+                break;
         }
     }
     public string DeleteBanner(HttpContext context)
@@ -57,6 +60,19 @@ public class ajax : IHttpHandler
         try
         {
             return new AppHomeHelper().GetMod(long.Parse(context.Request["BannerId"].ToString()));
+        }
+        catch (Exception ex)
+        {
+
+            throw;
+        }
+    }
+
+    public string GetListCity(HttpContext context)
+    {
+        try
+        {
+            return new AppHomeHelper().GetListCity(context.Request["provinceid"].ToString());
         }
         catch (Exception ex)
         {

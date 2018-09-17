@@ -78,16 +78,25 @@
                 <input name="typeName" id="TypeName" type="text" placeholder="请填写该城市特色标题名称" />
             </td>
         </tr>
+
+        <%--元素名字--%>
+        <tr>
+            <td align="right" class="l-table-edit-td">
+                特色中元素名字：
+            </td>
+            <td align="left" class="l-table-edit-td">
+                <input name="Name" id="Name" type="text" placeholder="请填写元素名字" />
+            </td>
+        </tr>
+
         <%--省选择--%>
         <tr>
             <td align="right" class="l-table-edit-td">
                 请选择省份:
             </td>
             <td align="left" class="l-table-edit-td">
-                <select name="ClassId" id="Select1" style="line-height: normal;">
-                    <option value="1" selected>北京市</option>
-                    <option value="2">天津市</option>
-                    <option value="3">河北省</option>
+                <select name="provinceid" id="provinceid" style="line-height: normal;">
+                    <%=new AppUpSet_sepcialEdit().GetProvince()%>
                 </select>
             </td>
             <td align="left">
@@ -99,10 +108,7 @@
                 请选择城市:
             </td>
             <td align="left" class="l-table-edit-td">
-                <select name="ClassId" id="Select2" style="line-height: normal;">
-                    <option value="1">北京市</option>
-                    <option value="2" selected>天津市</option>
-                    <option value="3">石家庄</option>
+                <select name="cityId" id="cityId" style="line-height: normal;">
                 </select>
             </td>
             <td align="left">
@@ -111,10 +117,10 @@
         <%--图片显示的排序--%>
         <tr>
             <td align="right" class="l-table-edit-td">
-                App单个元素排序:
+                App中元素排序:
             </td>
             <td align="left" class="l-table-edit-td">
-                <select name="ClassId" id="ClassId" style="line-height: normal;">
+                <select name="sortId" id="sortId" style="line-height: normal;">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3" selected>3</option>
@@ -129,16 +135,7 @@
                 安卓端App图片占比：
             </td>
             <td align="left" class="l-table-edit-td">
-                <input name="imageSize" id="imageSize" type="text" placeholder="填写图片在一行中占比" />
-            </td>
-        </tr>
-        <%--元素名字--%>
-        <tr>
-            <td align="right" class="l-table-edit-td">
-                元素名字：
-            </td>
-            <td align="left" class="l-table-edit-td">
-                <input name="Name" id="Name" type="text" placeholder="请填写该元素名字" />
+                <input name="imageSize" id="imageSize" type="text" placeholder="填写图片行中占比" />
             </td>
         </tr>
         <%--一句话描述--%>
@@ -147,14 +144,15 @@
                 元素描述:
             </td>
             <td align="left" class="l-table-edit-td" colspan="2">
-                <textarea cols="100" rows="4" class="l-textarea" name="Describe" id="Describe" style="width: 400px" placeholder="用一句话描述当前元素"></textarea>
+                <textarea cols="100" rows="4" class="l-textarea" name="Describe" id="Describe" style="width: 400px"
+                    placeholder="用一句话描述当前元素"></textarea>
             </td>
             <td align="left">
             </td>
         </tr>
         <tr>
             <td align="right" class="l-table-edit-td">
-               元素图片:
+                元素图片:
             </td>
             <td align="left" class="l-table-edit-td">
                 <div class="cover-wrap" style="display: none; position: fixed; left: 0; top: 0; width: 100%;
@@ -192,4 +190,4 @@
     </form>
 </body>
 </html>
-<script src="../AppUpSetJS/sepcialInfo.js?12321" type="text/javascript"></script>
+<script src="../AppUpSetJS/sepcialEdit.js?54545" type="text/javascript"></script>
