@@ -58,6 +58,42 @@ namespace LigerRM.WebService
             return "";
         }
 
+        [WebMethod]
+        [SoapHeader("authentication")]
+        public string VerificationCode(string phone, int SendType)
+        {
+            //if (!authentication.ValideUser())
+            //{
+            //    return "{'headerError'}";
+            //}
+            return api.VerificationCode(phone, SendType);
+        }
+
+
+        [WebMethod]
+        [SoapHeader("authentication")]
+        public string BindingPhone(string Data, string Phone, string Code)
+        {
+            //if (!authentication.ValideUser())
+            //{
+            //    return "{'headerError'}";
+            //}
+            return api.BindingPhone(Data, Phone, Code);
+        }
+
+
+        [WebMethod]
+        [SoapHeader("authentication")]
+        public string ThirdParty(string Access_Token, string Openid, int LoginType)
+        {
+            //if (!authentication.ValideUser())
+            //{
+            //    return "{'headerError'}";
+            //}
+            return api.ThirdParty(Access_Token, Openid, LoginType);
+        }
+
+
 
 
 

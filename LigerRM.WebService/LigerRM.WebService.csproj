@@ -40,6 +40,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json.Net20, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.Net20.dll.3.5.0\lib\2.0\Newtonsoft.Json.Net20.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -60,6 +64,7 @@
     <Content Include="LockManageServices.asmx" />
     <Content Include="NewWebService.asmx" />
     <Content Include="Services.asmx" />
+    <Content Include="packages.config" />
     <None Include="Web References\AlertServer\AlertService.disco" />
     <Content Include="UploadedFiles\decrition\en.png" />
     <Content Include="UploadedFiles\decrition\jan.png" />
@@ -111,6 +116,7 @@
     </Compile>
     <Compile Include="Api.cs" />
     <Compile Include="ApiHelp.cs" />
+    <Compile Include="Cookie.cs" />
     <Compile Include="LockManageServices.asmx.cs">
       <DependentUpon>LockManageServices.asmx</DependentUpon>
       <SubType>Component</SubType>
