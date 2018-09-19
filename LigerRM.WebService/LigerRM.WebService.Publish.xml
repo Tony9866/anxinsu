@@ -11,46 +11,46 @@
     <file relUrl="AlertTempService.asmx" publishTime="09/11/2018 10:23:12" />
     <file relUrl="UploadedFiles/icon/order@2x.png" publishTime="09/13/2018 11:16:06" />
     <file relUrl="UploadedFiles/icon/mine02@2x.png" publishTime="09/13/2018 11:16:06" />
+    <file relUrl="UploadedFiles/view/endimage.png" publishTime="09/13/2018 11:16:06" />
     <file relUrl="UploadedFiles/icon/message@2x.png" publishTime="09/13/2018 11:16:06" />
     <file relUrl="bin/Liger.Data.pdb" publishTime="09/18/2018 09:18:02" />
+    <file relUrl="UploadedFiles/recommend/5.png" publishTime="09/13/2018 11:16:06" />
+    <file relUrl="bin/SignetInternet_BusinessLayer.dll" publishTime="09/19/2018 09:38:45" />
     <file relUrl="UploadedFiles/decrition/northstyle.png" publishTime="09/13/2018 11:16:06" />
     <file relUrl="UploadedFiles/recommend/6.png" publishTime="09/13/2018 11:16:06" />
     <file relUrl="UploadedFiles/recommend/01.png" publishTime="09/13/2018 11:16:06" />
-    <file relUrl="bin/LigerRM.WebService.dll" publishTime="09/18/2018 09:18:06" />
+    <file relUrl="bin/LigerRM.WebService.dll" publishTime="09/19/2018 09:38:45" />
     <file relUrl="UploadedFiles/decrition/midsea.png" publishTime="09/13/2018 11:16:06" />
     <file relUrl="UploadedFiles/icon/home@2x.png" publishTime="09/13/2018 11:16:06" />
     <file relUrl="bin/ThoughtWorks.QRCode.dll" publishTime="12/26/2017 16:40:40" />
     <file relUrl="UploadedFiles/decrition/jan.png" publishTime="09/13/2018 11:16:06" />
     <file relUrl="bin/XGAPI.pdb" publishTime="09/18/2018 09:18:03" />
     <file relUrl="bin/LigerRM.Common.pdb" publishTime="09/18/2018 09:18:04" />
-    <file relUrl="bin/LigerRM.Server.pdb" publishTime="09/18/2018 09:18:05" />
     <file relUrl="packages.config" publishTime="09/13/2018 12:54:51" />
     <file relUrl="bin/SignetInternet_DataLayer.dll" publishTime="09/18/2018 09:18:03" />
     <file relUrl="AlertService.asmx" publishTime="09/11/2018 10:23:12" />
-    <file relUrl="LockManageServices.asmx" publishTime="09/11/2018 10:23:12" />
     <file relUrl="Services.asmx" publishTime="09/11/2018 10:23:12" />
-    <file relUrl="UploadedFiles/recommend/4.png" publishTime="09/13/2018 11:16:06" />
     <file relUrl="UploadedFiles/decrition/en.png" publishTime="09/13/2018 11:16:06" />
     <file relUrl="bin/Newtonsoft.Json.Net20.dll" publishTime="09/11/2018 10:33:41" />
     <file relUrl="UploadedFiles/icon/message02@2x.png" publishTime="09/13/2018 11:16:06" />
-    <file relUrl="UploadedFiles/view/endimage.png" publishTime="09/13/2018 11:16:06" />
+    <file relUrl="UploadedFiles/recommend/4.png" publishTime="09/13/2018 11:16:06" />
     <file relUrl="bin/Liger.Common.dll" publishTime="12/26/2017 16:40:40" />
-    <file relUrl="bin/LigerRM.WebService.pdb" publishTime="09/18/2018 09:18:06" />
+    <file relUrl="bin/LigerRM.WebService.pdb" publishTime="09/19/2018 09:38:45" />
     <file relUrl="UploadedFiles/fangzhuguize.html" publishTime="09/13/2018 11:16:06" />
     <file relUrl="UploadedFiles/view/oldstreet.png" publishTime="09/13/2018 11:16:06" />
     <file relUrl="UploadedFiles/recommend/02.png" publishTime="09/13/2018 11:16:06" />
     <file relUrl="bin/SignetInternet_DataLayer.pdb" publishTime="09/18/2018 09:18:03" />
     <file relUrl="UploadedFiles/icon/order02@2x.png" publishTime="09/13/2018 11:16:06" />
-    <file relUrl="bin/SignetInternet_BusinessLayer.dll" publishTime="09/18/2018 09:18:05" />
+    <file relUrl="LockManageServices.asmx" publishTime="09/11/2018 10:23:12" />
     <file relUrl="Web.config" publishTime="09/18/2018 09:18:29" />
     <file relUrl="UploadedFiles/decrition/zh.png" publishTime="09/13/2018 11:16:06" />
     <file relUrl="UploadedFiles/header/banner01.png" publishTime="09/13/2018 11:16:06" />
-    <file relUrl="bin/LigerRM.Server.dll" publishTime="09/18/2018 09:18:05" />
+    <file relUrl="bin/LigerRM.Server.dll" publishTime="09/19/2018 09:38:45" />
     <file relUrl="UploadedFiles/icon/home0@2x.png" publishTime="09/13/2018 11:16:06" />
     <file relUrl="bin/Liger.Data.dll" publishTime="09/18/2018 09:18:02" />
     <file relUrl="UploadedFiles/view/egleofTianjin.png" publishTime="09/13/2018 11:16:06" />
     <file relUrl="UploadedFiles/view/street.png" publishTime="09/13/2018 11:16:06" />
-    <file relUrl="UploadedFiles/recommend/5.png" publishTime="09/13/2018 11:16:06" />
-    <file relUrl="bin/SignetInternet_BusinessLayer.pdb" publishTime="09/18/2018 09:18:05" />
+    <file relUrl="bin/LigerRM.Server.pdb" publishTime="09/19/2018 09:38:45" />
+    <file relUrl="bin/SignetInternet_BusinessLayer.pdb" publishTime="09/19/2018 09:38:45" />
   </publishProfile>
 </publishData>
