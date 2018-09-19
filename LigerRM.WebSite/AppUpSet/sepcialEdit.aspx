@@ -121,9 +121,9 @@
             </td>
             <td align="left" class="l-table-edit-td">
                 <select name="sortId" id="sortId" style="line-height: normal;">
-                    <option value="1">1</option>
+<%--                    <option value="1">1</option>
                     <option value="2">2</option>
-                    <option value="3" selected>3</option>
+                    <option value="3" selected>3</option>--%>
                 </select>
             </td>
             <td align="left">
@@ -188,6 +188,11 @@
     <br />
     <input type="button" value="提交" id="submit" style="width: 100px; height: 35px;" />
     </form>
+<%--    <div style="width:300px;height:200px;background-color:red" name="div">
+    <a href='#' name="a_"></a>
+    </div>
+    <input type="button" id="button" />
+--%>
 </body>
 </html>
 <script src="../AppUpSetJS/sepcialEdit.js?54545" type="text/javascript"></script>

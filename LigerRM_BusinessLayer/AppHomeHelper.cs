@@ -144,7 +144,7 @@ namespace SignetInternet_BusinessLayer
                 StringBuilder str = new StringBuilder();
                 str.Append("DELETE AppHome_Banner WHERE BannerId=" + BannerId);
                 int count = MySQLHelper.ExecuteNonQuery(MySQLHelper.SqlConnString, MySQLHelper.CreateCommand(str.ToString()));
-                if (count > 0)
+                if (count > 1)
                 {
                     Return.Code = "0";
                     Return.Msg = "删除成功！！！";
@@ -269,14 +269,24 @@ namespace SignetInternet_BusinessLayer
             try
             {
                 StringBuilder str = new StringBuilder();
-                str.Append("SELECT sortId ");
+                str.Append("SELECT * ");
                 str.Append("FROM AppHome_SpecialInfo where cityId= " + cityId);
-                List<AppHome_SpecialInfo> List = GetList<AppHome_SpecialInfo>(str.ToString());
-                if (List != null)
+                List<AppHome_SpecialInfo> list = GetList<AppHome_SpecialInfo>(str.ToString());
+                if (list.Count == 0)
                 {
+                    //如果为空值需要先new一个实例给list 然后再通过mod赋值进来。
+                    list = new List<AppHome_SpecialInfo>();
+                    AppHome_SpecialInfo mod=new AppHome_SpecialInfo();
+                    mod.sortId = 1;
+                    list.Add(mod);
                     Return.Code = "0";
-                    Return.Data = List;
+                    Return.Data = list; 
                 }
+                //if (list != null)
+                //{
+                //    Return.Code = "0";
+                //    Return.Data = list;
+                //}
                 else
                 {
                     Return.Code = "1";
@@ -371,6 +381,16 @@ namespace SignetInternet_BusinessLayer
         /// 城市编号
         /// </summary>
         public string cityId { get; set; }
+
+        /// <summary>
+        /// 城市编号
+        /// </summary>
+        public string Name { get; set; }
+
+        ///// <summary>
+        ///// 排序最大值
+        ///// </summary>
+        //public int maxSortId { get; set; }
     }
 
 }

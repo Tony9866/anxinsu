@@ -24,6 +24,9 @@ public class ajax : IHttpHandler
             case "GetListCity":
                 context.Response.Write(GetListCity(context));
                 break;
+            case "getSortId":
+                context.Response.Write(getSortId(context));
+                break;
         }
     }
     public string DeleteBanner(HttpContext context)
@@ -79,6 +82,20 @@ public class ajax : IHttpHandler
 
             throw;
         }
+    }
+    
+    
+    public string getSortId(HttpContext context)
+    {
+        try 
+	{	        
+		return new AppHomeHelper().GetSortId(context.Request["cityId"].ToString());
+	}
+	catch (Exception ex)
+	{
+		
+		throw;
+	}
     }
 
     public bool IsReusable
