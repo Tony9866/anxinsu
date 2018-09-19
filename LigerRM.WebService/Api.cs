@@ -336,13 +336,51 @@ namespace LigerRM.WebService
 
         #endregion
         #region 获取省市县
+        public string GetProvinces()
+        {
+            return apilay.GetProvinces();
+        }
+
+        public string GetCity(string ProvincesId)
+        {
+            return apilay.GetCity(ProvincesId);
+        }
+
+        public string GetArea(string CityId)
+        {
+            return apilay.GetArea(CityId);
+        }
+        #endregion
+        #region 获取房屋属性(发布房屋,请求房屋需要设置的属性)
+
+        public string GetBasicAttributes()
+        {
+            ReturnJosn Return = new ReturnJosn();
+            try
+            {
+                BasicAttributes Mod = new BasicAttributes();
+                //配套设施
+                Mod.Facilities = apilay.BasicAttributes();
+                //周边
+                Mod.Periphery = apilay.BasicAttributes(2);
+                //景点
+                Mod.ScenicSpot = apilay.BasicAttributes(3);
+                //房屋特色
+                Mod.Characteristic = apilay.BasicAttributes(4);
+                Return.Code = "0001";
+                Return.Data = Mod;
+                return JSONHelper.ToJson(Return);
+
+            }
+            catch (Exception ex)
+            {
+                Return.Code = "4001";
+                Return.Msg = "发生错误！！";
+                return JSONHelper.ToJson(Return);
+            }
+        }
+
 
         #endregion
-
-
-
-
-
-
     }
 }

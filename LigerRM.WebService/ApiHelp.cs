@@ -468,6 +468,29 @@ namespace LigerRM.WebService
         }
 
         #endregion
+        #region 获取房屋属性(发布房屋,请求房屋需要设置的属性)
+        public class BasicAttributes
+        {
+            /// <summary>
+            ///  配套设施 1
+            /// </summary>
+            public object Facilities { get; set; }
+            /// <summary>
+            ///  周边   2
+            /// </summary>
+            public object Periphery { get; set; }
+            /// <summary>
+            /// 景点3
+            /// </summary>
+            public object ScenicSpot { get; set; }
+            /// <summary>
+            /// 房屋特色4
+            /// </summary>
+            public object Characteristic { get; set; }
+  
+        }
+
+        #endregion
         //#region 获取用户信息
         //public class UserNameModel
         //{
