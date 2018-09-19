@@ -58,8 +58,103 @@ namespace LigerRM.WebService
             return "";
         }
 
+        [WebMethod]
+        [SoapHeader("authentication")]
+        public string VerificationCode(string phone, int SendType)
+        {
+            //if (!authentication.ValideUser())
+            //{
+            //    return "{'headerError'}";
+            //}
+            return api.VerificationCode(phone, SendType);
+        }
 
 
+        [WebMethod]
+        [SoapHeader("authentication")]
+        public string BindingPhone(string Data, string Phone, string Code)
+        {
+            //if (!authentication.ValideUser())
+            //{
+            //    return "{'headerError'}";
+            //}
+            return api.BindingPhone(Data, Phone, Code);
+        }
+
+
+        [WebMethod]
+        [SoapHeader("authentication")]
+        public string ThirdParty(string Access_Token, string Openid, int LoginType)
+        {
+            //if (!authentication.ValideUser())
+            //{
+            //    return "{'headerError'}";
+            //}
+            return api.ThirdParty(Access_Token, Openid, LoginType);
+        }
+
+
+        /// <summary>
+        /// 获取省
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        [SoapHeader("authentication")]
+        public string GetProvinces()
+        {
+            if (!authentication.ValideUser())
+            {
+                return "{'headerError'}";
+            }
+            return api.GetProvinces();
+        }
+
+        /// <summary>
+        /// 获取市
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        [SoapHeader("authentication")]
+        public string GetCity(string ProvincesId)
+        {
+            if (!authentication.ValideUser())
+            {
+                return "{'headerError'}";
+            }
+            return api.GetCity(ProvincesId);
+        }
+
+        /// <summary>
+        /// 获取区(县)
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        [SoapHeader("authentication")]
+        public string GetArea(string CityId)
+        {
+            if (!authentication.ValideUser())
+            {
+                return "{'headerError'}";
+            }
+            return api.GetArea(CityId);
+        }
+
+        /// <summary>
+        /// 获取房屋属性(发布房屋,请求房屋需要设置的属性)
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        [SoapHeader("authentication")]
+        public string GetBasicAttributes()
+        {
+            if (!authentication.ValideUser())
+            {
+                return "{'headerError'}";
+            }
+            return api.GetBasicAttributes();
+        }
+
+        
 
         /// <summary>
         /// 根据经纬度获取地址
@@ -114,6 +209,7 @@ namespace LigerRM.WebService
                 return "未获取到位置信息,错误码2";
             }
         }
+
 
     }
 }

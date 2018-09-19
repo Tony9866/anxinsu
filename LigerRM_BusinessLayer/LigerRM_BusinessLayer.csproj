@@ -109,6 +109,9 @@
     <Compile Include="Models\AppHome\AppHome_Recommend.cs" />
     <Compile Include="Models\AppHome\EspeciallyModel.cs" />
     <Compile Include="Models\AppHome\footerLabel.cs" />
+    <Compile Include="Models\Login\CF_User.cs" />
+    <Compile Include="Models\Region\RegionModel.cs" />
+    <Compile Include="Models\Rent_Rent\Rent_BasicAttributes.cs" />
     <Compile Include="Models\User\UserModel.cs" />
     <Compile Include="MonitorMotorInfo.cs" />
     <Compile Include="MonitorPersonHelper.cs" />

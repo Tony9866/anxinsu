@@ -13,7 +13,7 @@ using System.Text;
 namespace LigerRM.WebService
 {
 
-    public class Api:ApiHelp
+    public class Api : ApiHelp
     {
         ApiLayer apilay = new ApiLayer();
 
@@ -42,7 +42,7 @@ namespace LigerRM.WebService
 
             }
             //递查逻辑
-            catch (InvalidCastException e) 
+            catch (InvalidCastException e)
             {
                 string mag = e.GetType().ToString().Split('.')[1];
                 Return.Code = "4002";
@@ -83,7 +83,168 @@ namespace LigerRM.WebService
         #endregion
 
 
+        #region 获取验证码
+        /// <summary>
+        /// 获取验证码
+        /// </summary>
+        /// <param name="?">手机号</param>
+        /// <param name="SendType">验证码类型</param>
+        /// <returns></returns>
+        public string VerificationCode(string phone, int SendType)
+        {
+            ReturnJosn Return = new ReturnJosn();
+            try
+            {
+                if (!IsMobilePhone(phone))
+                {
+                    Return.Code = "4001";
+                    Return.Msg = "手机号格式错误！！！";
+                    return JSONHelper.ToJson(Return);
+                }
 
+                string Code = CreateRandomCode(6, 0);
+                string msg = "[温馨提示]尊敬的用户，您的验证码是" + Code + "。";
+                string Message = LigerRM.Common.Global.GSMHelper.SendMessage(phone, msg);
+                //保存验证码
+                string Md5 = GetSignString(phone + Code);
+                Cookie.SaveCookie("VerificationCode", Md5, 20);
+                Return.Code = "0001";
+                Return.Msg = "验证码发生成功！！！";
+                Return.Data = Code;
+                return JSONHelper.ToJson(Return);
+
+            }
+            catch (Exception ex)
+            {
+                Return.Code = "0001";
+                Return.Msg = "验证码获取失败！！！";
+                return JSONHelper.ToJson(Return);
+            }
+        }
+        #endregion
+        #region 获取用户信息
+        public string GetUserInformation(int Obtain, string OpenId)
+        {
+            ReturnJosn Return = new ReturnJosn();
+            try
+            {
+                ThirdPartyFResultBind UserMod = new ThirdPartyFResultBind();
+                var e = apilay.GetUser(Obtain, OpenId);
+                if (e.UserID != null)
+                {
+                    UserMod.ID = e.UserID.ToString();
+                    UserMod.IsNeed = 0;
+                    UserMod.NickName = e.NickName;
+                    UserMod.Phone = e.Phone;
+                    UserMod.Photo = e.Headimgurl;
+                    UserMod.Uname = e.RealName;
+                    UserMod.QQ_Token = e.QQAccess_Token;
+                    UserMod.QQ_Token_LastTime = e.QQ_Token_LastTime;
+                    UserMod.WeChat_Token = e.WeChatAccess_Token;
+                    UserMod.WeChat_Token_LastTime = e.WeChat_Token_LastTime;
+                    Return.Code = "0001";
+                    Return.Data = UserMod;
+                    return JSONHelper.ToJson(Return);
+                }
+                else
+                {
+                    Return.Code = "4001";
+                    Return.Msg = "未能获取到任何信息！！！";
+                    return JSONHelper.ToJson(Return);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        #endregion
+        #region  绑定手机号
+
+        /// <summary>
+        /// 绑定手机号用户信息
+        /// </summary>
+        /// <param name="Phone">手机号</param>
+        /// <param name="Code">验证码</param>
+        /// <returns></returns>
+        public string BindingPhone(string Data, string Phone, string Code)
+        {
+            ReturnJosn Return = new ReturnJosn();
+            try
+            {
+                ThirdPartyParams Mod = new ThirdPartyParams();
+                string st = JSONHelper.ToJson(Mod);
+                try
+                {
+                    Mod = Newtonsoft.Json.JsonConvert.DeserializeObject<ThirdPartyParams>(Data);
+                }
+                catch (Exception ex)
+                {
+                    Return.Code = "4001";
+                    Return.Msg = "入参无法解析！！";
+                    return JSONHelper.ToJson(Return);
+                }
+
+
+                string Md5 = GetSignString(Phone + Code);
+                //验证手机验证码是否一直
+                if (!Md5.Equals(Cookie.GetCookie("VerificationCode")))
+                {
+                    Return.Code = "4001";
+                    Return.Msg = "验证码错误！！！";
+                    return JSONHelper.ToJson(Return);
+                }
+
+                var UserMod = apilay.GetUser(2, Phone);
+
+                SignetInternet_BusinessLayer.Models.Login.CF_User BllMod = new SignetInternet_BusinessLayer.Models.Login.CF_User();
+                BllMod.Phone = Phone;
+                BllMod.WeChat_Token_LastTime = DateTime.Now;
+                BllMod.WeChatAccess_Token = Mod.Access_Token;
+                BllMod.WeChatOpenid = Mod.Openid;
+                BllMod.NickName = Mod.Nickname;
+                BllMod.LoginName = Phone;
+                BllMod.LastLoginTime = DateTime.Now;
+                BllMod.Headimgurl = Mod.Headimgurl;
+                BllMod.Sex = Mod.Sex;
+                if (UserMod.UserID == 0)
+                {
+                    int count = apilay.AddUser(BllMod);
+                    if (count == 0)
+                    {
+                        Return.Code = "1001";
+                        Return.Msg = "绑定失败！！！";
+                        return JSONHelper.ToJson(Return);
+                    }
+
+                    return JSONHelper.ToJson(GetUserInformation(3, Phone));
+                }
+                else
+                {
+                    int count = apilay.UpdateUser(BllMod);
+                    if (count == 0)
+                    {
+                        Return.Code = "1001";
+                        Return.Msg = "绑定失败！！！";
+                        return JSONHelper.ToJson(Return);
+                    }
+                    return JSONHelper.ToJson(GetUserInformation(3, Phone));
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                Return.Code = "1001";
+                Return.Msg = "绑定失败！！！";
+                return JSONHelper.ToJson(Return);
+            }
+        }
+        #endregion
         #region  app登录
 
 
@@ -92,202 +253,134 @@ namespace LigerRM.WebService
         /// </summary>
         /// <param name="Data"></param>
         /// <returns></returns>
-        //public string ThirdParty(string Data)
-        //{
-        //    ReturnJosn Rresult = new ReturnJosn();
-        //    try
-        //    {
-        //        //Data = "{LoginType:1,Access_Token:\"yW0KoxpHeVbYmpB4TKVDWCmWHnEuPg3x89BcI0LMW3PSaMd-5pz2X_7FlXSe65kT_ooT9EnAYLJiq9M5-oIgcg\",Openid:\"oq_cfw_Lu-yL0uvRNTFU58lPRxEw\",Nickname:\"🦄ʘᴗʘ咸蛋娇娃🌦\",Headimgurl:\"https://wx.qlogo.cn/mmopen/Q3auHgzwzM5CYzbib7YiacibEu040fZC1HdCEQPibKdvVibELKmoJgkJibz3uWqpibS7Xoc6XCmKPJm8ygbcTFHDbhv3w/0\",Sex:0,Operation:0}";
-        //        try
-        //        {
-        //            ThirdPartyParams Mod = JsonConvert.DeserializeObject<ThirdPartyParams>(Data);
-        //            if (string.IsNullOrEmpty(Mod.Access_Token))
-        //            {
-        //                Rresult.Code = "1";
-        //                Rresult.Errmsg = "Access_Token不能为空";
-        //                return ToJson(Rresult);
-        //            }
-        //            if (string.IsNullOrEmpty(Mod.Openid))
-        //            {
-        //                Rresult.Code = "1";
-        //                Rresult.Errmsg = "Openid不能为空";
-        //                return ToJson(Rresult);
-        //            }
-        //            if (Mod.LoginType == -1)
-        //            {
-        //                Rresult.Code = "1";
-        //                Rresult.Errmsg = "请求类型不能为空";
-        //                return ToJson(Rresult);
-        //            }
+        public string ThirdParty(string Access_Token, string Openid, int LoginType)
+        {
+            ReturnJosn Rresult = new ReturnJosn();
 
-        //            if (Mod.Operation == -1)
-        //            {
-        //                Rresult.Code = "1";
-        //                Rresult.Errmsg = "请求类型不能为空";
-        //                return ToJson(Rresult);
-        //            }
-        //            Sys_User UserMod = null;
-        //            string BindID = "";
-        //            int IsNeed = -1;
-        //            //开始进行检测入参数据
-        //            if (Mod.LoginType == (int)LoginType.QQ)
-        //            {
-        //                #region 当前为QQ登录，首先检测是否之前已经登录过
-        //                IsNeed = IsNeedBindPhone(Mod, ref UserMod, ref BindID);
-        //                #endregion
-        //            }
-        //            else if (Mod.LoginType == (int)LoginType.WeChat)
-        //            {
-        //                #region 当前为微信登录，首先检测是否之前已经登录过
-        //                IsNeed = IsNeedBindPhone(Mod, ref UserMod, ref BindID);
-        //                #endregion
-        //            }
-        //            else
-        //            {
-        //                #region 当前登录方式不合法，抛回错误
-        //                Rresult.Code = "1";
-        //                Rresult.Msg = "选择登录方式不正确";
-        //                Rresult.Data = "";
-        //               // AddErrorLog("ThirdParty_Error", "选择登录方式不正确:" + Mod.LoginType);
-        //                return ToJson(Rresult);
-        //                #endregion
-        //            }
+            //ThirdPartyParams Mod = Newtonsoft.Json.JsonConvert.DeserializeObject<ThirdPartyParams>(data);
+            try
+            {
+                if (string.IsNullOrEmpty(Access_Token))
+                {
+                    Rresult.Code = "4001";
+                    Rresult.Msg = "Access_Token不能为空";
+                    return JSONHelper.ToJson(Rresult);
+                }
+                if (string.IsNullOrEmpty(Openid))
+                {
+                    Rresult.Code = "4001";
+                    Rresult.Msg = "Openid不能为空";
+                    return JSONHelper.ToJson(Rresult);
+                }
+                if (LoginType == -1)
+                {
+                    Rresult.Code = "4001";
+                    Rresult.Msg = "请求类型不能为空";
+                    return JSONHelper.ToJson(Rresult);
+                }
+                //验证是否是需要绑定手机号 0 第一次登陆 
+                int Register = IsRegister(LoginType, Openid);
+                if (Register == 0)
+                {
+                    ThirdPartyFResultNeedBind NNeedMod = new ThirdPartyFResultNeedBind();
+                    NNeedMod.IsNeed = 1;
+                    Rresult.Code = "0001";
+                    Rresult.Data = NNeedMod;
+                    return JSONHelper.ToJson(Rresult);
+                }
+
+                //更新登录信息
+                apilay.SetLoginUser(Access_Token, Openid);
+                return JSONHelper.ToJson(GetUserInformation(LoginType, Openid));
+
+            }
+            catch (Exception ex)
+            {
+                Rresult.Code = "1001";
+                Rresult.Msg = "发生异常";
+                Rresult.Data = "";
+                return JSONHelper.ToJson(Rresult);
+            }
 
 
-        //            if (IsNeed == 0)
-        //            {
-        //                //刷新ACCESS_TOKEN
-        //                if (Mod.LoginType == (int)LoginType.QQ)
-        //                {
-        //                    UserMod.QQ_Token = Mod.Access_Token;
-        //                    UserMod.QQ_Token_LastTime = DateTime.Now;
-        //                }
-        //                else if (Mod.LoginType == (int)LoginType.WeChat)
-        //                {
-        //                    UserMod.WeChat_Token = Mod.Access_Token;
-        //                    UserMod.WeChat_Token_LastTime = DateTime.Now;
-        //                }
+        }
 
-        //                UserMod = UserService.Update(UserMod);
-        //                //当前不需要绑定,直接返回用户信息
-        //                LoginSuccessResult Result = new LoginSuccessResult();
-        //                //用户ID
-        //                Result.UserId = UserMod.ID;
 
-        //                //是否VIP
-        //                if (UserMod.GradeID != null && UserMod.GradeID.Value == 2)
-        //                {
-        //                    Result.IsVip = "2";
-        //                }
-        //                else
-        //                {
-        //                    if (UserMod.AddTime.AddDays(3) > DateTime.Now)
-        //                    {
-        //                        Result.IsVip = "1";
-        //                    }
-        //                    else
-        //                    {
-        //                        Result.IsVip = "0";
-        //                    }
-        //                }
-        //                //Vip到期时间
-        //                Result.VIPTime = UserMod.AddTime.AddDays(3).ToString("yyyy-MM-dd HH:mm:ss");
-        //                //昵称
-        //                Result.NickName = UserMod.NickName;
-        //                //电话
-        //                Result.Phone = UserMod.Phone;
-        //                //头像
-        //                Result.Photo = UserMod.Photo;
-        //                //个性签名
-        //                Result.Signature = UserMod.Signature;
-        //                //个性签名
-        //                Result.Email = UserMod.Email;
-        //                //Token
-        //                if (Mod.LoginType == (int)LoginType.QQ)
-        //                {
-        //                    //登陆类型
-        //                    Result.LoginType = "0";
-        //                    Result.Token = UserMod.QQ_Token;
-        //                }
-        //                else if (Mod.LoginType == "WeChat")
-        //                {
-        //                    //登陆类型
-        //                    Result.LoginType = "1";
-        //                    Result.Token = UserMod.WeChat_Token;
-        //                }
-        //                //用户类型
-        //                Result.UserType = UserMod.TypeID.ToString();
-        //                //是否需要重新登录
-        //                Result.Again = "0";
-        //                //是否需要绑定
-        //                Result.IsNeed = "0";
-        //                //
-        //                Result.LoginResults = "0";
 
-        //                Rresult.Code = "0";
-        //                Rresult.Msg = "登陆成功";
-        //                Rresult.Data = Result;
-        //                return JSONHelper.ToJson(Rresult);
-        //            }
-        //            else if (IsNeed == 1)
-        //            {
-        //                //当前需要绑定，返回一个需要绑定的信号以及已完成绑定的ID 
-        //                LoginFailResult Result = new LoginFailResult();
-        //                Result.IsNeed = IsNeed.ToString();
-        //                Result.BindID = BindID;
-        //                Rresult.Code = "0";
-        //                Rresult.Msg = "Success";
-        //                Rresult.Data = Result;
-        //            }
-        //            else
-        //            {
-        //                //。。这怎么进来的？
-        //                Rresult.Code = "1";
-        //                Rresult.Msg = "发生了不可能事件..";
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            Rresult.Code = "1";
-        //            Rresult.Msg = "入参数据无法解析";
-        //            Rresult.Data = "";
-        //           // AddErrorLog("ThirdParty_Error", "入参数据无法解析:" + Data);
-        //            return JSONHelper.ToJson(Rresult);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Rresult.Code = "1";
-        //        Rresult.Msg = "发生异常";
-        //        Rresult.Data = "";
-        //        //AddErrorLog("ThirdParty_Error", "发生异常:" + Data);
-        //        return JSONHelper.ToJson(Rresult);
-        //    }
-        //    return JSONHelper.ToJson(Rresult);
-        //}
-        #endregion 
+
         /// <summary>
-        /// app登录页
+        /// 验证是否是第一次登陆
         /// </summary>
+        /// <param name="Mod"></param>
         /// <returns></returns>
-        //public string AppLogin()
-        //{
-        //    ReturnJosn Return = new ReturnJosn();
-        //    try
-        //    {
+        public int IsRegister(int LoginType, string Openid)
+        {
 
-        //    }
-        //    catch (Exception e)
-        //    {
-                
-        //        throw;
-        //    }
-        //}
+            try
+            {
+                var e = apilay.GetUser(LoginType, Openid);
+                if (e.UserID > 0)
+                {
+                    return 1;
+                }
+                return 0;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
 
 
 
+        #endregion
+        #region 获取省市县
+        public string GetProvinces()
+        {
+            return apilay.GetProvinces();
+        }
+
+        public string GetCity(string ProvincesId)
+        {
+            return apilay.GetCity(ProvincesId);
+        }
+
+        public string GetArea(string CityId)
+        {
+            return apilay.GetArea(CityId);
+        }
+        #endregion
+        #region 获取房屋属性(发布房屋,请求房屋需要设置的属性)
+
+        public string GetBasicAttributes()
+        {
+            ReturnJosn Return = new ReturnJosn();
+            try
+            {
+                BasicAttributes Mod = new BasicAttributes();
+                //配套设施
+                Mod.Facilities = apilay.BasicAttributes();
+                //周边
+                Mod.Periphery = apilay.BasicAttributes(2);
+                //景点
+                Mod.ScenicSpot = apilay.BasicAttributes(3);
+                //房屋特色
+                Mod.Characteristic = apilay.BasicAttributes(4);
+                Return.Code = "0001";
+                Return.Data = Mod;
+                return JSONHelper.ToJson(Return);
+
+            }
+            catch (Exception ex)
+            {
+                Return.Code = "4001";
+                Return.Msg = "发生错误！！";
+                return JSONHelper.ToJson(Return);
+            }
+        }
 
 
-
+        #endregion
     }
 }

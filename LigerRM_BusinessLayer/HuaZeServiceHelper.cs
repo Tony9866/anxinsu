@@ -150,7 +150,7 @@ namespace SignetInternet_BusinessLayer
             #endregion
 
             // 准备访问url
-            //string url = "http://221.196.148.107:8081/dailyrentconsole/outservice/hzxxadddailydata";
+
             //string url = "http://117.9.114.110:8081/dailyrentconsole/outservice/hzxxadddailydata";
             string url = "http://60.30.66.199:8022/dailyrentconsole/outservice/hzxxadddailydata";
 
