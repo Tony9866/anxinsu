@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage/Detail.master" autoeventwireup="true" inherits="RentHouse_UserCommunityDetail, App_Web_bslrsuh2" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage/Detail.master" autoeventwireup="true" inherits="RentHouse_UserCommunityDetail, App_Web_0r5pok1k" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
   <div id="mainsearch" style=" width:98%">

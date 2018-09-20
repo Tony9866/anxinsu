@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" autoeventwireup="true" masterpagefile="~/MasterPage/Detail.master" inherits="InfoRegister_CorporationDetail, App_Web_5iuxsxpj" %>
+﻿<%@ page language="C#" autoeventwireup="true" masterpagefile="~/MasterPage/Detail.master" inherits="InfoRegister_CorporationDetail, App_Web_f331nnfv" %>
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">

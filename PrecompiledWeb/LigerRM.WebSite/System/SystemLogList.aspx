@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" autoeventwireup="true" inherits="System_SystemLogList, App_Web_a0wefh1c" %>
+﻿<%@ page language="C#" autoeventwireup="true" inherits="System_SystemLogList, App_Web_t0l3dwrg" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 

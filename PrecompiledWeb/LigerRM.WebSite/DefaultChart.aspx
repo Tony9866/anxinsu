@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" autoeventwireup="true" inherits="DefaultChart, App_Web_zohai5sv" %>
+﻿<%@ page language="C#" autoeventwireup="true" inherits="DefaultChart, App_Web_gl2v1pkx" %>
 
 <!DOCTYPE html><html><head>
 	<meta charset="utf-8">
