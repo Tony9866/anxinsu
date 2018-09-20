@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" autoeventwireup="true" inherits="Test, App_Web_4wfgth4k" %>
+﻿<%@ page language="C#" autoeventwireup="true" inherits="Test, App_Web_zohai5sv" %>
 
 <%@ Register src="Dashboard/BaiduMap.ascx" tagname="BaiduMap" tagprefix="uc1" %>
 

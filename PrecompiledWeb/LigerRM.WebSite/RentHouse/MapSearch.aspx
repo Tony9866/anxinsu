@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" autoeventwireup="true" inherits="RentHouse_MapSearch, App_Web_h3mtpn1q" %>
+﻿<%@ page language="C#" autoeventwireup="true" inherits="RentHouse_MapSearch, App_Web_bslrsuh2" %>
 
 <!DOCTYPE html>
 <html>

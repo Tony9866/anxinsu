@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" autoeventwireup="true" inherits="Help_ManageHelp, App_Web_u5puopkp" %>
+﻿<%@ page language="C#" autoeventwireup="true" inherits="Help_ManageHelp, App_Web_b1vjgpmq" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 

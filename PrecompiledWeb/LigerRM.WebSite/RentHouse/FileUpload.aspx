@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" autoeventwireup="true" inherits="InfoRegister_FileUpload, App_Web_h3mtpn1q" %>
+﻿<%@ page language="C#" autoeventwireup="true" inherits="InfoRegister_FileUpload, App_Web_bslrsuh2" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
