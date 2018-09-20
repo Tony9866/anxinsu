@@ -832,7 +832,7 @@ namespace LigerRM.WebService
                 return "{'headerError'}";
             }
             RentInfoHelper helper = new RentInfoHelper();
-            return helper.GetJSONInfo("select * from Rent_PoliceStation where parentId=" + parentstationId);
+            return helper.GetJSONInfo("select * from Rent_PoliceStation where parentId=  '" + parentstationId + "'");
         }
 
         /// <summary>
