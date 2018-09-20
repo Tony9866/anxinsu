@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿<%@ page language="C#" autoeventwireup="true" inherits="Dashboard_Default, App_Web_jak5z3t2" %>
+=======
+﻿<%@ page language="C#" autoeventwireup="true" inherits="Dashboard_Default, App_Web_dzcdubmf" %>
+>>>>>>> 29cbe2b7972511884ac3f729e17ee8077fefb03b
 <%@ Register src="BaiduMap.ascx" tagname="BaiduMap" tagprefix="uc1" %>
 
 <html >

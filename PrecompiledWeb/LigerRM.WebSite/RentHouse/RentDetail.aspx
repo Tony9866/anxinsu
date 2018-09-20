@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿<%@ page language="C#" autoeventwireup="true" masterpagefile="~/MasterPage/Detail.master" inherits="RentHouse_RentDetail, App_Web_5ncvhhwe" %>
+=======
+﻿<%@ page language="C#" autoeventwireup="true" masterpagefile="~/MasterPage/Detail.master" inherits="RentHouse_RentDetail, App_Web_bslrsuh2" %>
+>>>>>>> 29cbe2b7972511884ac3f729e17ee8077fefb03b
 
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
 

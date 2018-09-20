@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿<%@ page language="C#" autoeventwireup="true" inherits="Dashboard_H5, App_Web_uhfdqkvd" %>
+=======
+﻿<%@ page language="C#" autoeventwireup="true" inherits="Dashboard_H5, App_Web_ccravnrh" %>
+>>>>>>> 29cbe2b7972511884ac3f729e17ee8077fefb03b
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 

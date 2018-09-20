@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿<%@ page language="C#" autoeventwireup="true" masterpagefile="~/MasterPage/Detail.master" inherits="InfoRegister_CorporationDetail, App_Web_0tvrujba" %>
+=======
+﻿<%@ page language="C#" autoeventwireup="true" masterpagefile="~/MasterPage/Detail.master" inherits="InfoRegister_CorporationDetail, App_Web_5iuxsxpj" %>
+>>>>>>> 29cbe2b7972511884ac3f729e17ee8077fefb03b
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">

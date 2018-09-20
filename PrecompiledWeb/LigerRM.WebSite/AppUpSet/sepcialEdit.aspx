@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿<%@ page language="C#" autoeventwireup="true" inherits="AppUpSet_sepcialEdit, App_Web_1fhrrxwj" %>
+=======
+﻿<%@ page language="C#" autoeventwireup="true" inherits="AppUpSet_sepcialEdit, App_Web_fila43ow" %>
+>>>>>>> 29cbe2b7972511884ac3f729e17ee8077fefb03b
 
 <!DOCTYPE html>
 <html>

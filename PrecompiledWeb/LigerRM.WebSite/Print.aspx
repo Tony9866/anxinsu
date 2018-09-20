@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿<%@ page language="C#" autoeventwireup="true" inherits="Print, App_Web_3k4kbla2" validaterequest="false" %>
+=======
+﻿<%@ page language="C#" autoeventwireup="true" inherits="Print, App_Web_zohai5sv" validaterequest="false" %>
+>>>>>>> 29cbe2b7972511884ac3f729e17ee8077fefb03b
 <html>
 <head>
     <title></title>

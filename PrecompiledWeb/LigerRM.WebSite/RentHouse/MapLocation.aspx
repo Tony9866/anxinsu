@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿<%@ page language="C#" autoeventwireup="true" inherits="InfoRegister_MapLocation, App_Web_5ncvhhwe" %>
+=======
+﻿<%@ page language="C#" autoeventwireup="true" inherits="InfoRegister_MapLocation, App_Web_bslrsuh2" %>
+>>>>>>> 29cbe2b7972511884ac3f729e17ee8077fefb03b
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

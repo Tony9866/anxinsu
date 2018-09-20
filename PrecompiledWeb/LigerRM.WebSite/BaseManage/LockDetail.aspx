@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage/Detail.master" autoeventwireup="true" inherits="BaseManage_LockDetail, App_Web_cc24bspp" %>
+=======
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage/Detail.master" autoeventwireup="true" inherits="BaseManage_LockDetail, App_Web_idpc1t1v" %>
+>>>>>>> 29cbe2b7972511884ac3f729e17ee8077fefb03b
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <script language="javascript" type="text/javascript">
