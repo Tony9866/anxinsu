@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" autoeventwireup="true" inherits="RentHouseReport_RentScattergram, App_Web_atbcerl0" %>
+﻿<%@ page language="C#" autoeventwireup="true" inherits="RentHouseReport_RentScattergram, App_Web_yibdakal" %>
 
 <!DOCTYPE html>
 <html>
