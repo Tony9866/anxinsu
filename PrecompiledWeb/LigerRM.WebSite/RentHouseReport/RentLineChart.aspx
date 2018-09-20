@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 ﻿<%@ page language="C#" autoeventwireup="true" inherits="RentHouseReport_RentLineChart, App_Web_axifaauw" %>
+=======
+<<<<<<< HEAD
+﻿<%@ page language="C#" autoeventwireup="true" inherits="RentHouseReport_RentLineChart, App_Web_ywriaorp" %>
+=======
+﻿<%@ page language="C#" autoeventwireup="true" inherits="RentHouseReport_RentLineChart, App_Web_zdvowk53" %>
+>>>>>>> 29cbe2b7972511884ac3f729e17ee8077fefb03b
+>>>>>>> 9b5c39abd73644358e066733e3ff19b4c03313fe
 
 
 

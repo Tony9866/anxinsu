@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 ﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage/Detail.master" autoeventwireup="true" inherits="System_AdminManage, App_Web_t0l3dwrg" %>
+=======
+<<<<<<< HEAD
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage/Detail.master" autoeventwireup="true" inherits="System_AdminManage, App_Web_jrp25f4x" %>
+=======
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage/Detail.master" autoeventwireup="true" inherits="System_AdminManage, App_Web_a0wefh1c" %>
+>>>>>>> 29cbe2b7972511884ac3f729e17ee8077fefb03b
+>>>>>>> 9b5c39abd73644358e066733e3ff19b4c03313fe
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">

@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 ﻿<%@ page language="C#" autoeventwireup="true" inherits="AppUpSet_AppHomeEdit, App_Web_2eshm3ni" %>
+=======
+<<<<<<< HEAD
+﻿<%@ page language="C#" autoeventwireup="true" inherits="AppUpSet_AppHomeEdit, App_Web_1fhrrxwj" %>
+=======
+﻿<%@ page language="C#" autoeventwireup="true" inherits="AppUpSet_AppHomeEdit, App_Web_fila43ow" %>
+>>>>>>> 29cbe2b7972511884ac3f729e17ee8077fefb03b
+>>>>>>> 9b5c39abd73644358e066733e3ff19b4c03313fe
 
 <!DOCTYPE html>
 <html>

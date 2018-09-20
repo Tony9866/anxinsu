@@ -12,7 +12,12 @@ var grid = $("#maingrid").ligerGrid({
                 { display: "社区名称", name: "RRName", width: 150, type: "text", align: "left" },
                 { display: "门牌号", name: "RDoor", width: 100, type: "text", align: "left" },
                 { display: "房主姓名", name: "ROwner", width: 100, type: "text", align: "left" },
+<<<<<<< HEAD
+                { display: "房主电话", name: "ROwnerTel", width: 100, type: "text", align: "left" },
+                { display: "房主身份证号", name: "RIDCard", width: 200, type: "text", align: "left" },
+=======
                 { display: "房主电话", name: "ROwnerTel", width: 80, type: "text", align: "left" },
+>>>>>>> 29cbe2b7972511884ac3f729e17ee8077fefb03b
                 { display: "楼层", name: "RFloor", width: 100, type: "text", align: "left"}],
     dataAction: 'server', pageSize: 20, toolbar: {},
     url: rootPath + 'handler/grid.ashx?view=v_RentDetail_view', sortName: 'RentNO',
@@ -30,6 +35,10 @@ $("#formsearch").ligerForm({
                 { display: "具体地址", name: "RAddress", newline: false, labelWidth: 100, width: 160, space: 20, type: "text", cssClass: "field" },
                 //姓名查询事件
                 {display: "姓名", name: "ROwner", newline: false, labelWidth: 60, width: 100, space: 20, type: "text", cssClass: "field" },
+<<<<<<< HEAD
+                { display: "身份证号", name: "RIDCard", newline: false, labelWidth: 60, width: 180, space: 20, type: "text", cssClass: "field" },
+=======
+>>>>>>> 29cbe2b7972511884ac3f729e17ee8077fefb03b
                 {
                     display: "所属警局", name: "所属警局", newline: false, labelWidth: 100, width: 160, space: 20, type: "select", cssClass: "field",
                     options: {

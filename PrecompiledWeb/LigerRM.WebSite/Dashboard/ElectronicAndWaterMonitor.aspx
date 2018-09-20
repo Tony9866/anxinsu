@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 ﻿<%@ page language="C#" autoeventwireup="true" inherits="Dashboard_ElectronicAndWaterMonitor, App_Web_2xeekwpm" %>
+=======
+<<<<<<< HEAD
+﻿<%@ page language="C#" autoeventwireup="true" inherits="Dashboard_ElectronicAndWaterMonitor, App_Web_uhfdqkvd" %>
+=======
+﻿<%@ page language="C#" autoeventwireup="true" inherits="Dashboard_ElectronicAndWaterMonitor, App_Web_ccravnrh" %>
+>>>>>>> 29cbe2b7972511884ac3f729e17ee8077fefb03b
+>>>>>>> 9b5c39abd73644358e066733e3ff19b4c03313fe
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head>

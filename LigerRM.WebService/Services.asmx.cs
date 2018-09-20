@@ -832,7 +832,7 @@ namespace LigerRM.WebService
                 return "{'headerError'}";
             }
             RentInfoHelper helper = new RentInfoHelper();
-            return helper.GetJSONInfo("select * from Rent_PoliceStation where parentId=" + parentstationId);
+            return helper.GetJSONInfo("select * from Rent_PoliceStation where parentId=  '" + parentstationId + "'");
         }
 
         /// <summary>
@@ -1072,10 +1072,10 @@ namespace LigerRM.WebService
         [SoapHeader("authentication")]
         public string DeleteHouseInfo(string houseNo)
         {
-            if (!authentication.ValideUser())
-            {
-                return "{'headerError'}";
-            }
+            //if (!authentication.ValideUser())
+            //{
+            //    return "{'headerError'}";
+            //}
             try
             {
                 RentInfoHelper helper = new RentInfoHelper();

@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 ﻿<%@ page language="C#" autoeventwireup="true" inherits="Activity_RedPackageList, App_Web_vxnmcg2w" %>
+=======
+<<<<<<< HEAD
+﻿<%@ page language="C#" autoeventwireup="true" inherits="Activity_RedPackageList, App_Web_llzkahaw" %>
+=======
+﻿<%@ page language="C#" autoeventwireup="true" inherits="Activity_RedPackageList, App_Web_dxtnyka1" %>
+>>>>>>> 29cbe2b7972511884ac3f729e17ee8077fefb03b
+>>>>>>> 9b5c39abd73644358e066733e3ff19b4c03313fe
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
