@@ -1072,10 +1072,10 @@ namespace LigerRM.WebService
         [SoapHeader("authentication")]
         public string DeleteHouseInfo(string houseNo)
         {
-            if (!authentication.ValideUser())
-            {
-                return "{'headerError'}";
-            }
+            //if (!authentication.ValideUser())
+            //{
+            //    return "{'headerError'}";
+            //}
             try
             {
                 RentInfoHelper helper = new RentInfoHelper();

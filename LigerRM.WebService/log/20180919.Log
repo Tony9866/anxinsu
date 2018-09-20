@@ -1,0 +1,27 @@
+2018-09-19 16:01:54
+AddPassword:Start
+2018-09-19 16:01:54
+AddPassword:{"ret":"1","msg":"未发现智能锁信息，无法添加密码"}
+2018-09-19 16:01:54
+UploadHZ:Start
+2018-09-19 16:01:54
+UploadHZ:{"respCode":"101","result":"failed"}
+
+2018-09-19 16:01:54
+AddPassword:Start
+2018-09-19 16:01:54
+AddPassword:{"ret":"1","msg":"未发现智能锁信息，无法添加密码"}
+2018-09-19 16:01:54
+UploadHZ:Start
+2018-09-19 16:01:55
+UploadHZ:{"respCode":"102","result":"failed"}
+
+2018-09-19 16:05:35
+AddPassword:Start
+2018-09-19 16:06:33
+AddPassword:{"ret":"1","msg":"未发现智能锁信息，无法添加密码"}
+2018-09-19 16:07:08
+UploadHZ:Start
+2018-09-19 16:07:08
+UploadHZ:{"respCode":"102","result":"failed"}
+

@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" autoeventwireup="true" inherits="Dashboard_ElectronicDetailInfo, App_Web_gmqoropr" %>
+﻿<%@ page language="C#" autoeventwireup="true" inherits="Dashboard_ElectronicDetailInfo, App_Web_uhfdqkvd" %>
 
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
 

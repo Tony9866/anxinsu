@@ -28,6 +28,9 @@ $("#formsearch").ligerForm({
     fields: [
         { display: "房源编号", name: "RentNO", newline: false, labelWidth: 100, width: 100, space: 20, type: "text", cssClass: "field" },
         { display: "具体地址", name: "RAddress", newline: false, labelWidth: 100, width: 160, space: 20, type: "text", cssClass: "field" },
+        //姓名查询事件
+        {display: "姓名", name: "RRAContactName", newline: false, labelWidth: 60, width: 100, space: 20, type: "text", cssClass: "field" },
+        { display: "身份证号", name: "RRAIDCard", newline: false, labelWidth: 60, width: 180, space: 20, type: "text", cssClass: "field" },
         {
             display: "所属区域", name: "所属区域", newline: false, labelWidth: 100, width: 160, space: 20, type: "select", cssClass: "field",
             options: {

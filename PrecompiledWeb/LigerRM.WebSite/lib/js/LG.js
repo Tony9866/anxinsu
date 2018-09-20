@@ -487,6 +487,7 @@
 
 
     LG.loadToolbar = function (grid, toolbarBtnItemClick) {
+
         var MenuNo = LG.getPageMenuNo();
         LG.ajax({
             loading: '正在加载工具条中...',

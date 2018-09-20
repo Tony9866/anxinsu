@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage/Detail.master" autoeventwireup="true" inherits="RentHouse_RentAutoRecordParent, App_Web_0qr5aslx" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage/Detail.master" autoeventwireup="true" inherits="RentHouse_RentAutoRecordParent, App_Web_5ncvhhwe" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 <div style="font-size:x-large; padding:5px;">请放入身份证验证身份入住......<span id="lbMessage" style="color:Red;"></span></div>
